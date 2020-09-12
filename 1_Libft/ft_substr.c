@@ -11,11 +11,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	res = tmp;
 	while (size--)
-	{
-		*tmp = s[start];
-		tmp++;
-		start++;
-	}
+		*(tmp++) = s[start++];
 	tmp = 0;
 	return (res);
 }
