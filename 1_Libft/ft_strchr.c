@@ -1,8 +1,14 @@
-
-/* strchr - Find the first occurrence of a char in a string
-   @s : the string to be searched
-   @c : the char to search for 
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/17 21:42:11 by seyun             #+#    #+#             */
+/*   Updated: 2020/11/17 21:42:18 by seyun            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
