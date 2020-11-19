@@ -6,9 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:42:33 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/17 21:42:36 by seyun            ###   ########.fr       */
+/*   Updated: 2020/11/18 17:05:31 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t		strlcpy(char *dest, const char *src, size_t size)
 {

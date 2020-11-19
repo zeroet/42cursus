@@ -6,19 +6,21 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:42:11 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/17 21:42:18 by seyun            ###   ########.fr       */
+/*   Updated: 2020/11/18 17:02:25 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
 	if (*s == '\0')
-		return (NULL);
+		return (0);
 	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char*)s);
 		s++;
 	}
-	return (NULL);
+	return (0);
 }

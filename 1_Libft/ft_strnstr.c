@@ -6,9 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:04:04 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/17 21:44:41 by seyun            ###   ########.fr       */
+/*   Updated: 2020/11/18 17:25:20 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char			*ft_strnstr(const char *s1, const char *s2, size_t len)
 {

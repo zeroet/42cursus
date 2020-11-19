@@ -6,9 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:42:59 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/17 21:43:03 by seyun            ###   ########.fr       */
+/*   Updated: 2020/11/18 16:54:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
