@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/19 22:38:21 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/14 19:30:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,24 @@ int		ft_isprint(int c);
 void	ft_bzero(void *dest, size_t size);
 void	*ft_memcpy(void *dest, const void *src, size_t size);
 void	ft_memset(void *dest, int val, size_t size);
+int		ft_atoi(const char *str);
+void	*ft_calloc(size_t size, size_t count);
+char	*ft_itoa(int n);
+void	*ft_memccpy(void *dest, const void *src, int c, size_t size);
+void	*ft_memchr(const void *ptr, int value, size_t size);
+int		ft_memcmp(const void *p1, const void *p2, size_t size);
+void	*ft_memmove(void *dest, const void *src, size_t size);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(char const *s, char c);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *ptr);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	strlcpy(char *dest, const char *src, size_t size);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
