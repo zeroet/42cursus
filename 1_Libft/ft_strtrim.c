@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:10:21 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/14 19:18:46 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 12:48:39 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char		*ft_strtrim(char const *s1, char const *set)
 	char	*begin;
 	char	*until;
 	size_t	len;
-	
+
 	begin = (char*)s1;
 	until = begin + ft_strlen(s1);
 	while (*begin && isincluded(*begin, set))

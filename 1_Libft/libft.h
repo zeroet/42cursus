@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/14 19:30:34 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/14 20:20:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,11 @@ size_t	strlcpy(char *dest, const char *src, size_t size);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+typedef	struct		s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 #endif
