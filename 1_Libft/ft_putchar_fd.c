@@ -6,11 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:42:03 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/10 16:43:50 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 22:54:08 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft"
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

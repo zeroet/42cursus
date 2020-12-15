@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 23:19:58 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/10 13:33:20 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 22:54:51 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char			**ft_split(char const *s, char c)
 			size = s - from + 1;
 			if (!(res[idx] = (char*)malloc(size)))
 				return (0);
-			ft_strlcpy(ret[idx++], from, size);
+			ft_strlcpy(res[idx++], from, size);
 		}
 		else
 			++s;

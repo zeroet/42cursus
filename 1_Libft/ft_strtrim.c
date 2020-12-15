@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:10:21 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/15 12:48:39 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 22:55:52 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ char		*ft_strtrim(char const *s1, char const *set)
 	len = until - begin + 1;
 	if (!(res = malloc(len)))
 		return (0);
-	ft_strlcpy(ret, begin, len);
-	return (ret);
+	ft_strlcpy(res, begin, len);
+	return (res);
 }

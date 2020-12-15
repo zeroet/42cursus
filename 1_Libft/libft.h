@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/15 12:54:54 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 22:54:33 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 void				ft_bzero(void *dest, size_t size);
 void				*ft_memcpy(void *dest, const void *src, size_t size);
-void				ft_memset(void *dest, int val, size_t size);
+void				*ft_memset(void *dest, int val, size_t size);
 int					ft_atoi(const char *str);
 void				*ft_calloc(size_t size, size_t count);
 char				*ft_itoa(int n);
