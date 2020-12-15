@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/15 12:53:22 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 12:54:54 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlcat(char *dest, const char *src, size_t size);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+char				*ft_strchr(const char *s, int c);
+size_t				ft_strlcat(char *dest, const char *src, size_t size);
+size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
 char				*ft_strnstr(const char *s1, const char *s2, size_t len);
 char				*ft_strrchr(const char *s, int c);
