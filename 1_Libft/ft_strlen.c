@@ -6,13 +6,13 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:42:45 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/19 22:28:57 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/15 23:04:46 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		strlen(const char *s)
+size_t		ft_strlen(const char *s)
 {
 	size_t	i;
 
