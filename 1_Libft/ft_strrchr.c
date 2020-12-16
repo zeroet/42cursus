@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:42:59 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/16 00:40:35 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/16 18:46:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 		if (*s == (char)c)
 			res = s;
 		if (*s == 0)
-			break;
+			break ;
 		s++;
 	}
 	return ((char*)res);
