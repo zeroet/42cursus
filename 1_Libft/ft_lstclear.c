@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:23:28 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/19 17:30:42 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/19 22:49:37 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	while (1)
+	t_list *curr;
+	t_list *next;
+
+	curr = *lst;
+	while (curr)
 	{
-		(*del)(lst->content);
-		free(lst);
-		if (lst ==NULL)
-			break ;
+		next = curr->next;
+		ft_lstdelone(curr, del);
+		curr = next;
 	}
+	*lst = NULL;
 }
