@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:08:26 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/28 19:13:31 by seyun            ###   ########.fr       */
+/*   Updated: 2020/12/28 23:13:16 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_ist	*ret;
+	t_list	*ret;
 	t_list	*tmp;
 
 	ret = 0;
