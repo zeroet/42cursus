@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:07:52 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/19 22:12:06 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/06 12:33:26 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_bzero(void *dest, size_t size)
 {
-	void *res;
-
-	res = dest;
 	while (size--)
 		*(char*)dest++ = 0;
 }
