@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:40:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/06 23:20:17 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/07 21:12:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-size_t ft_strlen(char *ptr);
+int			get_next_line(int fd, char **line);
+size_t		ft_strlen(char *ptr);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/06 17:17:09 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/07 21:12:16 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,4 @@ size_t		ft_strlen(char *ptr)
 	return (size);
 }
 
-char		*ft_strjoin(char *dest, char *src)
-{
-}
+
