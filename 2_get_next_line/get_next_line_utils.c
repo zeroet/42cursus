@@ -20,3 +20,7 @@ size_t		ft_strlen(char *ptr)
 		size++;
 	return (size);
 }
+
+char		*ft_strjoin(char *dest, char *src)
+{
+}
