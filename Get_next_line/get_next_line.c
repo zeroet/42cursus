@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/07 21:12:12 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/08 13:35:09 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,22 @@ int			find(*backup)
 
 char		*split_line(char **backup, char **line, int end_index)
 {
+	int		len;
+	char	*tmp;
+
 	*backup[end_index] = '\0';
 	*line = strdup(*backup);
-
+	len = strlen(*backup + end_index + 1)
+	if (len == 0)
+	{
+		free(*backup);
+		return (1);
+	}
+	tmp = strdup(*backup + end_index + 1);
+	free(*backup);
+	*backup = 0;
+	*backup = tmp;
+	return (1);
 }
 
 int			get_next_line(int fd, char **line)
@@ -50,5 +63,5 @@ int			get_next_line(int fd, char **line)
 		if (0 =< (end_index = find(backup[fd])))
 			return (split_line(&backup[fd], line, end_index);
 	}
-	return ();
+	return (0);
 }

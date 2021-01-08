@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:40:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/07 21:12:14 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/08 13:36:51 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 
 int			get_next_line(int fd, char **line);
 size_t		ft_strlen(char *ptr);
-
+char		*ft_strjoin(const char *s1, const char *s2);
+size_t		ft_strlcpy(char *dest, const char *src, size_t size);
+size_t		ft_strlcat(char *dest, const char *src, size_t size);
+char		*ft_strdup(const char *ptr);
 
 #endif
