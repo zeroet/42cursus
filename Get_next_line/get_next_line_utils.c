@@ -6,12 +6,13 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/08 13:35:16 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/09 11:35:32 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
-size_t		ft_strlen(char *ptr)
+size_t		ft_strlen(const char *ptr)
 {
 	size_t	size;
 
@@ -27,6 +28,7 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 
 	if (!dest && !src)
 		return (0);
+	i = 0;
 	while (src[i] && i + 1 < size)
 	{
 		dest[i] = src[i];

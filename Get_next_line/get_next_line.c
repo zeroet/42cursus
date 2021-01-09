@@ -6,15 +6,15 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/08 13:35:09 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/09 11:35:29 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			find(*backup)
+int				find(char *backup)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (backup[i])
@@ -26,42 +26,62 @@ int			find(*backup)
 	return (-1);
 }
 
-char		*split_line(char **backup, char **line, int end_index)
+
+
+int				split_line(char **backup, char **line, int end_index)
 {
-	int		len;
-	char	*tmp;
+	int			len;
+	char		*tmp;
 
 	*backup[end_index] = '\0';
-	*line = strdup(*backup);
-	len = strlen(*backup + end_index + 1)
+	*line = ft_strdup(*backup);
+	len = ft_strlen(*backup + end_index + 1);
 	if (len == 0)
 	{
 		free(*backup);
 		return (1);
 	}
-	tmp = strdup(*backup + end_index + 1);
+	tmp = ft_strdup(*backup + end_index + 1);
 	free(*backup);
 	*backup = 0;
 	*backup = tmp;
 	return (1);
 }
 
-int			get_next_line(int fd, char **line)
+int				all_return(char **backup, char **line, int size)
 {
-	char	buf[BUFF_SIZE + 1];
-	static	*backup[OPEN_MAX];
-	int		end_index;
-	int		size;
+	int			end_index;
 
-	if ((fd < 0) || (line == 0) || (BUFF_SIZE < 0))
+	if ((size < 0) || !(*backup))
 		return (-1);
-	*line = 0;
-	while (0 < (size = read(fd, buf, BUFF_SIZE)))
+	if (*backup && (0 <= (end_index = find(*backup))))
+		return (split_line(backup, line, end_index));
+	else if (*backup)
+	{
+		*line = ft_strdup(*backup);
+		free(backup);
+		backup = 0;
+		return (0);
+	}
+	*line = ft_strdup("");
+	return (0);
+}
+
+int				get_next_line(int fd, char **line)
+{
+	char		buf[BUF_SIZE + 1];
+	static char	*backup[OPEN_MAX];
+	int			end_index;
+	int			size;
+
+	if ((fd < 0) || (line == 0) || (BUF_SIZE < 0))
+		return (-1);
+	while (0 < (size = read(fd, buf, BUF_SIZE)))
 	{
 		buf[size] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buf);
-		if (0 =< (end_index = find(backup[fd])))
-			return (split_line(&backup[fd], line, end_index);
+		if (0 <= (end_index = find(backup[fd])))
+			return (split_line(&backup[fd], line, end_index));
 	}
-	return (0);
+	return (all_return(backup, line, size));
 }
