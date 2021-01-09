@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/09 11:35:32 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/09 12:27:37 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char		*ft_strjoin(const char *s1, const char *s2)
 {
 	size_t	len;
 	char	*res;
-	
+
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	if (!(res = malloc(len)))
 		return (0);

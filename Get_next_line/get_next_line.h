@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:40:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/09 11:31:31 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/09 12:20:27 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int			get_next_line(int fd, char **line);
 size_t		ft_strlen(const char *ptr);
