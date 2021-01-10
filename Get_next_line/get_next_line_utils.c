@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/09 12:27:37 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/10 01:10:05 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ size_t		ft_strlcat(char *dest, const char *src, size_t size)
 	return (i);
 }
 
-char		*ft_strdup(const char *ptr)
+char		*ft_strdup(char *ptr)
 {
 	size_t	len;
 	size_t	i;
@@ -79,7 +79,7 @@ char		*ft_strdup(const char *ptr)
 	return (res);
 }
 
-char		*ft_strjoin(const char *s1, const char *s2)
+char		*ft_strjoin(char *s1,  char *s2)
 {
 	size_t	len;
 	char	*res;

@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/09 12:27:35 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/10 01:08:32 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int				get_next_line(int fd, char **line)
 	int			end_index;
 	int			size;
 
-	if ((fd < 0) || (line == 0) || (BUF_SIZE < 0))
+	if ((fd < 0) || (line == 0) || (BUF_SIZE <= 0))
 		return (-1);
 	while (0 < (size = read(fd, buf, BUF_SIZE)))
 	{
