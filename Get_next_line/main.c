@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 11:10:20 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/09 12:27:39 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 14:35:41 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ int main()
 	char **line;
 
 	line = (char **)malloc(LINE_SIZE * sizeof(char*));
-	while (0 <= (fd = open("txt.txt", O_RDONLY)))
-	{
-		if (fd == EOF)
-			break ;
-		get_next_line(fd, line);
-		printf ("%s\n", *line);
-	}
+	fd = open("txt.txt", O_RDONLY);
+	printf("%d\n", get_next_line(3, line));
+	printf("%d\n", get_next_line(3, line));
+	printf("%d\n", get_next_line(3, line));
+	printf("%d\n", get_next_line(3, line));
 	close(fd);
 	return (0);
 }

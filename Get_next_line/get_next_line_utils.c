@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/15 12:03:40 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 14:14:29 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ char		*ft_strdup(char *ptr)
 
 char		*ft_strjoin(char *s1,  char *s2)
 {
-	int		s1_len;
-	int		s2_len;
 	int		len;
 	char	*res;
 
@@ -90,9 +88,7 @@ char		*ft_strjoin(char *s1,  char *s2)
 		return (NULL);
 	else if (!(s1) || !(s2))
 		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	len = s1_len + s2_len + 1;
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	if (!(res = (char *)malloc(len)))
 		return (0);
 	ft_strlcpy(res, s1, len);

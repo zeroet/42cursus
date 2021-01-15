@@ -6,22 +6,20 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/15 12:03:38 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 15:17:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int				find(char *s)
+int				find(char *backup)
 {
 	int			i;
-	char		*res;
 	
 	i = 0;
-	res = s;
-	while (res[i])
+	while (backup[i])
 	{
-		if (res[i] == '\n')
+		if (backup[i] == '\n')
 			return (i);
 		i++;
 	}
@@ -35,14 +33,13 @@ int				split_line(char **backup, char **line, int end_index)
 	int			len;
 	char		*tmp;
 
-	printf("%s\n", *backup);
-	printf("%s\n", backup[3]);
-	*backup[end_index] = '\0';
+	(*backup)[end_index] = '\0';
 	*line = ft_strdup(*backup);
 	len = ft_strlen(*backup + end_index + 1);
 	if (len == 0)
 	{
 		free(*backup);
+		backup = 0;
 		return (1);
 	}
 	tmp = ft_strdup(*backup + end_index + 1);
@@ -56,7 +53,7 @@ int				all_return(char **backup, char **line, int size)
 {
 	int			end_index;
 
-	if ((size < 0) || !(*backup))
+	if ((size < 0))
 		return (-1);
 	if (*backup && (0 <= (end_index = find(*backup))))
 		return (split_line(backup, line, end_index));
@@ -85,10 +82,7 @@ int				get_next_line(int fd, char **line)
 		buf[size] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buf);
 		if (0 <= (end_index = find(backup[fd])))
-		{
-			printf("%s\n", backup[3]);
 			return (split_line(&backup[fd], line, end_index));
-		}
 	}
 	return (all_return(backup, line, size));
 }
