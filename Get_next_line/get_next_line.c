@@ -6,20 +6,22 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/10 01:08:32 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 12:03:38 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int				find(char *backup)
+int				find(char *s)
 {
 	int			i;
-
+	char		*res;
+	
 	i = 0;
-	while (backup[i])
+	res = s;
+	while (res[i])
 	{
-		if (backup[i] == '\n')
+		if (res[i] == '\n')
 			return (i);
 		i++;
 	}
@@ -33,6 +35,8 @@ int				split_line(char **backup, char **line, int end_index)
 	int			len;
 	char		*tmp;
 
+	printf("%s\n", *backup);
+	printf("%s\n", backup[3]);
 	*backup[end_index] = '\0';
 	*line = ft_strdup(*backup);
 	len = ft_strlen(*backup + end_index + 1);
@@ -69,19 +73,22 @@ int				all_return(char **backup, char **line, int size)
 
 int				get_next_line(int fd, char **line)
 {
-	char		buf[BUF_SIZE + 1];
+	char		buf[BUFFER_SIZE + 1];
 	static char	*backup[OPEN_MAX];
 	int			end_index;
 	int			size;
 
-	if ((fd < 0) || (line == 0) || (BUF_SIZE <= 0))
+	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);
-	while (0 < (size = read(fd, buf, BUF_SIZE)))
+	while (0 < (size = read(fd, buf, BUFFER_SIZE)))
 	{
 		buf[size] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buf);
 		if (0 <= (end_index = find(backup[fd])))
+		{
+			printf("%s\n", backup[3]);
 			return (split_line(&backup[fd], line, end_index));
+		}
 	}
 	return (all_return(backup, line, size));
 }

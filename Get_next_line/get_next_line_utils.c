@@ -6,25 +6,25 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/10 01:10:05 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 12:03:40 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *ptr)
+int			ft_strlen(char *ptr)
 {
-	size_t	size;
+	int		i;
 
-	size = 0;
-	while (ptr[size])
-		size++;
-	return (size);
+	i = 0;
+	while (ptr[i])
+		i++;
+	return (i);
 }
 
-size_t		ft_strlcpy(char *dest, const char *src, size_t size)
+int			ft_strlcpy(char *dest, const char *src, int size)
 {
-	size_t	i;
+	int		i;
 
 	if (!dest && !src)
 		return (0);
@@ -41,9 +41,9 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 	return (i);
 }
 
-size_t		ft_strlcat(char *dest, const char *src, size_t size)
+int			ft_strlcat(char *dest, const char *src, int size)
 {
-	size_t i;
+	int		 i;
 
 	i = 0;
 	while (*dest && i < size)
@@ -65,8 +65,8 @@ size_t		ft_strlcat(char *dest, const char *src, size_t size)
 
 char		*ft_strdup(char *ptr)
 {
-	size_t	len;
-	size_t	i;
+	int		len;
+	int		i;
 	char	*res;
 
 	len = ft_strlen(ptr);
@@ -81,11 +81,19 @@ char		*ft_strdup(char *ptr)
 
 char		*ft_strjoin(char *s1,  char *s2)
 {
-	size_t	len;
+	int		s1_len;
+	int		s2_len;
+	int		len;
 	char	*res;
 
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = malloc(len)))
+	if (!(s1) &&!(s2))
+		return (NULL);
+	else if (!(s1) || !(s2))
+		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	len = s1_len + s2_len + 1;
+	if (!(res = (char *)malloc(len)))
 		return (0);
 	ft_strlcpy(res, s1, len);
 	ft_strlcat(res, s2, len);
