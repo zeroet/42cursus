@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:38:51 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/15 14:14:29 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 22:57:46 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ char		*ft_strjoin(char *s1,  char *s2)
 	if (!(res = (char *)malloc(len)))
 		return (0);
 	ft_strlcpy(res, s1, len);
+	free(s1);
 	ft_strlcat(res, s2, len);
 	return (res);
 }

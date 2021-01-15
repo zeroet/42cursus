@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/15 15:17:14 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/15 22:53:47 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,11 @@ int				split_line(char **backup, char **line, int end_index)
 	if (len == 0)
 	{
 		free(*backup);
-		backup = 0;
+		*backup = 0;
 		return (1);
 	}
 	tmp = ft_strdup(*backup + end_index + 1);
 	free(*backup);
-	*backup = 0;
 	*backup = tmp;
 	return (1);
 }
@@ -53,15 +52,14 @@ int				all_return(char **backup, char **line, int size)
 {
 	int			end_index;
 
-	if ((size < 0))
+	if (size < 0)
 		return (-1);
 	if (*backup && (0 <= (end_index = find(*backup))))
 		return (split_line(backup, line, end_index));
 	else if (*backup)
 	{
-		*line = ft_strdup(*backup);
-		free(backup);
-		backup = 0;
+		*line = *backup;
+		*backup = 0;
 		return (0);
 	}
 	*line = ft_strdup("");
@@ -84,5 +82,5 @@ int				get_next_line(int fd, char **line)
 		if (0 <= (end_index = find(backup[fd])))
 			return (split_line(&backup[fd], line, end_index));
 	}
-	return (all_return(backup, line, size));
+	return (all_return(&backup[fd], line, size));
 }
