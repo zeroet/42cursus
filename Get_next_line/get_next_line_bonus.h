@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/16 12:01:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/16 12:02:28 by seyun            ###   ########.fr       */
+/*   Created: 2021/01/16 12:29:20 by seyun             #+#    #+#             */
+/*   Updated: 2021/01/16 12:29:55 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdlib.h>
 
 int			get_next_line(int fd, char **line);
-int			ft_strlen(char *s1);
+int			ft_strlen(char *ptr);
 char		*ft_strjoin(char *s1, char *s2);
 int			ft_strlcpy(char *dest, const char *src, int size);
 int			ft_strlcat(char *dest, const char *src, int size);

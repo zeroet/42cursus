@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/16 11:48:05 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/16 12:01:24 by seyun            ###   ########.fr       */
+/*   Created: 2021/01/16 12:28:36 by seyun             #+#    #+#             */
+/*   Updated: 2021/01/16 12:29:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int			ft_strlen(char *s)
+int			ft_strlen(char *ptr)
 {
 	int		i;
 
 	i = 0;
-	while (s[i])
+	while (ptr[i])
 		i++;
 	return (i);
 }
@@ -48,8 +48,8 @@ int			ft_strlcat(char *dest, const char *src, int size)
 	i = 0;
 	while (*dest && i < size)
 	{
-		i++;
-		dest++;
+		++i;
+		++dest;
 	}
 	while (*src && i + 1 < size)
 	{
@@ -59,7 +59,7 @@ int			ft_strlcat(char *dest, const char *src, int size)
 	if (i < size)
 		*dest = 0;
 	while (*src++)
-		i++;
+		++i;
 	return (i);
 }
 
@@ -71,7 +71,7 @@ char		*ft_strdup(char *ptr)
 
 	len = ft_strlen(ptr);
 	if (!(res = malloc(len + 1)))
-		return (NULL);
+		return (0);
 	i = 0;
 	while (len--)
 		res[i++] = *ptr++;
@@ -84,9 +84,9 @@ char		*ft_strjoin(char *s1, char *s2)
 	int		len;
 	char	*res;
 
-	if (!s1 && !s2)
+	if (!(s1) && !(s2))
 		return (NULL);
-	else if (!s1 || !s2)
+	else if (!(s1) || !(s2))
 		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	if (!(res = (char *)malloc(len)))
