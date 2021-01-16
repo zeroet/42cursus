@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/16 11:59:02 by seyun            ###   ########.fr       */
+/*   Created: 2021/01/16 11:01:38 by seyun             #+#    #+#             */
+/*   Updated: 2021/01/16 12:07:42 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int				find(char *backup)
 {
-	int			i;
+	int i;
 
 	i = 0;
 	while (backup[i])
@@ -64,10 +64,10 @@ int				all_return(char **backup, char **line, int size)
 	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+int				get_next_line_bonus(int fd, char **line)
 {
+	static char *backup[OPEN_MAX];
 	char		buf[BUFFER_SIZE + 1];
-	static char	*backup[OPEN_MAX];
 	int			end_index;
 	int			size;
 
