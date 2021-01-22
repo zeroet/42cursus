@@ -1,0 +1,11 @@
+int     haha
+
+
+main
+
+
+void
+
+char
+
+pointer
