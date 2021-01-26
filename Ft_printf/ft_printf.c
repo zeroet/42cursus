@@ -6,16 +6,59 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 11:06:28 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/25 20:33:08 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/26 13:25:31 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.f"
 
+int			print_type(va_list ap, t_info *info)
+{
+	int		ret;
+	char	type;
+
+	ret = 0;
+	type = info->type;
+	if (type == 'c')
+		ret += print_char(va_arg(ap, int)i, info);
+	else if (type == '%')
+		ret += print_char('%', info);
+	else if (type == 's')
+		ret += print_string(va_arg(ap, char*), info);
+	else if (type == 'd' || type == 'i')
+		ret += print_nbr(va_arg(ap, int), info);
+	else if (type == 'u' || type == 'x' || type 'X')
+		ret += print_nbr(va_arg(ap, unsigned int), info);
+	else if (type == 'p')
+		ret += print_nbr(va_arg(ap, unsigned long long), info);
+	return (ret);
+}
+
 void		check_width_prec(va_list ap, char *format,
 		t_info *info, int i)
 {
-
+	if (ft_isdigit(format[i]))
+	{
+		if (info->prec == 0)
+			info->width = info->width * 10 + format[i] - '0';
+		else
+			info->prec = info->prec * 10 + format[i] - '0';
+	}
+	else if (format[i] == '*')
+	{
+		if (info->prec == 0)
+		{
+			info->width = va_arg(ap, int);
+			if (info->width < 0)/*width 가 음수일경우 자동으로 왼쪽정렬됨*/
+			{
+				info->minus = 1;
+				info->width *= -1;
+			}
+		}
+		else
+			info->prec = va_arg(ap, int);
+	}
+}
 
 void		check_flag(va_list ap, char *format, t_info *info, int i)
 {
@@ -63,7 +106,7 @@ int			ft_printf(const char *format, ...)
 	va_list	ap;
 	int		ret;
 
-	va_start(ap, format);
+	va_start(ap, format);/* ap FORMAT만큼 이동해서 다음 ap 도착*/
 	res = run_printf(ap, (char*)format);
 	va_end(ap);
 	return (ret);

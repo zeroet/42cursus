@@ -1,27 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/22 15:07:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/26 13:25:29 by seyun            ###   ########.fr       */
+/*   Created: 2021/01/26 12:20:45 by seyun             #+#    #+#             */
+/*   Updated: 2021/01/26 12:21:18 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# define TYPE "csdiupxX%"
 
-# include <stdarg.h>
-
-typedef struct s_info
-{
-	int	minus;
-	int zero;
-	int prec;
-	int width;
-	char type;
-}				t_info;
