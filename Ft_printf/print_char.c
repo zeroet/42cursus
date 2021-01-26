@@ -6,10 +6,15 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:20:45 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/26 12:21:18 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/26 13:37:53 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		print_char(int c, t_info *info)
+{
+	int ret;
 
+	if (info->width != 0 || info->prec != 0)
+		
