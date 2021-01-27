@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:07:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/26 13:25:29 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/27 16:13:08 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ typedef struct s_info
 	int prec;
 	int width;
 	char type;
+	int nbr_sign;
+	int nbr_base;
 }				t_info;

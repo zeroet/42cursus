@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:10:49 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/24 19:05:14 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/27 16:12:38 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,6 @@ void	init_info(t_info *info)
 	info->width = 0;
 	info->prec = 0;
 	info->type = 0;
+	info->nbr_sign = 1;
+	info->nbr_base = 10;
 }

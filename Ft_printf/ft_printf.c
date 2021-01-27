@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 11:06:28 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/26 13:37:53 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/27 15:53:38 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			print_type(va_list ap, t_info *info)
 	ret = 0;
 	type = info->type;
 	if (type == 'c')
-		ret += print_char(va_arg(ap, int)i, info);
+		ret += print_char(va_arg(ap, int), info);
 	else if (type == '%')
 		ret += print_char('%', info);
 	else if (type == 's')
