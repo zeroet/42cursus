@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 19:31:17 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/27 12:46:23 by seyun            ###   ########.fr       */
+/*   Created: 2021/01/27 15:34:26 by seyun             #+#    #+#             */
+/*   Updated: 2021/01/28 00:44:27 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <stdarg.h>
-
-int		ft_test(char *format, ...)
-{
-	va_list ap;
-	char c; 
-	int i;
-	int j;
-
-	va_start(ap, format);
-	c  = va_arg(ap, int);
-	i = va_arg(ap, int);
-	j = va_arg(ap, int);	
-	printf("%%\n %c\n %.d\n %d\n", c, i, j);
-	va_end(ap);
-	return (0);
-}
 
 int main()
 {
-	int i = 10;
-
-	ft_test("abc", 'c', 42, &i);
+	printf(">>%*c<<\n", 0, 'c');
 	return (0);
 }
