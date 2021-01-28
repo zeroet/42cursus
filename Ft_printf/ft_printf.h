@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:07:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/27 16:13:08 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/28 19:47:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define TYPE "csdiupxX%"
 
 # include <stdarg.h>
+# include <stdlib.h>
 
 typedef struct s_info
 {
