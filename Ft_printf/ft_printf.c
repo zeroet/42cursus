@@ -6,18 +6,16 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 11:06:28 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/28 00:37:01 by seyun            ###   ########.fr       */
+/*   Updated: 2021/01/29 22:09:59 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.f"
 
-
-
-int		print_type(va_list ap, t_info *info)
+int			print_type(va_list ap, t_info *info)
 {
-	int ret;
-	char type;
+	int		ret;
+	char	type;
 
 	ret = 0;
 	type = info->type;
@@ -36,7 +34,7 @@ int		print_type(va_list ap, t_info *info)
 	return (ret);
 }
 
-void	check_width_and_prec(va_list ap, char *format, t_info *info, int i)
+void		check_width_and_prec(va_list ap, char *format, t_info *info, int i)
 {
 	if (ft_isdigit(format[i]))
 	{
@@ -48,32 +46,34 @@ void	check_width_and_prec(va_list ap, char *format, t_info *info, int i)
 	else if (format[i] == '*')
 	{
 		if (info->prec == -1)
+		{
 			info->width = va_arg(ap, int);
 			if (info->width < 0)
-			{	
+			{
 				info->minus = 1;
 				info->width *= -1;
 			}
+		}
 		else
 			info->prec = va_arg(ap, int);
 	}
 }
 
-void	check_info(va_list ap, char *format, t_info *info, int i)
+void		check_info(va_list ap, char *format, t_info *info, int i)
 {
 	if (fotmat[i] == '0' && info->prec == -1 && info->width == 0)
 		info->zero = 0;
-	else if(format[i] == '-')
+	else if (format[i] == '-')
 		info->minus = 1;
-	else if(format[i] == '.')
+	else if (format[i] == '.')
 		info->prec = 0;
-	else if(ft_isdigit(format[i]) || format[i] == '*')
+	else if (ft_isdigit(format[i]) || format[i] == '*')
 		check_width_and_prec(ap, format, info, i);
 }
 
-int		run_printf(va_list ap, char *format)
+int			run_printf(va_list ap, char *format)
 {
-	t_info *info;
+	t_info	*info;
 	int		ret;
 	int		i;
 
@@ -97,9 +97,9 @@ int		run_printf(va_list ap, char *format)
 	return (ret);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	va_list ap;
+	va_list	ap;
 	int		ret;
 
 	va_start(ap, format);
