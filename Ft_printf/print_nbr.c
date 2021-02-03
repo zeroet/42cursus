@@ -6,11 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:02:43 by seyun             #+#    #+#             */
-/*   Updated: 2021/02/03 12:41:18 by seyun            ###   ########.fr       */
+/*   Updated: 2021/02/03 14:34:55 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.f"
+#include "ft_printf.h"
 
 int		put_pointer_prefix(char **buf)
 {
@@ -83,23 +83,22 @@ int		print_nbr(unsigned long long nbr, t_info *info)
 {
 	int ret;
 	int buf_len;
+	char *buf;
 
-	ret = 0;
 	if (info->type == 'x' || info->type == 'X' || info->type == 'p')
 		info->nbr_base = 16;
-	if (info->type == 'd' || info-> 'i')
+	if (info->type == 'd' || info->type == 'i')
 	{
-		info->sign = -1;
+		info->nbr_sign = -1;
 		nbr *= -1;
 	}
 	buf_len = put_prec_str(nbr, info, &buf);
 	buf_len += put_minus(info, &buf);
 	if (info->type == 'p')
-		buf_len = put_pointer_prfix(&buf);
-	ret = put_width_str(&buf, info);
+		buf_len = put_pointer_prefix(&buf);
+	ret = width_string(&buf, info);
 	ret += put_minus2(buf_len, info, &buf);
 	ft_putstr(buf);
 	free(buf);
-	buf = 0;
 	return (ret);
 }
