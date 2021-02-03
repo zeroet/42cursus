@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 20:59:27 by seyun             #+#    #+#             */
-/*   Updated: 2021/02/03 15:11:48 by seyun            ###   ########.fr       */
+/*   Updated: 2021/02/03 21:54:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*parse_str(char *str, int end, int len)
 	int		i;
 
 	end = end < len ? end : len;
-	if (!(buf =(char *)malloc(sizeof(char) * end + 1)))
+	if (!(buf = (char *)malloc(sizeof(char) * end + 1)))
 		return (NULL);
 	i = 0;
 	while (i < end)
@@ -37,7 +37,7 @@ int			width_string(char **buf, t_info *info)
 
 	if (info->width <= (int)ft_strlen(*buf))
 		return ((int)ft_strlen(*buf));
-	width = (char *)malloc(sizeof(info->width - ft_strlen(*buf) + 1));
+	width = (char *)malloc(sizeof(char) * (info->width - ft_strlen(*buf) + 1));
 	i = 0;
 	while ((size_t)i < info->width - ft_strlen(*buf))
 	{
@@ -52,10 +52,10 @@ int			width_string(char **buf, t_info *info)
 	return (info->width);
 }
 
-int		print_string(char *str, t_info *info)
+int			print_string(char *str, t_info *info)
 {
-	int	ret;
-	char *buf;
+	int		ret;
+	char	*buf;
 
 	ret = 0;
 	if (str == NULL)
@@ -68,4 +68,3 @@ int		print_string(char *str, t_info *info)
 	free(buf);
 	return (ret);
 }
-

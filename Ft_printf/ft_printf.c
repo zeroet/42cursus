@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 11:06:28 by seyun             #+#    #+#             */
-/*   Updated: 2021/02/03 15:04:24 by seyun            ###   ########.fr       */
+/*   Updated: 2021/02/03 19:23:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			print_type(va_list ap, t_info *info)
 
 	ret = 0;
 	type = info->type;
-	if (info->type == 'c')
+	if (type == 'c')
 		ret = print_char(va_arg(ap, int), info);
 	else if (type == '%')
 		ret = print_char('%', info);
@@ -62,7 +62,7 @@ void		check_width_and_prec(va_list ap, char *format, t_info *info, int i)
 void		check_info(va_list ap, char *format, t_info *info, int i)
 {
 	if (format[i] == '0' && info->prec == -1 && info->width == 0)
-		info->zero = 0;
+		info->zero = 1;
 	else if (format[i] == '-')
 		info->minus = 1;
 	else if (format[i] == '.')
@@ -79,7 +79,7 @@ int			run_printf(va_list ap, char *format)
 
 	i = 0;
 	ret = 0;
-	if (!(info = (t_info *)malloc(sizeof(t_info) * 1)))
+	if (!(info = malloc(sizeof(t_info) * 1)))
 		return (-1);
 	while (format[i] != '\0')
 	{

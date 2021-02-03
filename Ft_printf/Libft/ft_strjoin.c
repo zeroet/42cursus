@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:31:40 by seyun             #+#    #+#             */
-/*   Updated: 2021/02/03 14:18:40 by seyun            ###   ########.fr       */
+/*   Updated: 2021/02/03 19:37:23 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char		*ft_strjoin(char *s1, char *s2, int free_target)
 
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(res = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	res = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!res)
 		return (0);
 	i = -1;
 	while (++i < s1_len)

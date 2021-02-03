@@ -6,19 +6,21 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:09:52 by seyun             #+#    #+#             */
-/*   Updated: 2021/02/03 14:15:38 by seyun            ###   ########.fr       */
+/*   Updated: 2021/02/03 21:53:29 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+int		ft_putstr(char *str)
 {
 	int i;
 
 	i = 0;
-	while (str[i] == '\0')
-		write(1, &str[i++], 1);
-	return ;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }
-
