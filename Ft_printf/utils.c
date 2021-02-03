@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:10:49 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/28 19:25:13 by seyun            ###   ########.fr       */
+/*   Updated: 2021/02/02 21:06:09 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,30 @@ void	init_info(t_info *info)
 	info->type = 0;
 	info->nbr_sign = 1;
 	info->nbr_base = 10;
+}
+
+int		ft_nbrlen(unsigned long long nbr, t_info *info)
+{
+	int i;
+
+	if (nbr == 0 && info->prec != 0)
+		return (1);
+	i = 0;
+	while (nbr)
+	{
+		i++;
+		nbr /= info->nbr_base;
+	}
+	return (i);
+}
+
+char	*ft_baseset(char type)
+{
+	if (type == 'u' || type == 'd' || type == 'i')
+		return ("0123456789");
+	else if (type == 'x' || type == 'p')
+		return ("0123456789abcdef");
+	else if (type == 'X')
+		return ("0123456789ABCDEF");
+	return (0);
 }
