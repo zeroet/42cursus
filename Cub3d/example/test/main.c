@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:27:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/03/09 13:14:59 by seyun            ###   ########.fr       */
+/*   Updated: 2021/03/09 14:01:16 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int		main(void)
 	window.grid_color = 0x00FFFF;
 	window.mlx = mlx_init();
 	window.win = mlx_new_window(window.mlx, window.width, window.height, "mlx_grid");
-
 	mlx_loop_hook(window.mlx, draw_grid, &window);
 	mlx_loop(window.mlx);
 }
