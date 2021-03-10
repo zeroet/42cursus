@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:27:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/03/09 14:01:16 by seyun            ###   ########.fr       */
+/*   Updated: 2021/03/10 14:06:02 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int		draw_grid(t_window *window)
 	while (i< window->row_count)
 	{
 		draw_position = 0;
-		while (draw_position <= window->width){
+		while (draw_position <= window->width)
+		{
 			mlx_pixel_put(window->mlx, window->win, draw_position, i * (window->height / window->row_count),window->grid_color);
 			draw_position++;
 		}
@@ -44,7 +45,8 @@ int		draw_grid(t_window *window)
 	while (i< window->column_count)
 	{
 		draw_position = 0;
-		while (draw_position <= window->width){
+		while (draw_position <= window->width)
+		{
 			mlx_pixel_put(window->mlx, window->win, i * (window->width/ window->column_count), draw_position,window->grid_color);
 			draw_position++;
 		}
