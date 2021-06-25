@@ -6,15 +6,15 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 23:10:44 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/14 20:08:33 by seyun            ###   ########.fr       */
+/*   Updated: 2021/06/25 15:46:38 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int res;
+	int	res;
 	int	sign;
 
 	res = 0;

@@ -6,13 +6,13 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:09:23 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/18 18:14:34 by seyun            ###   ########.fr       */
+/*   Updated: 2021/06/25 13:12:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
 }

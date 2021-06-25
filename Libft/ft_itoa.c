@@ -6,17 +6,20 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:17:32 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/16 01:24:44 by seyun            ###   ########.fr       */
+/*   Updated: 2021/06/25 15:31:41 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_get_len(int n)
+static int	ft_get_len(int n)
 {
-	int			len;
+	int	len;
 
-	len = (n <= 0) ? 1 : 0;
+	if (n <= 0)
+		len = 1;
+	else
+		len = 0;
 	while (n)
 	{
 		n /= 10;
@@ -25,20 +28,32 @@ static int		ft_get_len(int n)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+int	ft_sign(int n)
+{
+	if (n < 0)
+		sign = -1;
+	else
+		sign = 1;
+	return (sign);
+}
+
+char	*ft_itoa(int n)
 {
 	int			len;
 	int			sign;
 	char		*res;
 	long long	tmp;
 
-	sign = n < 0 ? -1 : 1;
+	sign = ft_sign(n);
 	len = ft_get_len(n);
-	if (!(res = (char *)malloc(sizeof(char) * len + 1)))
+	res = (char *)malloc(sizeof(char) * len + 1);
+	if (!res)
 		return (NULL);
 	res[len] = 0;
 	len--;
-	tmp = n < 0 ? -(long long)n : (long long)n;
+	tmp = (long long)n;
+	if (n < 0)
+		tmp = -(long long)n;
 	while (len >= 0)
 	{
 		res[len] = '0' + tmp % 10;
