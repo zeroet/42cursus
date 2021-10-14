@@ -6,10 +6,11 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:54:50 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 13:58:57 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/14 22:00:27 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
 
 int		check_ascend(t_dlst *lst, int len)
 {

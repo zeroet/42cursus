@@ -6,9 +6,11 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:55:30 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 13:58:50 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/14 22:01:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/push_swap.h"
 
 void	dlst_clear(t_dlst *lst)
 {
@@ -56,4 +58,3 @@ t_dlst *creat_node(int num)
 	new_node->next = new_node;
 	return (new_node);
 }
-

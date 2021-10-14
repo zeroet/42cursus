@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   ft_ra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 14:03:14 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 14:20:01 by seyun            ###   ########.fr       */
+/*   Created: 2021/10/14 20:30:22 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/14 22:50:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_min(t_dlst *lst)
-{
-	int min;
+#include "../includes/push_swap.h"
 
-	min = lst->num;
-	if (min > lst->next->num)
-		min = lst->next->num;
-	if (min > lst->next->next->num)
-		min = lst->next->next->num;
-	return (min);
+void	ft_ra(t_dlst **lst)
+{
+	if (!*lst)
+		return ;
+	*lst = (*lst)->next;
+	write(1, "ra\n", 3);
 }
 
-int		ft_max(t_dlst *lst)
+void	ft_rb(t_dlst **lst)
 {
-	int max
+	if (!*lst)
+		return ;
+	*lst = (*lst)->next;
+	write(1, "rb\n", 3);
+}
 
-	max = lst->num;
-	if (max < lst->next->num)
-		max = lst->next->num;
-	if (max < lst->next->next->num)
-		max = lst->next->next->num;
-	return (max);
+void	ft_rr(t_dlst **stack_a, t_dlst **stack_b)
+{
+	ft_ra(stack_a);
+	ft_rb(stack_b);
 }

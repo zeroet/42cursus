@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 13:58:53 by seyun            ###   ########.fr       */
+/*   Created: 2021/10/14 14:03:14 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/14 22:07:05 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "../includes/push_swap.h"
 
-typedef struct s_dlst
+int		ft_min(t_dlst *lst)
 {
-	int num;
-	struct s_dlst *prev;
-	struct s_dlst *next;
-}			t_dlst;
+	int min;
 
+	min = lst->num;
+	if (min > lst->next->num)
+		min = lst->next->num;
+	if (min > lst->next->next->num)
+		min = lst->next->next->num;
+	return (min);
+}
+
+int		ft_max(t_dlst *lst)
+{
+	int max;
+
+	max = lst->num;
+	if (max < lst->next->num)
+		max = lst->next->num;
+	if (max < lst->next->next->num)
+		max = lst->next->next->num;
+	return (max);
+}
