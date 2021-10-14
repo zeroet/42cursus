@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 23:05:59 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/14 23:41:29 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	only_3(t_dlst **stack)
 	if (((*stack)->num) == ft_min(*stack))
 	{
 		ft_ra(stack);
-		if (!(((*stack)->num) == ft_max(*stack)))
-			ft_sa(*stack);
+		ft_sa(*stack);
+		ft_rra(stack);
 	}
 	else if ((*stack)->num == ft_max(*stack))
 	{

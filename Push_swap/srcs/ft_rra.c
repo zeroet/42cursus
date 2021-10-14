@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ra.c                                            :+:      :+:    :+:   */
+/*   ft_rra.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 20:30:22 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 23:43:27 by seyun            ###   ########.fr       */
+/*   Created: 2021/10/14 23:43:03 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/14 23:44:54 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_ra(t_dlst **lst)
+void	ft_rra(t_dlst **stack_a)
 {
-	if (!*lst)
+	if (!*stack_a)
 		return ;
-	*lst = (*lst)->next;
-	write(1, "ra\n", 3);
+	*stack_a = (*stack_a)->prev;
+	write(1, "rra\n", 4);
 }
 
-void	ft_rb(t_dlst **lst)
+void	ft_rrb(t_dlst **stack_b)
 {
-	if (!*lst)
+	if (!*stack_b)
 		return ;
-	*lst = (*lst)->next;
-	write(1, "rb\n", 3);
+	*stack_b = (*stack_b)->prev;
+	(write(1, "rrb\n", 4);
 }
 
-void	ft_rr(t_dlst **stack_a, t_dlst **stack_b)
+void	ft_rrr(t_dlst **stack_a, t_dlst **stack_b)
 {
-	ft_ra(stack_a);
-	ft_rb(stack_b);
+	ft_rra(stack_a);
+	ft_rrb(stack_b);
 }

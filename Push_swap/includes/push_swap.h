@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 22:48:52 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/14 23:45:45 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ int	ft_atoi(char *str);
 void	ft_ra(t_dlst **lst);
 void	ft_rb(t_dlst **lst);
 void	ft_rr(t_dlst **stack_a, t_dlst **stack_b);
+
+/********** rra *********/
+
+void	ft_rra(t_dlst **stack_a);
+void	ft_rrb(t_dlst **stack_b);
+void	ft_rrr(t_dlst **stack_a, t_dlst **stack_b);
 
 /********* sa ******/
 
