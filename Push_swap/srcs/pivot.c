@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   QuickSortAll.c                                     :+:      :+:    :+:   */
+/*   pivot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 12:00:14 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 16:26:21 by seyun            ###   ########.fr       */
+/*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/16 16:26:22 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	QuickSortAll(t_dlst **stack_a, t_dlst **stack_b, int stack_len)
+int		ft_Pivot(t_dlst **stack, int len)
 {
 	int pivot;
+	int cnt;
+	t_dlst *tmp;
 
-	if (!stack_a || !stack_b)
-		return ;
-	
-}
-
+	tmp = (*stack);
+	while (cnt == (len/2))
+	{
+		pivot = tmp->num;
+		while ()
+			cnt++;
+		tmp = tmp->next;
+	}
