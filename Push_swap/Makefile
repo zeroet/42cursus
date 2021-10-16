@@ -9,14 +9,16 @@ SRCS_DIR = ./srcs/
 OBJS_DIR = ./objs/
 
 SRC = checker.c \
-	  ft_push.c \
 	  ft_ra.c \
 	  ft_sa.c \
 	  glob_utlies.c \
 	  main.c \
 	  math.c \
 	  stack_utiles.c \
-	  ft_rra.c
+	  ft_rra.c \
+	  QuickSortAll.c \
+	  descend_stack.c \
+	  ft_pa.c 
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRC))
 OBJS = $(addprefix $(OBJS_DIR), $(SRC:.c=.o))

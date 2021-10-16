@@ -6,11 +6,12 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/15 19:06:33 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/16 14:54:08 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#define Input (argc - 1)
 
 void	only_3(t_dlst **stack)
 {
@@ -37,22 +38,25 @@ void	only_3(t_dlst **stack)
 	}
 }
 
-
 int main(int argc, char **argv)
 {
 	t_dlst	*stack_a;
 	t_dlst	*stack_b;
 	int i;
 
-	if (argc == 1)
+	if (argc <= 2)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	while (*(++argv) != 0)
 		init_stack(&stack_a, creat_node(ft_atoi(*argv)));
-	if ((argc - 1) == 3)
+	if (Input == 3)
 		only_3(&stack_a);
-	for(i=0; i<3; i++)
+	if ((check_descend(stack_a, Input)))
+		descend_to_ascend(&stack_a, &stack_b, Input);
+	if (Input > 3)
+		QuickSortAll(&stack_a, &stack_b, Input);
+	for(i=0; i<Input; i++)
 	{
 		printf("%d ", stack_a->num);
 		stack_a = stack_a->next;

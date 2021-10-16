@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_utlies.c                                      :+:      :+:    :+:   */
+/*   descend_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 13:56:20 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 14:13:19 by seyun            ###   ########.fr       */
+/*   Created: 2021/10/16 14:10:28 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/16 14:21:13 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_error(void)
+void	descend_to_ascend(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	write(1, "Error\n", 6);
-	exit(1);
-}
+	int cnt;
 
-int	ft_atoi(char *str)
-{
-	int	sign;
-	long long num;
-
-	sign = 1;
-	num = 0;
-	if (*str == '-')
+	cnt = len;
+	if (!stack_a || !stack_b)
+		return ;
+	if (len == 2)
 	{
-		sign *= -1;
-		str++;
+		ft_sa(*stack_a);
+		return ;
 	}
-	while (*str != 0)
-	{	
-		if (!(*str >= '0' && *str <= '9'))
-			ft_error();
-		num *= 10;
-		num += (*(str++) - '0');
+	while (--len)
+		ft_pb(stack_a, stack_b);
+	while (--cnt)
+	{
+		ft_pa(stack_a, stack_b);
+		ft_ra(stack_a);
 	}
-	if (sign == -1)
-		num *= -1;
-	if (num < -2147483648 || num > 2147483647)
-		ft_error();
-	return ((int)num);
 }

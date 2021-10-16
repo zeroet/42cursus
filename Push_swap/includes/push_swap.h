@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 23:45:45 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/16 14:33:27 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ int		check_ascend(t_dlst *lst, int len);
 int		check_descend(t_dlst *lst, int len);
 int		check_duplicates(t_dlst *lst);
 
-/************ stack_utiles ******/
+/********* descend_stack **********/
 
-t_dlst *creat_node(int num);
-void	init_stack(t_dlst **lst, t_dlst *node);
-void	dlst_clear(t_dlst *lst);
+void	descend_to_ascend(t_dlst **stack_a, t_dlst **stack_b, int len);
 
 /************ math **********/
 
@@ -50,6 +48,9 @@ int		ft_max(t_dlst *lst);
 void	dlst_clear(t_dlst *lst);
 void	init_stack(t_dlst **lst, t_dlst *node);
 t_dlst *creat_node(int num);
+void	push_node(t_dlst **lst, t_dlst *node);
+t_dlst	*pop_node(t_dlst **stack);
+
 
 /*********** globe utiles ********/
 
@@ -74,9 +75,10 @@ void	ft_sa(t_dlst *lst);
 void	ft_sb(t_dlst *lst);
 void	ft_ss(t_dlst *stack_a, t_dlst *stack_b);
 
-/********* push ******/
+/********** pa ***********/
 
-void	push_node(t_dlst **lst, t_dlst *node);
-void	ft_pa(t_dlst **stack_b, t_dlst **stack_a);
+void	ft_pa(t_dlst **stack_a, t_dlst **stack_b);
+void	ft_pb(t_dlst **stack_a, t_dlst **stack_b);
+
 
 #endif

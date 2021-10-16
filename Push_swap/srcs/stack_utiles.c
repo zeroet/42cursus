@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:55:30 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 22:01:03 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/16 14:24:58 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,38 @@ t_dlst *creat_node(int num)
 	new_node->next = new_node;
 	return (new_node);
 }
+
+void	push_node(t_dlst **lst, t_dlst *node)
+{
+	if (!lst || !node)
+		return ;
+	if (*lst)
+	{
+		(*lst)->prev->next = node;
+		node->prev = (*lst)->prev;
+		(*lst)->prev = node;
+		node->next = *lst;
+	}
+	*lst = node;
+}
+
+t_dlst	*pop_node(t_dlst **stack)
+{
+	t_dlst *pop;
+
+	if (!stack)
+		return (NULL);
+	pop = *stack;
+	if (*stack == (*stack)->next)
+		*stack = 0;
+	else
+	{
+		(*stack)->prev->next = (*stack)->next;
+		(*stack)->next->prev = (*stack)->prev;
+		*stack = (*stack)->next;
+		pop->prev = pop;
+		pop->next = pop;
+	}
+	return (pop);
+}
+
