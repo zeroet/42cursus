@@ -15,7 +15,8 @@ SRC = checker.c \
 	  glob_utlies.c \
 	  main.c \
 	  math.c \
-	  stack_utiles.c
+	  stack_utiles.c \
+	  ft_rra.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRC))
 OBJS = $(addprefix $(OBJS_DIR), $(SRC:.c=.o))

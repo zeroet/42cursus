@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 23:43:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 23:44:54 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/15 13:50:08 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	ft_rrb(t_dlst **stack_b)
 	if (!*stack_b)
 		return ;
 	*stack_b = (*stack_b)->prev;
-	(write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_dlst **stack_a, t_dlst **stack_b)
 {
 	ft_rra(stack_a);
 	ft_rrb(stack_b);
+	write(1, "rrr\n", 4);
 }
