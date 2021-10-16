@@ -16,7 +16,6 @@ SRC = checker.c \
 	  math.c \
 	  stack_utiles.c \
 	  ft_rra.c \
-	  QuickSortAll.c \
 	  descend_stack.c \
 	  ft_pa.c 
 

@@ -6,11 +6,12 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 14:54:08 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/16 22:26:29 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 #define Input (argc - 1)
 
 void	only_3(t_dlst **stack)
