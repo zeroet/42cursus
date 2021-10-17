@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:55:30 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 14:24:58 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/17 01:44:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_dlst	*pop_node(t_dlst **stack)
 	t_dlst *pop;
 
 	if (!stack)
+		return (NULL);
+	if (!*stack)
 		return (NULL);
 	pop = *stack;
 	if (*stack == (*stack)->next)

@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 21:29:01 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/17 01:47:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int *set_table(t_dlst *stack, int len)
 
 	i = 0;
 	if (!stack)
-		return ;
+		return (0);
 	table = (int *)malloc(sizeof(int) *len);
 	if (!table)
-		return ;
+		return (0);
 	while (i < len)
 	{
 		table[i] = stack->num;
@@ -40,8 +40,10 @@ int		set_pivot(t_dlst *stack, int len)
 	int j;
 	int count;
 
-	pviot = 0;
-	table = set_number(stack, len);
+	if (!stack || !len)
+		return (0);
+	pivot = 0;
+	table = set_table(stack, len);
 	i = -1;
 	while (++i < len)
 	{
