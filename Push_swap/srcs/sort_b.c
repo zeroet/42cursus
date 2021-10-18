@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 21:33:56 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 00:06:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,6 @@ int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 		ft_pa(stack_a, stack_b);
 		return (1);
 	}
-	/*
-	if (len == 2)
-	{
-		ft_pa(stack_a, stack_b);
-		ft_pa(stack_a, stack_b);
-	}
-	if (len == 1)
-		ft_pa(stack_a, stack_b);
-	*/
 	if (check_descend(*stack_b, len))
 	{
 		while (len--)
@@ -74,34 +65,31 @@ int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	int pivot;
-	int i;
 	t_cntb b;
 
-	if (except_case_b(stack_a, stack_b, len))
-		return ;
-	pivot = set_pivot(*stack_b, len);
 	init_cnt_b(&b);
-	if (!len)
+	pivot = init_pivot(*stack_b, &b);
+	if (except_case_b(stack_a, stack_b, len))
 		return ;
 	while (len--)
 	{
-		if ((*stack_b)->num < pivot)
+		if ((*stack_b)->num < b.small_pivot)
 		{
 			ft_rb(stack_b);
 			b.rb_cnt++;
 		}
-		else if ((*stack_b)->num >= pivot)
+		else
 		{
 			ft_pa(stack_a, stack_b);
 			(b.pa_cnt)++;
+			if ((*stack_b)->num < b.big_pivot)
+			{
+				ft_ra(stack_b);
+				b.ra_cnt++;
+			}
 		}
 	}
-	i = 0;
-	while (i < b.rb_cnt)
-	{
-		ft_rrb(stack_b);
-		i++;
-	}
+	ft_rra_rrb(stack_a, stack_b, &b);
 	A_to_B(stack_a, stack_b, b.pa_cnt);
 	B_to_A(stack_a, stack_b, b.rb_cnt);
 }

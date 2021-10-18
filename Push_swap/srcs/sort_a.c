@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 23:48:17 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 23:51:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 	t_cnta a;
 
 	init_cnt_a(&a);
-	nit_pivot_a(stack_a, len, &a);
+	init_pivot_a(stack_a, len, &a);
 	if (except_case_a(stack_a, stack_b, len))
 		return ;
 	while (len--)
