@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 15:45:01 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 17:16:55 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 void	sort_3_a(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	if (check_ascend(*stack_a, len ))
+	if (check_ascend(*stack_a, len))
 		return ;
 	if ((*stack_a)->next->next->num == ft_max(*stack_a))
 	{
-		ft_rra(stack_a);
+		ft_sa(*stack_a);
 		return ;
 	}
 	if ((*stack_a)->num == ft_max(*stack_a))
-		ft_ra(stack_a);
+		ft_sa(*stack_a);
 	if ((*stack_a)->num == ft_min(*stack_a))
+	{	
 		ft_ra(stack_a);
+		ft_sa(*stack_a);
+		ft_rra(stack_a);
+	}
 	else
 	{
-		ft_sa(*stack_a);
 		ft_pb(stack_a, stack_b);
 		ft_sa(*stack_a);
-		ft_pa(stack_a, stack_b);
 		ft_ra(stack_a);
+		ft_pa(stack_a, stack_b);
+		ft_rra(stack_a);
 	}
 }
 
@@ -57,13 +61,12 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 	if (except_case_a(stack_a, stack_b, len))
 		return ;
 	pivot = set_pivot(*stack_a, len);
-	printf("%d --- pivot a\n " , pivot);
 	init_cnt_a(&a);
 	if (!len)
 		return ;
 	while (len--)
 	{
-		if ((*stack_a)->num > pivot)
+		if ((*stack_a)->num >= pivot)
 		{
 			ft_ra(stack_a);
 			(a.ra_cnt)++;
