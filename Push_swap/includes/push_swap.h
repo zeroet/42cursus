@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 22:26:52 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 15:26:52 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ typedef struct s_dlst
 	struct s_dlst *next;
 }			t_dlst;
 
+typedef struct s_cnt_a
+{
+	int ra_cnt;
+	int rb_cnt;
+	int pb_cnt;
+}	t_cnta;
+
+typedef struct s_cnt_b
+{
+	int ra_cnt;
+	int rb_cnt;
+	int pa_cnt;
+}	t_cntb;
+
 /******** main *********/
 
 void	only_3(t_dlst **stack);
@@ -33,6 +47,8 @@ void	only_3(t_dlst **stack);
 int		check_ascend(t_dlst *lst, int len);
 int		check_descend(t_dlst *lst, int len);
 int		check_duplicates(t_dlst *lst);
+int		stack_size(t_dlst *lst);
+
 
 /********* descend_stack **********/
 
@@ -59,8 +75,8 @@ int	ft_atoi(char *str);
 
 /********** ra ******/
 
-void	ft_ra(t_dlst **lst);
-void	ft_rb(t_dlst **lst);
+void	ft_ra(t_dlst **stack_a);
+void	ft_rb(t_dlst **stack_b);
 void	ft_rr(t_dlst **stack_a, t_dlst **stack_b);
 
 /********** rra *********/
@@ -80,5 +96,19 @@ void	ft_ss(t_dlst *stack_a, t_dlst *stack_b);
 void	ft_pa(t_dlst **stack_a, t_dlst **stack_b);
 void	ft_pb(t_dlst **stack_a, t_dlst **stack_b);
 
+/************* pivot **********/
+
+int		set_pivot(t_dlst *stack, int len);
+int *set_table(t_dlst *stack, int len);
+
+/************* init_functions ******/
+
+void	init_cnt_a(t_cnta *a);
+void	init_cnt_b(t_cntb *b);
+
+/********** Sort *********/
+
+void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len);
+void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len);
 
 #endif

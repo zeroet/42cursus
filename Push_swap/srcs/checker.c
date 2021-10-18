@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:54:50 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 15:09:03 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 13:44:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,21 @@ int	check_duplicates(t_dlst *lst)
 		lst = lst->next;
 	}
 	return (0);
+}
+
+int		stack_size(t_dlst *lst)
+{
+	int last;
+	int cnt;
+
+	if (!lst)
+		return (0);
+	cnt = 0;
+	last = lst->prev->num;
+	while (lst->num != last)
+	{
+		cnt++;
+		lst = lst->next;
+	}
+	return (++cnt);
 }

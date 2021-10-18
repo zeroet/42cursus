@@ -17,7 +17,11 @@ SRC = checker.c \
 	  stack_utiles.c \
 	  ft_rra.c \
 	  descend_stack.c \
-	  ft_pa.c 
+	  ft_pa.c \
+	  sort_a.c \
+	  sort_b.c \
+	  pivot.c \
+	  init_function.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRC))
 OBJS = $(addprefix $(OBJS_DIR), $(SRC:.c=.o))

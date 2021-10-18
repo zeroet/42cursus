@@ -6,25 +6,25 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:30:22 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 23:43:27 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 15:28:15 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_ra(t_dlst **lst)
+void	ft_ra(t_dlst **stack_a)
 {
-	if (!*lst)
+	if (!*stack_a)
 		return ;
-	*lst = (*lst)->next;
+	*stack_a = (*stack_a)->next;
 	write(1, "ra\n", 3);
 }
 
-void	ft_rb(t_dlst **lst)
+void	ft_rb(t_dlst **stack_b)
 {
-	if (!*lst)
+	if (!*stack_b)
 		return ;
-	*lst = (*lst)->next;
+	*stack_b = (*stack_b)->next;
 	write(1, "rb\n", 3);
 }
 
