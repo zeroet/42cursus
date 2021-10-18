@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 17:10:47 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 21:33:56 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	sort_3_b(t_dlst **stack_a,t_dlst **stack_b, int len)
 int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	if (len == 3)
-	{	
+	{
 		sort_3_b(stack_a, stack_b, len);
 		return (1);
 	}
@@ -53,6 +53,15 @@ int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 		ft_pa(stack_a, stack_b);
 		return (1);
 	}
+	/*
+	if (len == 2)
+	{
+		ft_pa(stack_a, stack_b);
+		ft_pa(stack_a, stack_b);
+	}
+	if (len == 1)
+		ft_pa(stack_a, stack_b);
+	*/
 	if (check_descend(*stack_b, len))
 	{
 		while (len--)
@@ -67,13 +76,11 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 	int pivot;
 	int i;
 	t_cntb b;
-	int test;
 
 	if (except_case_b(stack_a, stack_b, len))
 		return ;
 	pivot = set_pivot(*stack_b, len);
 	init_cnt_b(&b);
-	i = 0;
 	if (!len)
 		return ;
 	while (len--)

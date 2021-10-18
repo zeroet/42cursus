@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 17:16:43 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 21:34:30 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,12 @@ int main(int argc, char **argv)
 		descend_to_ascend(&stack_a, &stack_b, Input);
 	if (Input > 3 && !(check_ascend(stack_a, Input)))
 		A_to_B(&stack_a, &stack_b, Input);
+	/*
+	for(i=0; i<Input; i++)
+	{
+		printf("%d ", stack_a->num);
+		stack_a = stack_a->next;
+	}
+	*/
 	return (0);
 }

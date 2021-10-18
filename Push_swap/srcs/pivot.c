@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 13:53:11 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/18 23:49:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ int		set_pivot(t_dlst *stack, int len)
 	int j;
 	int count;
 
-	if (!stack || !len)
-		return (0);
-	pivot = 0;
 	table = set_table(stack, len);
 	i = -1;
 	while (++i < len)
@@ -53,6 +50,64 @@ int		set_pivot(t_dlst *stack, int len)
 			if (table[i] > table[j++])
 				count++;
 		if (count == (len / 2))
+		{
+			pivot = table[i];
+			free(table);
+			return (pivot);
+		}
+	}
+	pivot = table[0];
+	free(table);
+	return (pivot);
+}
+
+int		big_pivot(t_dlst *stack, int len)
+{
+	int *table;
+	int pivot;
+	int i;
+	int j;
+	int count;
+
+	table = set_table(stack, len);
+	i = -1;
+	while (++i < len)
+	{
+		j = 0;
+		count = 0;
+		while (j < len)
+			if (table[i] > table[j++])
+				count++;
+		if (count == ((int)((len / 4) * 3 + 0.5)))
+		{
+			pivot = table[i];
+			free(table);
+			return (pivot);
+		}
+	}
+	pivot = table[0];
+	free(table);
+	return (pivot);
+}
+
+int		small_pivot(t_dlst *stack, int len)
+{
+	int *table;
+	int pivot;
+	int i;
+	int j;
+	int count;
+
+	table = set_table(stack, len);
+	i = -1;
+	while (++i < len)
+	{
+		j = 0;
+		count = 0;
+		while (j < len)
+			if (table[i] > table[j++])
+				count++;
+		if (count == ((int)((len / 4) + 0.5)))
 		{
 			pivot = table[i];
 			free(table);
