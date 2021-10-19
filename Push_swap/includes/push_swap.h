@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 23:24:23 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 11:07:23 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,18 @@ void	ft_pb(t_dlst **stack_a, t_dlst **stack_b);
 /************* pivot **********/
 
 int		set_pivot(t_dlst *stack, int len);
-int *set_table(t_dlst *stack, int len);
+int		*set_table(t_dlst *stack, int len);
+int		init_big_pivot(t_dlst *stack, int len);
+int		init_small_pivot(t_dlst *stack, int len);
+
 
 /************* init_functions ******/
 
 void	init_cnt_a(t_cnta *a);
 void	init_cnt_b(t_cntb *b);
+void	init_pivot_a(t_dlst **lst, int len, t_cnta *a);
+void	init_pivot_b(t_dlst **lst, int len, t_cntb *b);
+
 
 /********** Sort *********/
 

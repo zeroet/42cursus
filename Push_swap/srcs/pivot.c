@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 23:49:14 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 11:07:12 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		set_pivot(t_dlst *stack, int len)
 	return (pivot);
 }
 
-int		big_pivot(t_dlst *stack, int len)
+int		init_big_pivot(t_dlst *stack, int len)
 {
 	int *table;
 	int pivot;
@@ -90,7 +90,7 @@ int		big_pivot(t_dlst *stack, int len)
 	return (pivot);
 }
 
-int		small_pivot(t_dlst *stack, int len)
+int		init_small_pivot(t_dlst *stack, int len)
 {
 	int *table;
 	int pivot;

@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 01:06:58 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 23:41:38 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 11:08:12 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	init_cnt_b(t_cntb *b)
 
 void	init_pivot_a(t_dlst **lst, int len, t_cnta *a)
 {
-	a->big_pivot = init_big_pivot(lst, len);
-	a->small_pivot =init_small_pivot(lst, len);
+	a->big_pivot = init_big_pivot(*lst, len);
+	a->small_pivot =init_small_pivot(*lst, len);
 	return ;
 }
 
-void	init_pivot_b(t_dlst **lst, int len, t_cnta *b)
+void	init_pivot_b(t_dlst **lst, int len, t_cntb *b)
 {
-	b->big_pivot = init_big_pivot(lst, len);
-	b->small_pivot =init_small_pivot(lst, len);
+	b->big_pivot = init_big_pivot(*lst, len);
+	b->small_pivot =init_small_pivot(*lst, len);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 23:51:14 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 13:37:51 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,44 @@ int		except_case_a(t_dlst **stack_a, t_dlst **stack_b, int len)
 	return (0);
 }
 
+void	ft_rra_rrb(t_dlst **stack_a, t_dlst **stack_b, t_cnta *a)
+{
+	int rrr;
+	int ra;
+	int rb;
+
+	ra = a->ra_cnt;
+	rb = a->rb_cnt;
+	if (ra >= rb)
+	{	
+		rrr = rb;
+		ra -= rrr;
+		while (rrr--)
+			ft_rrr(stack_a, stack_b);
+		while (ra--)
+			ft_rra(stack_a);
+	}
+	else
+	{	
+		rrr = ra;
+		rb -= rrr;
+		while (rrr--)
+			ft_rrr(stack_a, stack_b);
+		while (rb--)
+			ft_rrb(stack_b);
+	}
+}
+
 void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	int pivot;
 	t_cnta a;
+	int pivot;
+	int i;
+	int j;
 
 	init_cnt_a(&a);
 	init_pivot_a(stack_a, len, &a);
+	pivot = set_pivot(*stack_a, len);
 	if (except_case_a(stack_a, stack_b, len))
 		return ;
 	while (len--)
@@ -68,20 +99,30 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 			ft_ra(stack_a);
 			(a.ra_cnt)++;
 		}
-		else if ((*stack_b)->num < a.big_pivot)		
+		else if ((*stack_a)->num < a.big_pivot)		
 		{
 			ft_pb(stack_a, stack_b);
 			(a.pb_cnt)++;
-			if ((*stack_b) >= a.small_pivot)
+			if ((*stack_b)->num >= pivot)
 			{
 				ft_rb(stack_b);
-				a.rb_cnt++;
+				(a.rb_cnt)++;
 			}
 		}
 	}
 	ft_rra_rrb(stack_a, stack_b, &a);
+	for (i = 0; i<a.ra_cnt; i++)
+	{
+		printf("A stack %d\n ", (*stack_a)->num);
+		*stack_a = (*stack_a)->next;
+	}
+	for (j = 0; j<a.pb_cnt; j++)
+	{
+		printf("\nB stack %d ", (*stack_b)->num);
+		*stack_b = (*stack_b)->next;
+	}
 	A_to_B(stack_a, stack_b, a.ra_cnt);
 	B_to_A(stack_a, stack_b, a.pb_cnt);
+	printf("%d ----- pb - rb \n", (a.pb_cnt - a.rb_cnt));
 	B_to_A(stack_a, stack_b, (a.pb_cnt - a.rb_cnt));
 }
-

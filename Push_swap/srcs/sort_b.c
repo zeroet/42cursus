@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 00:06:10 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 13:37:50 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,40 @@
 
 void	sort_3_b(t_dlst **stack_a,t_dlst **stack_b, int len)
 {
-	int min;
+	ft_pa(stack_a, stack_b);
+	ft_pa(stack_a, stack_b);
+	ft_pa(stack_a, stack_b);
+	A_to_B(stack_a, stack_b, len);
+}
 
-	min = ft_min(*stack_b);
-	if ((*stack_b)->next->num == ft_max(*stack_b))
-		ft_sb(*stack_b);
-	if ((*stack_b)->num == ft_max(*stack_b))
+void	ft_rrb_rra(t_dlst **stack_a, t_dlst **stack_b, t_cntb *b)
+{
+	int rrrb;
+	int ra;
+	int rb;
+
+	ra = b->ra_cnt;
+	rb = b->rb_cnt;
+	printf ("%d --count ra // %d -- count rb\n", ra, rb);
+	if (ra >= rb)
 	{
-		ft_pa(stack_a, stack_b);
-		if ((*stack_b)->num == ft_min(*stack_b))
-			ft_sb(*stack_b);
-		ft_pa(stack_a, stack_b);
-		ft_pa(stack_a, stack_b);
+		rrrb = rb;
+		ra -= rrrb;
+		while (rrrb--)
+			ft_rrr(stack_a, stack_b);
+		while (ra--)
+			ft_rra(stack_a);
 	}
 	else
 	{
-		ft_pa(stack_a, stack_b);
-		ft_sb(*stack_b);
-		ft_pa(stack_a, stack_b);
-		ft_sa(*stack_a);
-		if ((*stack_a)->num != min)
-			ft_sa(*stack_a);
+		rrrb = ra;
+		rb -= rrrb;
+		while (rrrb--)
+			ft_rrr(stack_a, stack_b);
+		while (rb--)
+			ft_rrb(stack_b);
 	}
 }
-
 
 int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
@@ -64,11 +74,14 @@ int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 
 void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	int pivot;
 	t_cntb b;
+	int pivot;
+	int i;
+	int j;
 
 	init_cnt_b(&b);
-	pivot = init_pivot(*stack_b, &b);
+	init_pivot_b(stack_b, len, &b);
+	pivot = set_pivot(*stack_b, len);
 	if (except_case_b(stack_a, stack_b, len))
 		return ;
 	while (len--)
@@ -78,18 +91,19 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 			ft_rb(stack_b);
 			b.rb_cnt++;
 		}
-		else
+		else if ((*stack_b)->num >= b.small_pivot)
 		{
 			ft_pa(stack_a, stack_b);
 			(b.pa_cnt)++;
-			if ((*stack_b)->num < b.big_pivot)
+			if ((*stack_a)->num < pivot)
 			{
 				ft_ra(stack_b);
 				b.ra_cnt++;
 			}
 		}
 	}
-	ft_rra_rrb(stack_a, stack_b, &b);
-	A_to_B(stack_a, stack_b, b.pa_cnt);
+	A_to_B(stack_a, stack_b, (b.pa_cnt - b.ra_cnt));
+	ft_rrb_rra(stack_a, stack_b, &b);
+	A_to_B(stack_a, stack_b, b.ra_cnt);
 	B_to_A(stack_a, stack_b, b.rb_cnt);
 }
