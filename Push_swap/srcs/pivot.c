@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 11:07:12 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 16:53:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		set_pivot(t_dlst *stack, int len)
 			return (pivot);
 		}
 	}
-	pivot = table[0];
+	pivot = 0;
 	free(table);
 	return (pivot);
 }

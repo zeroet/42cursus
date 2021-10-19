@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:54:50 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/18 21:33:25 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 13:55:43 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_ascend(t_dlst *lst, int len)
 {
-	if (!len)
+	if (!len || !lst)
 		return (0);
 	while (--len)
 	{
@@ -27,7 +27,7 @@ int		check_ascend(t_dlst *lst, int len)
 
 int		check_descend(t_dlst *lst, int len)
 {
-	if (!len)
+	if (!len || !lst)
 		return (0);
 	while (--len)
 	{

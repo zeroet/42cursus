@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 13:37:50 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 17:22:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_rrb_rra(t_dlst **stack_a, t_dlst **stack_b, t_cntb *b)
 
 	ra = b->ra_cnt;
 	rb = b->rb_cnt;
-	printf ("%d --count ra // %d -- count rb\n", ra, rb);
 	if (ra >= rb)
 	{
 		rrrb = rb;
@@ -77,11 +76,15 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 	t_cntb b;
 	int pivot;
 	int i;
-	int j;
 
 	init_cnt_b(&b);
 	init_pivot_b(stack_b, len, &b);
 	pivot = set_pivot(*stack_b, len);
+	for(i= 0; i<len; i++)
+	{
+		printf("-----yyyy stack_b %d\n", (*stack_b)->num);
+		*stack_b = (*stack_b)->next;
+	}
 	if (except_case_b(stack_a, stack_b, len))
 		return ;
 	while (len--)
@@ -102,8 +105,11 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 			}
 		}
 	}
+	printf("BBBB%d // %d // %d//\n", b.ra_cnt, b.rb_cnt, b.pa_cnt);
 	A_to_B(stack_a, stack_b, (b.pa_cnt - b.ra_cnt));
 	ft_rrb_rra(stack_a, stack_b, &b);
+	printf("BBBB%d // %d // %d//\n", b.ra_cnt, b.rb_cnt, b.pa_cnt);
 	A_to_B(stack_a, stack_b, b.ra_cnt);
+	printf("BBBB%d // %d // %d//\n", b.ra_cnt, b.rb_cnt, b.pa_cnt);
 	B_to_A(stack_a, stack_b, b.rb_cnt);
 }

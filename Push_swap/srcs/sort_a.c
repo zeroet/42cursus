@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 13:37:51 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 17:22:11 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,18 +111,32 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 		}
 	}
 	ft_rra_rrb(stack_a, stack_b, &a);
-	for (i = 0; i<a.ra_cnt; i++)
+	/*for (i = 0; i < a.ra_cnt; i++)
 	{
-		printf("A stack %d\n ", (*stack_a)->num);
+		printf("%d -- A - stack a\n", (*stack_a)->num);
 		*stack_a = (*stack_a)->next;
 	}
-	for (j = 0; j<a.pb_cnt; j++)
+	for (j = 0; j < a.pb_cnt; j++)
 	{
-		printf("\nB stack %d ", (*stack_b)->num);
+		printf("%d -- A -- stack b\n", (*stack_b)->num);
+		*stack_b = (*stack_b)->next;
+	}*/
+	printf("AAAAAAAA%d // %d// %d//\n", a.ra_cnt, a.rb_cnt, a.pb_cnt);
+	A_to_B(stack_a, stack_b, a.ra_cnt);
+	printf("AAAA%d // %d// %d//\n", a.ra_cnt, a.rb_cnt, a.pb_cnt);
+	B_to_A(stack_a, stack_b, a.rb_cnt);
+	/*
+	for (i =0; i < 5; i++)
+	{
+		printf("%d -- A - stack a\n", (*stack_a)->num);
+		*stack_a = (*stack_a)->next;
+	}
+	for (j = 0; j < (a.pb_cnt - a.rb_cnt); j++)
+	{
+		printf("%d -- A -- stack b\n", (*stack_b)->num);
 		*stack_b = (*stack_b)->next;
 	}
-	A_to_B(stack_a, stack_b, a.ra_cnt);
-	B_to_A(stack_a, stack_b, a.pb_cnt);
-	printf("%d ----- pb - rb \n", (a.pb_cnt - a.rb_cnt));
+	*/
+	printf("AA%d // %d// %d//\n", a.ra_cnt, a.rb_cnt, a.pb_cnt);
 	B_to_A(stack_a, stack_b, (a.pb_cnt - a.rb_cnt));
 }
