@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 16:53:01 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 18:42:32 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int *set_table(t_dlst *stack, int len)
 	int i;
 
 	i = 0;
-	if (!stack)
-		return (0);
 	table = (int *)malloc(sizeof(int) *len);
 	if (!table)
 		return (0);
@@ -56,7 +54,7 @@ int		set_pivot(t_dlst *stack, int len)
 			return (pivot);
 		}
 	}
-	pivot = 0;
+	pivot = table[0];
 	free(table);
 	return (pivot);
 }
