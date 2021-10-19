@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 18:42:32 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 22:30:07 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int *set_table(t_dlst *stack, int len)
 	int i;
 
 	i = 0;
-	table = (int *)malloc(sizeof(int) *len);
+	table = (int *)malloc(sizeof(int) * len);
 	if (!table)
 		return (0);
 	while (i < len)
@@ -33,7 +33,7 @@ int *set_table(t_dlst *stack, int len)
 int		set_pivot(t_dlst *stack, int len)
 {
 	int *table;
-	int pivot;
+	int res;
 	int i;
 	int j;
 	int count;
@@ -49,20 +49,20 @@ int		set_pivot(t_dlst *stack, int len)
 				count++;
 		if (count == (len / 2))
 		{
-			pivot = table[i];
+			res = table[i];
 			free(table);
-			return (pivot);
+			return (res);
 		}
 	}
-	pivot = table[0];
+	res = table[0];
 	free(table);
-	return (pivot);
+	return (res);
 }
 
 int		init_big_pivot(t_dlst *stack, int len)
 {
 	int *table;
-	int pivot;
+	int res;
 	int i;
 	int j;
 	int count;
@@ -76,22 +76,22 @@ int		init_big_pivot(t_dlst *stack, int len)
 		while (j < len)
 			if (table[i] > table[j++])
 				count++;
-		if (count == ((int)((len / 4) * 3 + 0.5)))
+		if (count == (int)((len / 4 * 3) + 0.5))
 		{
-			pivot = table[i];
+			res = table[i];
 			free(table);
-			return (pivot);
+			return (res);
 		}
 	}
-	pivot = table[0];
+	res = table[0];
 	free(table);
-	return (pivot);
+	return (res);
 }
 
 int		init_small_pivot(t_dlst *stack, int len)
 {
 	int *table;
-	int pivot;
+	int res;
 	int i;
 	int j;
 	int count;
@@ -107,12 +107,12 @@ int		init_small_pivot(t_dlst *stack, int len)
 				count++;
 		if (count == ((int)((len / 4) + 0.5)))
 		{
-			pivot = table[i];
+			res = table[i];
 			free(table);
-			return (pivot);
+			return (res);
 		}
 	}
-	pivot = table[0];
+	res = table[0];
 	free(table);
-	return (pivot);
+	return (res);
 }

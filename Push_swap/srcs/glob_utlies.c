@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:56:20 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 14:13:19 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 22:36:44 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,12 @@ int	ft_atoi(char *str)
 	if (num < -2147483648 || num > 2147483647)
 		ft_error();
 	return ((int)num);
+}
+
+void	free_all(t_dlst **stack_a, t_dlst **stack_b)
+{
+	dlst_clear((*stack_a));
+	dlst_clear((*stack_b));
+	stack_a = NULL;
+	stack_b = NULL;
 }

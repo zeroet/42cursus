@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 11:07:23 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/19 22:36:05 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_cnt_a
 	int rb_cnt;
 	int pb_cnt;
 	int big_pivot;
-	int small_pivot;
 }	t_cnta;
 
 typedef struct s_cnt_b
@@ -38,7 +37,6 @@ typedef struct s_cnt_b
 	int ra_cnt;
 	int rb_cnt;
 	int pa_cnt;
-	int big_pivot;
 	int small_pivot;
 }	t_cntb;
 
@@ -76,6 +74,8 @@ t_dlst	*pop_node(t_dlst **stack);
 
 void	ft_error(void);
 int	ft_atoi(char *str);
+void	free_all(t_dlst **stack_a, t_dlst **stack_b);
+
 
 /********** ra ******/
 
