@@ -6,15 +6,15 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:50:43 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/10 16:59:04 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 23:47:20 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_putnbr(int fd, int n)
+static void	ft_putnbr(int fd, int n)
 {
-	char		c;
+	char	c;
 
 	if (n / 10)
 		ft_putnbr(fd, n / 10);
@@ -22,7 +22,7 @@ static void		ft_putnbr(int fd, int n)
 	write(fd, &c, 1);
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 		write(fd, "-2147483648", 11);

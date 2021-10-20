@@ -6,13 +6,13 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:08:26 by seyun             #+#    #+#             */
-/*   Updated: 2021/01/04 22:13:46 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 23:54:32 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*ret;
 	t_list	*tmp;
@@ -22,7 +22,8 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	ret = NULL;
 	while (lst)
 	{
-		if (!(tmp = ft_lstnew(f(lst->content))))
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
 		{
 			ft_lstclear(&ret, del);
 			return (0);

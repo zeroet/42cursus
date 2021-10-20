@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:00:18 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/16 15:00:45 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 23:58:04 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memset(void *dest, int val, size_t size)
 {
-	void *res;
+	void	*res;
 
 	res = dest;
 	while (size--)
-		*(char*)dest++ = (unsigned char)val;
+		*(char *)dest++ = (unsigned char)val;
 	return (res);
 }

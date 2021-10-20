@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:17:32 by seyun             #+#    #+#             */
-/*   Updated: 2021/06/25 15:31:41 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/21 00:02:40 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static int	ft_get_len(int n)
 
 int	ft_sign(int n)
 {
+	int	sign;
+
+	sign = 0;
 	if (n < 0)
 		sign = -1;
 	else

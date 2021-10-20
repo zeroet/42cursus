@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:12:23 by seyun             #+#    #+#             */
-/*   Updated: 2020/11/19 22:37:04 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 23:52:24 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t size)
 {
-	void *res;
+	void	*res;
 
 	if (!dest && !src)
 		return (0);
 	res = dest;
 	while (size--)
-		*(char*)dest++ = *(char*)src++;
+		*(char *)dest++ = *(char *)src++;
 	return (res);
 }

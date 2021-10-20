@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:10:21 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/15 22:55:52 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/21 00:01:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,22 @@ static int	isincluded(char a, char const *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
 	char	*begin;
 	char	*until;
 	size_t	len;
 
-	begin = (char*)s1;
+	begin = (char *)s1;
 	until = begin + ft_strlen(s1);
 	while (*begin && isincluded(*begin, set))
 		++begin;
 	while (begin < until && isincluded(*(until - 1), set))
 		--until;
 	len = until - begin + 1;
-	if (!(res = malloc(len)))
+	res = malloc(len);
+	if (!res)
 		return (0);
 	ft_strlcpy(res, begin, len);
 	return (res);

@@ -6,15 +6,15 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:42:33 by seyun             #+#    #+#             */
-/*   Updated: 2020/12/15 23:04:39 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 23:45:44 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t i;
+	size_t	i;
 
 	if (!dest && !src)
 		return (0);
