@@ -1,6 +1,6 @@
 TARGET = push_swap
 
-CC = gcc -fsanitize=address
+CC = gcc
 CFLAG = -Wall -Werror -Wextra
 RM = -rm -rf
 

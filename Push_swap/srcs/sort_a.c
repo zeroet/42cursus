@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 22:27:26 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 15:07:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 	init_cnt_a(&a);
 	init_pivot_a(stack_a, len, &a);
 	pivot = set_pivot(*stack_a, len);
-	printf("%d -- big /// %d ---pivot\n", a.big_pivot, pivot);
 	if (except_case_a(stack_a, stack_b, len))
 		return ;
 	while (len--)

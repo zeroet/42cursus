@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 22:27:46 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 15:09:44 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 	t_cntb b;
 	int pivot;
 
+	if (!len)
+		return;
 	init_cnt_b(&b);
 	init_pivot_b(stack_b, len, &b);
 	pivot = set_pivot(*stack_b, len);
