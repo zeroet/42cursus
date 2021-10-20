@@ -6,15 +6,15 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 14:03:14 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 18:44:49 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:08:35 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		ft_min(t_dlst *lst)
+int	ft_min(t_dlst *lst)
 {
-	int min;
+	int	min;
 
 	min = lst->num;
 	if (min > lst->next->num)
@@ -24,9 +24,9 @@ int		ft_min(t_dlst *lst)
 	return (min);
 }
 
-int		ft_max(t_dlst *lst)
+int	ft_max(t_dlst *lst)
 {
-	int max;
+	int	max;
 
 	max = lst->num;
 	if (max < lst->next->num)

@@ -21,7 +21,8 @@ SRC = checker.c \
 	  sort_a.c \
 	  sort_b.c \
 	  pivot.c \
-	  init_function.c
+	  init_function.c \
+	  sort_5.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRC))
 OBJS = $(addprefix $(OBJS_DIR), $(SRC:.c=.o))

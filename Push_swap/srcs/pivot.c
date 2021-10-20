@@ -6,16 +6,16 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:33:13 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 22:45:00 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:07:33 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int *set_table(t_dlst *stack, int len)
+int	*set_table(t_dlst *stack, int len)
 {
-	int *table;
-	int i;
+	int	*table;
+	int	i;
 
 	i = 0;
 	table = (int *)malloc(sizeof(int) * len);
@@ -30,13 +30,13 @@ int *set_table(t_dlst *stack, int len)
 	return (table);
 }
 
-int		set_pivot(t_dlst *stack, int len)
+int	set_pivot(t_dlst *stack, int len)
 {
-	int *table;
-	int res;
-	int i;
-	int j;
-	int count;
+	int	*table;
+	int	res;
+	int	i;
+	int	j;
+	int	count;
 
 	table = set_table(stack, len);
 	i = -1;
@@ -59,13 +59,13 @@ int		set_pivot(t_dlst *stack, int len)
 	return (res);
 }
 
-int		init_big_pivot(t_dlst *stack, int len)
+int	init_big_pivot(t_dlst *stack, int len)
 {
-	int *table;
-	int res;
-	int i;
-	int j;
-	int count;
+	int	*table;
+	int	res;
+	int	i;
+	int	j;
+	int	count;
 
 	table = set_table(stack, len);
 	i = -1;
@@ -88,13 +88,13 @@ int		init_big_pivot(t_dlst *stack, int len)
 	return (res);
 }
 
-int		init_small_pivot(t_dlst *stack, int len)
+int	init_small_pivot(t_dlst *stack, int len)
 {
-	int *table;
-	int res;
-	int i;
-	int j;
-	int count;
+	int	*table;
+	int	res;
+	int	i;
+	int	j;
+	int	count;
 
 	table = set_table(stack, len);
 	i = -1;

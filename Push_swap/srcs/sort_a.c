@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 15:07:01 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:38:50 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sort_3_a(t_dlst **stack_a, t_dlst **stack_b, int len)
 	}
 }
 
-int		except_case_a(t_dlst **stack_a, t_dlst **stack_b, int len)
+int	except_case_a(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	if (len == 2 && check_descend(*stack_a, len))
 		ft_sa(*stack_a);
@@ -54,9 +54,9 @@ int		except_case_a(t_dlst **stack_a, t_dlst **stack_b, int len)
 
 void	ft_rra_rrb(t_dlst **stack_a, t_dlst **stack_b, t_cnta *a)
 {
-	int rrr;
-	int ra;
-	int rb;
+	int	rrr;
+	int	ra;
+	int	rb;
 
 	ra = a->ra_cnt;
 	rb = a->rb_cnt;
@@ -82,8 +82,8 @@ void	ft_rra_rrb(t_dlst **stack_a, t_dlst **stack_b, t_cnta *a)
 
 void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	t_cnta a;
-	int pivot;
+	t_cnta	a;
+	int		pivot;
 
 	init_cnt_a(&a);
 	init_pivot_a(stack_a, len, &a);
@@ -92,20 +92,13 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 		return ;
 	while (len--)
 	{
-		if ((*stack_a)->num >= a.big_pivot)
-		{
+		if ((*stack_a)->num >= a.big_pivot && ++(a.ra_cnt))
 			ft_ra(stack_a);
-			(a.ra_cnt)++;
-		}
-		else if ((*stack_a)->num < a.big_pivot)		
-		{
+		else if ((*stack_a)->num < a.big_pivot && ++(a.pb_cnt))
+		{	
 			ft_pb(stack_a, stack_b);
-			(a.pb_cnt)++;
-			if ((*stack_b)->num >= pivot)
-			{
+			if ((*stack_b)->num >= pivot && ++(a.rb_cnt))
 				ft_rb(stack_b);
-				(a.rb_cnt)++;
-			}
 		}
 	}
 	ft_rra_rrb(stack_a, stack_b, &a);

@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 22:36:05 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:39:38 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@
 
 typedef struct s_dlst
 {
-	int num;
-	struct s_dlst *prev;
-	struct s_dlst *next;
-}			t_dlst;
+	int				num;
+	struct s_dlst	*prev;
+	struct s_dlst	*next;
+}	t_dlst;
 
 typedef struct s_cnt_a
 {
-	int ra_cnt;
-	int rb_cnt;
-	int pb_cnt;
-	int big_pivot;
+	int	ra_cnt;
+	int	rb_cnt;
+	int	pb_cnt;
+	int	big_pivot;
 }	t_cnta;
 
 typedef struct s_cnt_b
 {
-	int ra_cnt;
-	int rb_cnt;
-	int pa_cnt;
-	int small_pivot;
+	int	ra_cnt;
+	int	rb_cnt;
+	int	pa_cnt;
+	int	small_pivot;
 }	t_cntb;
 
 /******** main *********/
@@ -50,7 +50,6 @@ int		check_ascend(t_dlst *lst, int len);
 int		check_descend(t_dlst *lst, int len);
 int		check_duplicates(t_dlst *lst);
 int		stack_size(t_dlst *lst);
-
 
 /********* descend_stack **********/
 
@@ -65,17 +64,15 @@ int		ft_max(t_dlst *lst);
 
 void	dlst_clear(t_dlst *lst);
 void	init_stack(t_dlst **lst, t_dlst *node);
-t_dlst *creat_node(int num);
+t_dlst	*creat_node(int num);
 void	push_node(t_dlst **lst, t_dlst *node);
 t_dlst	*pop_node(t_dlst **stack);
-
 
 /*********** globe utiles ********/
 
 void	ft_error(void);
-int	ft_atoi(char *str);
+int		ft_atoi(char *str);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
-
 
 /********** ra ******/
 
@@ -107,7 +104,6 @@ int		*set_table(t_dlst *stack, int len);
 int		init_big_pivot(t_dlst *stack, int len);
 int		init_small_pivot(t_dlst *stack, int len);
 
-
 /************* init_functions ******/
 
 void	init_cnt_a(t_cnta *a);
@@ -115,10 +111,13 @@ void	init_cnt_b(t_cntb *b);
 void	init_pivot_a(t_dlst **lst, int len, t_cnta *a);
 void	init_pivot_b(t_dlst **lst, int len, t_cntb *b);
 
-
 /********** Sort *********/
 
 void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len);
 void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len);
+
+/****** sort_5 ******/
+
+void	sort_5(t_dlst **stack_a, t_dlst **stack_b, int len);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:55:30 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 21:25:31 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:12:09 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	dlst_clear(t_dlst *lst)
 {
-	t_dlst *tmp;
+	t_dlst	*tmp;
 
 	lst->prev->next = NULL;
 	while (lst)
 	{
 		tmp = lst->next;
-		free(lst);
+		free (lst);
 		lst = tmp;
 	}
 }
@@ -43,12 +43,11 @@ void	init_stack(t_dlst **lst, t_dlst *node)
 		dlst_clear(*lst);
 		ft_error();
 	}
-	
 }
 
-t_dlst *creat_node(int num)
+t_dlst	*creat_node(int num)
 {
-	t_dlst *new_node;
+	t_dlst	*new_node;
 
 	new_node = (t_dlst *)malloc(sizeof(t_dlst));
 	if (new_node == NULL)
@@ -75,7 +74,7 @@ void	push_node(t_dlst **lst, t_dlst *node)
 
 t_dlst	*pop_node(t_dlst **stack)
 {
-	t_dlst *pop;
+	t_dlst	*pop;
 
 	if (!stack)
 		return (NULL);
@@ -94,4 +93,3 @@ t_dlst	*pop_node(t_dlst **stack)
 	}
 	return (pop);
 }
-

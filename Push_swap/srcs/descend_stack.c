@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:10:28 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/16 14:21:13 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:20:52 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	descend_to_ascend(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = len;
 	if (!stack_a || !stack_b)

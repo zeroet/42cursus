@@ -6,13 +6,13 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:54:50 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 13:55:43 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:08:13 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		check_ascend(t_dlst *lst, int len)
+int	check_ascend(t_dlst *lst, int len)
 {
 	if (!len || !lst)
 		return (0);
@@ -25,7 +25,7 @@ int		check_ascend(t_dlst *lst, int len)
 	return (1);
 }
 
-int		check_descend(t_dlst *lst, int len)
+int	check_descend(t_dlst *lst, int len)
 {
 	if (!len || !lst)
 		return (0);
@@ -40,7 +40,7 @@ int		check_descend(t_dlst *lst, int len)
 
 int	check_duplicates(t_dlst *lst)
 {
-	t_dlst *new;
+	t_dlst	*new;
 
 	new = lst->prev;
 	while (lst != new)
@@ -52,10 +52,10 @@ int	check_duplicates(t_dlst *lst)
 	return (0);
 }
 
-int		stack_size(t_dlst *lst)
+int	stack_size(t_dlst *lst)
 {
-	int last;
-	int cnt;
+	int	last;
+	int	cnt;
 
 	if (!lst)
 		return (0);

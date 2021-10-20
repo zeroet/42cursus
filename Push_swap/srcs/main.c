@@ -6,13 +6,11 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 16:32:30 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:38:15 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-#define Input (argc - 1)
 
 void	only_3(t_dlst **stack)
 {
@@ -20,9 +18,8 @@ void	only_3(t_dlst **stack)
 		return ;
 	if (((*stack)->num) == ft_min(*stack))
 	{
-		ft_ra(stack);
 		ft_sa(*stack);
-		ft_rra(stack);
+		ft_ra(stack);
 	}
 	else if ((*stack)->num == ft_max(*stack))
 	{
@@ -39,24 +36,27 @@ void	only_3(t_dlst **stack)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_dlst	*stack_a;
 	t_dlst	*stack_b;
-	int	i;
+	int		i;
 
+	i = argc -1;
 	if (argc <= 2)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	while (*(++argv) != 0)
 		init_stack(&stack_a, creat_node(ft_atoi(*argv)));
-	if (Input == 3)
+	if (i == 3)
 		only_3(&stack_a);
-	if ((check_descend(stack_a, Input)))
-		descend_to_ascend(&stack_a, &stack_b, Input);
-	if (Input > 3 && !(check_ascend(stack_a, Input)))
-		A_to_B(&stack_a, &stack_b, Input);
+	if ((check_descend(stack_a, i)))
+		descend_to_ascend(&stack_a, &stack_b, i);
+	if (i == 5 && !(check_ascend(stack_a, i)))
+		sort_5(&stack_a, &stack_b, i);
+	if (i > 3 && i != 5 &&!(check_ascend(stack_a, i)))
+		A_to_B(&stack_a, &stack_b, i);
 	dlst_clear(stack_a);
 	return (0);
 }

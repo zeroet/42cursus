@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:56:20 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/19 22:36:44 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:20:32 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_error(void)
 
 int	ft_atoi(char *str)
 {
-	int	sign;
-	long long num;
+	int			sign;
+	long long	num;
 
 	sign = 1;
 	num = 0;

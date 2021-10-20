@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_function.c                                    :+:      :+:    :+:   */
+/*   sort_5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/17 01:06:58 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 22:12:29 by seyun            ###   ########.fr       */
+/*   Created: 2021/10/20 21:26:32 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/20 22:21:06 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	init_cnt_a(t_cnta *a)
+void	sort_5(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	a->ra_cnt = 0;
-	a->rb_cnt = 0;
-	a->pb_cnt = 0;
-	a->big_pivot = 0;
-	return ;
-}
+	int	pivot;
+	int	i;
 
-void	init_cnt_b(t_cntb *b)
-{
-	b->ra_cnt = 0;
-	b->rb_cnt = 0;
-	b->pa_cnt = 0;
-	b->small_pivot = 0;
-	return ;
-}
-
-void	init_pivot_a(t_dlst **lst, int len, t_cnta *a)
-{
-	a->big_pivot = init_big_pivot(*lst, len);
-	return ;
-}
-
-void	init_pivot_b(t_dlst **lst, int len, t_cntb *b)
-{
-	b->small_pivot = init_small_pivot(*lst, len);
-	return ;
+	pivot = set_pivot(*stack_a, len);
+	while (len--)
+	{
+		if ((*stack_a)->num > pivot)
+		{	
+			ft_pb(stack_a, stack_b);
+		}
+		else
+			ft_ra(stack_a);
+	}
+	if (stack_size(*stack_a) == 3)
+		only_3(stack_a);
+	if ((*stack_b)->num > (*stack_b)->next->num)
+		ft_sb(*stack_b);
+	ft_pa(stack_a, stack_b);
+	ft_ra(stack_a);
+	ft_pa(stack_a, stack_b);
+	ft_ra(stack_a);
 }

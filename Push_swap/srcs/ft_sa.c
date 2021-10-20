@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:15:44 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/14 23:06:27 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:26:56 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_sa(t_dlst *lst)
 {
-	int tmp;
+	int	tmp;
 
 	if (!lst)
 		return ;
@@ -26,7 +26,7 @@ void	ft_sa(t_dlst *lst)
 
 void	ft_sb(t_dlst *lst)
 {
-	int tmp;
+	int	tmp;
 
 	if (!lst)
 		return ;

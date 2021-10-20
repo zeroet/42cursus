@@ -6,13 +6,13 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 15:09:44 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/20 22:29:09 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_3_b(t_dlst **stack_a,t_dlst **stack_b, int len)
+void	sort_3_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	ft_pa(stack_a, stack_b);
 	ft_pa(stack_a, stack_b);
@@ -22,9 +22,9 @@ void	sort_3_b(t_dlst **stack_a,t_dlst **stack_b, int len)
 
 void	ft_rrb_rra(t_dlst **stack_a, t_dlst **stack_b, t_cntb *b)
 {
-	int rrrb;
-	int ra;
-	int rb;
+	int	rrrb;
+	int	ra;
+	int	rb;
 
 	ra = b->ra_cnt;
 	rb = b->rb_cnt;
@@ -48,7 +48,7 @@ void	ft_rrb_rra(t_dlst **stack_a, t_dlst **stack_b, t_cntb *b)
 	}
 }
 
-int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
+int	except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	if (len == 3)
 	{
@@ -73,11 +73,11 @@ int		except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 
 void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
-	t_cntb b;
-	int pivot;
+	t_cntb	b;
+	int		pivot;
 
 	if (!len)
-		return;
+		return ;
 	init_cnt_b(&b);
 	init_pivot_b(stack_b, len, &b);
 	pivot = set_pivot(*stack_b, len);
@@ -85,20 +85,13 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 		return ;
 	while (len--)
 	{
-		if ((*stack_b)->num < b.small_pivot)
-		{
+		if ((*stack_b)->num < b.small_pivot && ++(b.rb_cnt))
 			ft_rb(stack_b);
-			(b.rb_cnt)++;
-		}
-		else if ((*stack_b)->num >= b.small_pivot)
+		else if ((*stack_b)->num >= b.small_pivot && ++(b.pa_cnt))
 		{
 			ft_pa(stack_a, stack_b);
-			(b.pa_cnt)++;
-			if ((*stack_a)->num < pivot)
-			{
+			if ((*stack_a)->num < pivot && ++(b.ra_cnt))
 				ft_ra(stack_a);
-				(b.ra_cnt)++;
-			}
 		}
 	}
 	A_to_B(stack_a, stack_b, (b.pa_cnt - b.ra_cnt));
