@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:01:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/28 00:08:58 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/28 21:53:57 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,86 +15,66 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h> // pipe
+#include "../Libft/libft.h"
 #include <sys/wait.h>
 # define P_READ 0
 # define P_WRITE 1
 
 void	child_command()
 {
-	int fd;
-	char buffer[1024];
-	int res;
-
-	res = read(0, buffer, 1024);
-	buffer[res] = '\0';
-	write(1, buffer, strlen(buffer));
+	char	*path;
+	int		res;	
+	
+	res = read(0, path, strlen(path));
+	if (!res)
+		exit(1);
+	write(1, path, ft_strlen(path));
 	return ;
 }
 
 void	proc_child(int pipe[2])
 {
-	int fd;
-	int w_fd;
-	int r_fd;
-
 	close(pipe[P_WRITE]);
-	r_fd = dup2(pipe[P_READ], 1);
-	if (r_fd == -1)
-		exit(1);
+	dup2(pipe[P_READ], 0);
+	printf("here is child process\n");
 	close(pipe[P_READ]);
-	fd = open("read.txt", O_RDONLY);
-	if (fd == -1)
-		exit(1);
-	w_fd = dup2(fd, 0);
 	child_command();
-	if (w_fd == -1)
-		exit(1);
-	close(fd);
 }
 
 void	parent_command()
 {
-	int fd;
-	int res;
-	char buffer[1024];
-
-	res = read(0, buffer, 1024);
-	if (res == -1)
-		exit(1);
-	buffer[res] = '\0';
-	write(1, buffer, strlen(buffer));
 	return ;
 }
 
-void	proc_parent(int pipe[2], int pid)
+void	proc_parent(int pipe[2], int pid, char **args, char **envp)
 {
-	int	r_fd;
-	int	w_fd;
-	int fd;
-
+	
+	close(pipe[P_READ]);
+	dup2(pipe[P_WRITE], 0);
 	close(pipe[P_WRITE]);
-	r_fd = dup2(pipe[P_READ], 0);
-	if (r_fd == -1)
+	find_path(envp, 
+	if (waitpid(pid, NULL, 0) == -1)
 		exit(1);
-	fd = open("write.txt", O_WRONLY);
-	if (fd == -1)
-		exit(1);
-	w_fd = dup2(fd, 1);
-	close(fd);
-	if (w_fd == -1)
-		exit(1);
-	//if (waitpid(pid, NULL, 0) == -1)
-	//	exit(1);
-	parent_command();
+	return ;
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	pid_t	pid;
 	int		fd[2];
+	char	**args;
+	int		i;
 
-	if ((pipe(fd) == -1))
+
+	if (pipe(fd) == -1)
 		return (1);
+	args = (char **)malloc(argc * sizeof(char *));
+	if (!args)
+		return (0);
+	args[argc] = NULL;
+	i = -1;
+	while (++i < argc -1)
+		args[i] = argv[i + 1];
 	pid = fork();
 	if (pid == -1)
 	{
@@ -105,7 +85,7 @@ int	main(int argc, char **argv)
 	if (pid == 0)
 		proc_child(fd);
 	else
-		proc_parent(fd, pid);
+		proc_parent(fd, pid, args, envp);
 	return (0);
 }
 
