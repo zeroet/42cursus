@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 21:21:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/28 21:25:10 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/29 18:19:35 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PIPEX_H
 
 # include "../Libft/libft.h"
-# include <string.h> // strlen
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -24,9 +23,9 @@
 # define P_WRITE 1
 
 void	child_command();
-void	proc_child(int pipe[2]);
-char	*find_path(char **args, int index);
+void	proc_child();
+char	*find_path(char **envp, char **args);
 void	parent_command();
-void	proc_parent(int pipe[2], int pid, char **args);
+void	proc_parent(int pid, char **args, char **envp);
 
 #endif

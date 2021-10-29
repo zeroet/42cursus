@@ -6,20 +6,38 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:01:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/29 18:19:36 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/28 21:53:57 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include <string.h> // strlen
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h> // pipe
+#include "../Libft/libft.h"
+#include <sys/wait.h>
+# define P_READ 0
+# define P_WRITE 1
 
 void	child_command()
 {
+	char	*path;
+	int		res;	
+	
+	res = read(0, path, strlen(path));
+	if (!res)
+		exit(1);
+	write(1, path, ft_strlen(path));
 	return ;
 }
 
-void	proc_child()
+void	proc_child(int pipe[2])
 {
+	close(pipe[P_WRITE]);
+	dup2(pipe[P_READ], 0);
 	printf("here is child process\n");
+	close(pipe[P_READ]);
 	child_command();
 }
 
@@ -28,33 +46,13 @@ void	parent_command()
 	return ;
 }
 
-char	*find_path(char **envp, char **args)
+void	proc_parent(int pipe[2], int pid, char **args, char **envp)
 {
-	char	*tmp;
-	//char	**res;
-	int		i;
-
-	while (envp != '\0')
-	{
-		if (!(ft_memcmp(envp[i], "PATH=", 5)))
-		{
-			tmp = envp[i];
-			printf("%s\n", tmp);
-			return (tmp);
-		}
-	}
-	return (0);
-}
-
-void	proc_parent(int pid, char **args, char **envp)
-{
-	int fd;
-
-	fd = open(args[1], O_RDONLY);
-	if (fd == -1)
-		exit (1);
-	printf("open succes\n");
-	find_path(envp, args);
+	
+	close(pipe[P_READ]);
+	dup2(pipe[P_WRITE], 0);
+	close(pipe[P_WRITE]);
+	find_path(envp, 
 	if (waitpid(pid, NULL, 0) == -1)
 		exit(1);
 	return ;
@@ -82,22 +80,12 @@ int	main(int argc, char **argv, char **envp)
 	{
 		close(fd[P_READ]);
 		close(fd[P_WRITE]);
-		exit (1);
+		return (1);
 	}
 	if (pid == 0)
-	{	
-		close(fd[P_WRITE]);
-		dup2(fd[P_READ], 0);
-		close(fd[P_READ]);
-		proc_child();
-	}
+		proc_child(fd);
 	else
-	{
-		close(fd[P_READ]);
-		dup2(fd[P_WRITE], 1);
-		close(fd[P_WRITE]);
-		proc_parent(pid, args, envp);
-	}
+		proc_parent(fd, pid, args, envp);
 	return (0);
 }
 
