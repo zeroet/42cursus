@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/22 23:44:24 by seyun            ###   ########.fr       */
+/*   Updated: 2021/10/30 17:45:16 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,23 @@ int	main(int argc, char **argv)
 	int		i;
 
 	i = argc -1;
-	if (argc <= 2)
-		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	while (*(++argv) != 0)
 		init_stack(&stack_a, creat_node(ft_atoi(*argv)));
-	if (i == 3)
-		only_3(&stack_a);
-	if ((check_descend(stack_a, i)))
-		descend_to_ascend(&stack_a, &stack_b, i);
-	if (i == 5 && !(check_ascend(stack_a, i)))
-		sort_5(&stack_a, &stack_b, i);
-	if (i > 3 && i != 5 &&!(check_ascend(stack_a, i)))
-		A_to_B(&stack_a, &stack_b, i);
+	if (argc == 1)
+		return (0);
+	if (argc >= 2)
+	{
+		if (i == 3)
+			only_3(&stack_a);
+		if ((check_descend(stack_a, i)))
+			descend_to_ascend(&stack_a, &stack_b, i);
+		if (i == 5 && !(check_ascend(stack_a, i)))
+			sort_5(&stack_a, &stack_b, i);
+		if (i > 3 && i != 5 &&!(check_ascend(stack_a, i)))
+			A_to_B(&stack_a, &stack_b, i);
+	}
 	dlst_clear(stack_a);
 	return (0);
 }
