@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/08 23:20:04 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/09 00:06:14 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ typedef struct s_game
 
 void	init_game(t_game *game)
 {
-	return ;
+	ft_memset(game->tex.path, 0, 6);
+	game->tex.floor = -1;
+	game->tex.ceiling = -1;
 }
 
 int	main(int argc, char **argv)
