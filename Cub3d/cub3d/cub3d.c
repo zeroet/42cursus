@@ -6,11 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/08 19:25:28 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/08 23:20:04 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
+#include "cub3d.h"
 
 typedef struct s_game
 {
@@ -21,19 +21,18 @@ typedef struct s_game
 
 void	init_game(t_game *game)
 {
+	return ;
 }
 
 int	main(int argc, char **argv)
 {
 	t_game game;
 
-	if (argc == 2)
-	{
-		init_game(&game);
-		open_cub(argv[1], &game);
-	}
-	else
-		ft_error();
+	if (argc != 2)
+		ft_strexit("ERROR: Argument Error!");
+	init_game(&game);
+	open_cub(argv[1], &game);
+	read_info(&game);
 	return (0);
 }
 
@@ -45,4 +44,3 @@ void	open_cub(char *file_name, t_game *game)
 	if (s->fd == -1)
 		ft_strexit("ERROR: No Such CUB File Available!");
 }
-
