@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 23:35:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/08 23:41:51 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/10 23:32:31 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ typedef struct s_game
 	void	*win;
 	int		fd;
 	t_tex	tex;
+	t_list	*lst;
+	int		map_width;
+	int		map_height;
+	char	*line;
 }	t_game;
 
 typedef struct s_tex

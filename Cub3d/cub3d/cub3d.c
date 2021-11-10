@@ -6,24 +6,19 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/09 00:06:14 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/10 23:33:27 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-typedef struct s_game
-{
-	void	*mlx;
-	void	*win;
-	int		fd;
-}	t_game;
 
 void	init_game(t_game *game)
 {
 	ft_memset(game->tex.path, 0, 6);
 	game->tex.floor = -1;
 	game->tex.ceiling = -1;
+	game->map_width = 0;
+	game->map_height = 0;
 }
 
 int	main(int argc, char **argv)
@@ -35,6 +30,8 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	open_cub(argv[1], &game);
 	read_info(&game);
+	validate_info(&game, game.line);
+	read_map(&game);
 	return (0);
 }
 
