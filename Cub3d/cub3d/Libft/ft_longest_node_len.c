@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_longest_node_len.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:04:38 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/12 12:42:10 by seyun            ###   ########.fr       */
+/*   Created: 2021/11/12 12:25:01 by seyun             #+#    #+#             */
+/*   Updated: 2021/11/12 12:43:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_longest_node_len(t_list *lst)
 {
-	size_t	size;
+	int	max;
 
-	size = 0;
+	max = -1;
 	while (lst)
 	{
+		if (max < ft_strlen((char *)lst->content))
+			max = ft_strlen((char *)lst->content);
 		lst = lst->next;
-		size++;
 	}
-	return (size);
+	return (max);
 }

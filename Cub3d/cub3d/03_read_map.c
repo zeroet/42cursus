@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/11 00:06:56 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/12 17:23:45 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,71 @@ void	read_map(t_game *game, char *line)
 		ft_lstadd_back(&game->lst, ft_lstnew(ft_strdup(line)));
 		free(line);
 	}
+	free(line);
 	allocate_map(game, game->lst);
-	
+	store_map(game, game->lst);
+	ft_lstclear(&(game->lst), free);
+}
+
+void	allocate_map(t_game *game, t_list *curr)
+{
+	int	i;
+	int	j;
+
+	game->map_height = ft_lstsize(curr);
+	game->map_with = ft_longest_node_len(curr);
+	game->map = malloc(sizeof(char *) * (game->map_height + 1));
+	if (!game->map)
+		ft_strexit("ERROR: Malloc Fail!");
+	game->map[game->map_height] = NULL;
+	i = 0;
+	while (curr)
+	{
+		game->map[i] = malloc(sizeof(char) * (game->map_width + 1));
+		if (!game->map[i])
+			ft_strexit("ERROR: Malloc Fail!");
+		j = 0;
+		while (j < game->map_width)
+		{
+			game->map[i][j] = ' ';
+			j++;
+		}
+		game->map[i][game->map_width] = '\0';
+		i++;
+		curr = curr->next;
+	}
+}
+
+void	store_map(t_game *game, t_lst *curr)
+{
+	int		i;
+	int		j;
+	char	*content;
+
+	i = 0;
+	while (i < game->map_height)
+	{
+		j = 0;
+		content = (char *)curr->content;
+		while (j < ft_strlen(content))
+		{
+			if (!ft_isset(content[j], "NSWE012 \n",) && content[j] != '\0')
+				ft_strexit("ERROR: Invalid Map Element Contained!");
+			game->map[i][j] = content[j];
+			if (ft_isset(content[j], "NSWE"))
+				create_player(game, i , j);
+			else if (content[j] == SPRITE)
+				game->num_sprite++;
+			j++;
+		}
+		curr = curr->next;
+		i++;
+	}
+}
+
+void	create_player(t_game *game, int i, int j)
+{
+	if (game->player.dir)
+		ft_strexit("ERROR: Multiple Player Given!");
+	game->player.dir = game->map[i][j];
+

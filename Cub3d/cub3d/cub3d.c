@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/10 23:33:27 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/12 12:21:55 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_game(t_game *game)
 	game->tex.ceiling = -1;
 	game->map_width = 0;
 	game->map_height = 0;
+	game->map = NULL;
 }
 
 int	main(int argc, char **argv)

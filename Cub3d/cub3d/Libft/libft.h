@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/08 23:30:45 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/12 14:27:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_isformat(char *str, char *format);
 void		ft_strexit(char *str);
 void		ft_free_double(char **str);
+int			ft_longest_node_len(t_list *lst);
+int			ft_isset(char c, char *str);
 
 typedef struct s_list
 {

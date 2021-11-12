@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_isset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:04:38 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/12 12:42:10 by seyun            ###   ########.fr       */
+/*   Created: 2021/11/12 14:24:15 by seyun             #+#    #+#             */
+/*   Updated: 2021/11/12 14:26:30 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_isset(char c, char *str)
 {
-	size_t	size;
-
-	size = 0;
-	while (lst)
+	while(*str)
 	{
-		lst = lst->next;
-		size++;
+		if (c == *str)
+			return (1);
+		str++;
 	}
-	return (size);
+	return (0);
 }
