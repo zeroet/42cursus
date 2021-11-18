@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:18:47 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/10 15:41:22 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/18 20:47:51 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	validate_map_horizontal(char **map, int width, int height)
 	y = 0;
 	while (y < height)
 	{
-		if (map[y][0] != ' ' && map[y][0] != WALL)
-			ft_strexit("ERROR: Map Not Surronded By Walls! (Left Side)");
+		//if (map[y][0] != ' ' && map[y][0] != WALL)
+		//	ft_strexit("ERROR: Map Not Surronded By Walls! (Left Side)");
 		x = 1;
 		while (x < width)
 		{
