@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/12 17:23:45 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/18 19:47:07 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,14 @@ void	create_player(t_game *game, int i, int j)
 	if (game->player.dir)
 		ft_strexit("ERROR: Multiple Player Given!");
 	game->player.dir = game->map[i][j];
-
+	game->player.x = 2;
+	game->player.y = 5;
+	game->player.dir_x = -1.0;
+	game->player.dir_y = 0.0;
+	game->player.plane_x = 0.0;
+	game->player.plane_y = 0.66;
+	game->player.move_speed = 0.07;
+	game->player.rot_speed = 0.08;
+	game->player.x = 0.5f + j;
+	game->player.y = 0.5f + i;
+}
