@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/18 19:47:07 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/24 23:54:18 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,11 @@ void	store_map(t_game *game, t_lst *curr)
 		content = (char *)curr->content;
 		while (j < ft_strlen(content))
 		{
-			if (!ft_isset(content[j], "NSWE012 \n",) && content[j] != '\0')
+			if (!ft_isset(content[j], "NSWE01 \n",) && content[j] != '\0')
 				ft_strexit("ERROR: Invalid Map Element Contained!");
 			game->map[i][j] = content[j];
 			if (ft_isset(content[j], "NSWE"))
 				create_player(game, i , j);
-			else if (content[j] == SPRITE)
-				game->num_sprite++;
 			j++;
 		}
 		curr = curr->next;

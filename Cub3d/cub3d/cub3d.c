@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/23 22:30:34 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/25 00:05:44 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	init_game(t_game *game)
 	game->map_height = 0;
 	game->map = NULL;
 	game->player.dir = '\0';
-	game->sprite = NULL;
 	game->num_sprite = 0;
+	game->buf = NULL;
 }
 
 int	main(int argc, char **argv)
@@ -37,8 +37,8 @@ int	main(int argc, char **argv)
 	validate_info(&game, game.line);
 	read_map(&game);
 	validate_map(&game);
-	//rearrange_game(&game);
-	cub2d(&game);
+	rearrange_game(&game);
+	run_game(&game);
 	return (0);
 }
 

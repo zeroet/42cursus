@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:16:57 by mihykim           #+#    #+#             */
-/*   Updated: 2021/11/18 21:16:40 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/25 00:13:30 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	run_program(t_all *s)
 {
 	s->win = mlx_new_window(s->mlx, s->width, s->height, TITLE);
 	mlx_hook(s->win, X_EVENT_KEY_PRESS, 0, detect_keypress, s);
-	render_map(s);
-	//	mlx_loop_hook(s->mlx, execute_raycasting_loop, s);
+	mlx_loop_hook(s->mlx, execute_raycasting_loop, s);
 	mlx_loop(s->mlx);
 }
 

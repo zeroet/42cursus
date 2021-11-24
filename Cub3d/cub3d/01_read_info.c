@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_info.c                                        :+:      :+:    :+:   */
+/*   01_read_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:59:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/08 23:29:47 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/24 23:51:20 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	decide_info_map(t_game *game, char **info)
 		game_texture(game, info[1], WEST);
 	else if (ft_strcmp(info[0], "EA") == 0)
 		game_texture(game, info[1], EAST);
-	else if (ft_strcmp(info[0], "S") == 0)
-		game_texture(game, info[1], SPR);
 	else if (ft_strcmp(info[1], "F") == 0)
 		game_color(s, info[1], FLOOR);
 	else if (ft_strcmp(info[1], "C") == 0)
