@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 22:30:42 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/23 23:08:10 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/24 18:00:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	draw_square(t_game *game, int x, int y, int color)
 		dx = 0;
 		while (dx < TILE)
 		{
-			game->img.date[game->width *
+			game->img.date[game->width *];
+		}
+	}
+}
 
 void	draw_squares(t_game *game)
 {
