@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:14:10 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/09 12:48:06 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/26 00:18:36 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	take_screenshot(t_all *s)
 	int	size;
 
 	raycast_background(s);
-	raycast_sprite(s, &s->player);
+//	raycast_sprite(s, &s->player);
 	size = 54 + 3 * s->width * s->height;
 	fd = open("screenshot.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 00755);
 	if (fd < 0)

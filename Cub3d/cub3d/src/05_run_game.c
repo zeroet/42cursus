@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 00:06:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 00:37:45 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 00:04:53 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		detect_keypress(int	key, t_game *game)
 	return (0);
 }
 
-void	move_back_forth(t_game *game, t_player *player, double move_speed)
+void	move_back_forward(t_game *game, t_player *player, double move_speed)
 {
 	char x;
 	char y;

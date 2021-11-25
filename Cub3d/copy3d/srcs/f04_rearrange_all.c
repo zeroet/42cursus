@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:17:30 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/06 21:50:48 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/26 00:11:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		rearrange_all(t_all *s)
 	s->mlx = mlx_init();
 	allocate_buffer(s);
 	load_texture(s);
-	set_sprite(s);
+	//set_sprite(s);
 	s->img.ptr = mlx_new_image(s->mlx, s->width, s->height);
 	s->img.data = (int *)mlx_get_data_addr(s->img.ptr,
 			&s->img.bpp, &s->img.size_l, &s->img.endian);
@@ -54,8 +54,8 @@ void	allocate_buffer(t_all *s)
 			ft_strexit("ERROR: Malloc Fail!");
 		i++;
 	}
-	if (!(s->z_buffer = ft_calloc(s->width, sizeof(double *))))
-		ft_strexit("ERROR: Malloc Fail!");
+	//if (!(s->z_buffer = ft_calloc(s->width, sizeof(double *))))
+	//	ft_strexit("ERROR: Malloc Fail!");
 }
 
 void	load_texture(t_all *s)
@@ -70,8 +70,8 @@ void	load_texture(t_all *s)
 	free(s->tex.path[SOUTH]);
 	load_image(s, s->tex.tile[NORTH], s->tex.path[NORTH], &img);
 	free(s->tex.path[NORTH]);
-	load_image(s, s->tex.tile[SPR], s->tex.path[SPR], &img);
-	free(s->tex.path[SPR]);
+//	load_image(s, s->tex.tile[SPR], s->tex.path[SPR], &img);
+//	free(s->tex.path[SPR]);
 }
 
 void	load_image(t_all *s, int *texture, char *path, t_img *img)

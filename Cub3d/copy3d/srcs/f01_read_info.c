@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:21:44 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/09 14:44:03 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/26 00:12:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int		decide_what_to_store(t_all *s, char **info)
 		store_texture(s, info[1], WEST);
 	else if (ft_strcmp(info[0], "EA") == 0)
 		store_texture(s, info[1], EAST);
-	else if (ft_strcmp(info[0], "S") == 0)
-		store_texture(s, info[1], SPR);
+	//else if (ft_strcmp(info[0], "S") == 0)
+	//	store_texture(s, info[1], SPR);
 	else if (ft_strcmp(info[0], "F") == 0)
 		store_color(s, info[1], FLOOR);
 	else if (ft_strcmp(info[0], "C") == 0)

@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:13:52 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/06 21:51:06 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/26 00:18:15 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		execute_raycasting_loop(t_all *s)
 {
 	raycast_background(s);
-	raycast_sprite(s, &s->player);
+	//raycast_sprite(s, &s->player);
 	render(s);
 	return (0);
 }
@@ -35,11 +35,12 @@ void	raycast_background(t_all *s)
 		calculate_wall_height(s, &s->ray);
 		set_wall_texture(&s->player, &s->ray);
 		set_wall_color(s, &s->ray, x);
-		s->z_buffer[x] = s->ray.perp_wall_dist;
+	//	s->z_buffer[x] = s->ray.perp_wall_dist;
 		x++;
 	}
 }
 
+/**
 void	raycast_sprite(t_all *s, t_player *player)
 {
 	int i;
@@ -61,7 +62,7 @@ void	raycast_sprite(t_all *s, t_player *player)
 		i++;
 	}
 }
-
+**/
 void	render(t_all *s)
 {
 	int x;

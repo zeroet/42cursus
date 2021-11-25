@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f03_validate_map_info.c                            :+:      :+:    :+:   */
+/*   f03_validate_info_map.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:18:47 by mihykim           #+#    #+#             */
-/*   Updated: 2021/11/18 20:47:51 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 00:11:15 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	validate_info(t_all *s)
 		ft_strexit("ERROR: Resolution Info Missing");
 	if (!s->tex.path[NORTH] || !s->tex.path[SOUTH]
 		|| !s->tex.path[WEST] || !s->tex.path[EAST]
-		|| !s->tex.path[SPR]
+	//	|| !s->tex.path[SPR]
 		|| s->tex.floor == -1 || s->tex.ceiling == -1)
 		ft_strexit("ERROR: Texture Info Missing");
 }

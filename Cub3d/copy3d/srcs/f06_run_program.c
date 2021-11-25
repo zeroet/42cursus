@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 22:16:57 by mihykim           #+#    #+#             */
-/*   Updated: 2021/11/25 00:13:30 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 00:17:12 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	move_back_forth(t_all *s, t_player *player, double move_speed)
 
 	x = s->map[(int)player->y][(int)(player->x + player->dir_x * move_speed)];
 	y = s->map[(int)(player->y + player->dir_y * move_speed)][(int)player->x];
-	if (x != WALL && ((sqrt(pow(s->s_ray.x, 2) + pow(s->s_ray.y, 2)) >= 0.2)))
+	if (x != WALL)// && ((sqrt(pow(s->s_ray.x, 2) + pow(s->s_ray.y, 2)) >= 0.2)))
 		player->x += player->dir_x * move_speed;
 	if (y != WALL)
 		player->y += player->dir_y * move_speed;

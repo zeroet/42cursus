@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 16:51:32 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/09 14:43:43 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/26 00:16:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	init_all(t_all *s)
 	s->map_width = 0;
 	s->map_height = 0;
 	s->player.dir = '\0';
-	s->sprite = NULL;
-	s->num_sprite = 0;
+//	s->sprite = NULL;
+//	s->num_sprite = 0;
 	s->buf = NULL;
-	s->z_buffer = NULL;
+//	s->z_buffer = NULL;
 }
 
 void	open_cub(char *file_name, t_all *s)

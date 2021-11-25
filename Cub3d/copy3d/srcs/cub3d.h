@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 16:50:56 by mihykim           #+#    #+#             */
-/*   Updated: 2020/11/09 14:41:01 by mihykim          ###   ########.fr       */
+/*   Updated: 2021/11/26 00:15:40 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 # define TITLE "cub3D"
 # define EMPTY '0'
 # define WALL '1'
-# define SPRITE '2'
+//# define SPRITE '2'
 
 # define NORTH 0
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
-# define SPR 4
-# define FLOOR 5
-# define CEILING 6
+//# define SPR 4
+# define FLOOR 4
+# define CEILING 5
 
 # define PI 3.1415926535897
 # define X_EVENT_KEY_PRESS 2
@@ -65,14 +65,14 @@ typedef struct	s_img
 	int			width;
 	int			height;
 }				t_img;
-
+/**
 typedef struct	s_sprite
 {
 	double		x;
 	double		y;
 	double		distance;
 }				t_spr;
-
+**/
 typedef struct	s_ray
 {
 	double		camera_x;
@@ -99,7 +99,7 @@ typedef struct	s_ray
 	int			tex_x;
 	int			tex_y;
 }				t_ray;
-
+/**
 typedef struct	s_sprite_ray
 {
 	double		x;
@@ -118,7 +118,7 @@ typedef struct	s_sprite_ray
 	int			tex_x;
 	int			tex_y;
 }				t_spr_ray;
-
+**/
 typedef struct	s_player
 {
 	double		x;
@@ -134,8 +134,8 @@ typedef struct	s_player
 
 typedef struct	s_tex
 {
-	char		*path[6];
-	int			tile[6][TEX_HEIGHT * TEX_WIDTH];
+	char		*path[5];
+	int			tile[5][TEX_HEIGHT * TEX_WIDTH];
 	int			floor;
 	int			ceiling;
 }				t_tex;
@@ -148,11 +148,11 @@ typedef struct	s_all
 	t_tex		tex;
 	t_player	player;
 	t_ray		ray;
-	t_spr_ray	s_ray;
-	t_spr		*sprite;
-	int			num_sprite;
+//	t_spr_ray	s_ray;
+//	t_spr		*sprite;
+//	int			num_sprite;
 	int			**buf;
-	double		*z_buffer;
+//	double		*z_buffer;
 	int			fd;
 	int			width;
 	int			height;
@@ -210,9 +210,8 @@ void			allocate_buffer(t_all *s);
 void			load_texture(t_all *s);
 void			load_image(t_all *s, int *texture, char *path, t_img *img);
 
-/*
-** 	f05_set_sprite.c
-*/
+/** 	f05_set_sprite.c
+
 
 void			set_sprite(t_all *s);
 void			set_pos_sprite(t_all *s, int i, int x, int y);
@@ -220,9 +219,10 @@ void			sort_sprite(t_all *s, t_player *p);
 void			sort(t_all *s);
 void			set_sprite_color(t_all *s, t_spr_ray *s_ray, int stripe);
 
-/*
-**	f06_run_program.c
-*/
+**/
+
+//	f06_run_program.c
+
 
 void			run_program(t_all *s);
 int				detect_keypress(int key, t_all *s);
@@ -236,7 +236,7 @@ void			rotate_player(t_player *p, double rot_speed);
 
 int				execute_raycasting_loop(t_all *s);
 void			raycast_background(t_all *s);
-void			raycast_sprite(t_all *s, t_player *p);
+//void			raycast_sprite(t_all *s, t_player *p);
 void			render(t_all *s);
 
 /*
@@ -260,10 +260,10 @@ void			calculate_wall_height(t_all *s, t_ray *ray);
 ** 	f10_raycast_sprite.c
 */
 
-void			translate_sprite(t_all *s,
-						t_player *p, t_spr_ray *s_ray, int i);
-void			calculate_sprite_height(t_all *s, t_spr_ray *s_ray);
-void			calculate_sprite_width(t_all *s, t_spr_ray *s_ray);
+//void			translate_sprite(t_all *s,
+//						t_player *p, t_spr_ray *s_ray, int i);
+//void			calculate_sprite_height(t_all *s, t_spr_ray *s_ray);
+//void			calculate_sprite_width(t_all *s, t_spr_ray *s_ray);
 
 /*
 ** 	f11_take_screenshot.c

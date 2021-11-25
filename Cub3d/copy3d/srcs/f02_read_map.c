@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 21:51:27 by mihykim           #+#    #+#             */
-/*   Updated: 2021/11/18 20:47:34 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 00:11:49 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	store_map_as_array(t_all *s, t_list *curr)
 			s->map[i][j] = content[j];
 			if (ft_isset(content[j], "NSWE"))
 				create_player(s, i, j);
-			else if (content[j] == SPRITE)
-				s->num_sprite++;
+			//else if (content[j] == SPRITE)
+			//	s->num_sprite++;
 			j++;
 		}
 		curr = curr->next;

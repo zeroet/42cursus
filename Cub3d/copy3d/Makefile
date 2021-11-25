@@ -15,12 +15,10 @@ ABBR = cub3d \
        f02_read_map \
        f03_validate_info_map \
        f04_rearrange_all \
-       f05_set_sprite \
        f06_run_program \
        f07_execute_raycasting_loop \
        f08_set_background \
        f09_raycast_background \
-       f10_raycast_sprite \
        f11_take_screenshot
 
 SRCS = $(addsuffix .c, $(addprefix srcs/, $(ABBR)))

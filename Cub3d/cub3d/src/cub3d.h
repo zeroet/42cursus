@@ -6,15 +6,15 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 23:35:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 00:37:07 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 00:01:40 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft/libft.h"
-# include "mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
@@ -59,6 +59,7 @@ typedef struct s_game
 	t_list	*lst;
 	t_img	img;
 	t_player	player;
+	t_ray	ray;
 	int		map_width;
 	int		map_height;
 	char	*line;
@@ -66,7 +67,34 @@ typedef struct s_game
 	int		**buf;
 	int		width;
 	int		height;
-}	t_game;
+}			t_game;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_num;
+	double	wall_x;
+	double	step;
+	double	tex_pos;
+	int		tex_x;
+	int		tex_y;
+}			t_ray;
 
 typedef struct s_tex
 {
@@ -74,7 +102,7 @@ typedef struct s_tex
 	int		tile[5][TEX_HEIGHT * TEX_WIDTH];
 	int		floor;
 	int		ceiling;
-}	t_tex;
+}			t_tex;
 
 typedef struct s_player
 {
@@ -87,7 +115,7 @@ typedef struct s_player
 	double	move_speed;
 	double	rot_speed;
 	char	dir;
-}	t_player;
+}			t_player;
 
 typedef struct s_img
 {
@@ -98,7 +126,7 @@ typedef struct s_img
 	int		endian;
 	int		width;
 	int		height;
-}	t_img;
+}			t_img;
 
 
 #endif
