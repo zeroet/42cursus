@@ -6,24 +6,43 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:01:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 20:15:35 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/27 00:38:39 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+void	std_out(t_input *info)
+{
+	int	fd;
+
+	fd = open(info->argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd < 0)
+		exit(1);
+	dup2(fd, 1);
+	close(fd);
+}
+
+
 void	cmd2(int *fd, t_input *info)
 {
-	printf("cm2\n");
+	char *path;
+
 	close(fd[P_WRITE]);
 	dup2(fd[P_READ], 1);
 	close(fd[P_READ]);
-	return ;
+	std_out(info);
+	path = make_cmd(info, 3);
+	printf("%s \n ", path);
+	if (path == NULL)
+		printf("ERROR: NULL PATH\n");
+	execve(path, info->argv, info->envp);
 }
 
-char *get_path(t_input *info)
+char **get_path(t_input *info)
 {
-	char *res;
+	char **res;
+	char	*tmp;
 	int i;
 
 	i = 0;
@@ -32,54 +51,50 @@ char *get_path(t_input *info)
 	{
 		if(!(ft_memcmp(info->envp[i], "PATH=", 4)))
 		{	
-			res = info->envp[i];
-			break ;
+			tmp = info->envp[i];
+			res = ft_split(tmp + 5, ':');
+			return (res);
 		}
 		i++;
 	}
-	return (res);
+	return (NULL);
 }
 
-char	*make_cmd1(t_input *info)
+char	*make_cmd(t_input *info, int index)
 {
-	char *path;
 	char **envp;
-	char *cmd1;
+	int	i;
 	char *res;
-	int	mode;
-	int i;
+	char *cmd;
 
-	path = get_path(info);
-	envp = ft_split(path + 5, ':');
-	cmd1 = ft_strjoin("/", info->argv[2]);
-	mode = X_OK | F_OK;
+	i = 0;
+	envp = get_path(info);
+	cmd = ft_strjoin("/", info->argv[index]);
 	while (envp[i])
 	{
-		res = ft_strjoin(envp[i], cmd1);
-		if (access(res, mode))
+		res = ft_strjoin(envp[i], cmd);
+		if (access(res, X_OK))
 		{
 			free(envp);
-			free(cmd1);
+			free(cmd);
 			return (res);
 		}
 		free(res);
 		i++;
 	}
-	free(cmd1);
+	free(cmd);
 	free(envp);
-	exit(1);
+	return (NULL);
 }
 
 void	std_in(t_input *info)
 {
 	int fd;
-	int ck;
 
 	fd = open(info->argv[1], O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		exit(1);
-	ck = dup2(fd, 0);
-	printf("parent process : stdin file %d  open success\n", ck);
+	dup2(fd, 0);
 	close(fd);
 }
 
@@ -87,12 +102,15 @@ void	cmd1(int *fd, t_input *info)
 {
 	char *path;
 	
-	printf("cm1\n");
-	std_in(info);
 	close(fd[P_READ]);
 	dup2(fd[P_WRITE], 0);
 	close(fd[P_WRITE]);
-	path = make_cmd1(info);
+	std_in(info);
+	path = make_cmd(info, 2);
+	printf("%s\n", path);
+	if (path == NULL)
+		printf("ERROR: NULL PATH\n");
+	execve(path, info->argv, info->envp);
 }
 
 void	pipex(t_input *info)
@@ -100,7 +118,6 @@ void	pipex(t_input *info)
 	int fd[2];
 	pid_t pid;
 
-	printf("fork run\n");
 	if (pipe(fd) == -1)
 		exit(1);
 	pid = fork();
@@ -136,9 +153,8 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 5)
 		exit(1);
 	info = init_info(argc, argv, envp);
-	printf("info success\n");
 	pipex(info);
 	free(info);
 	return (0);
-}
+	}
 
