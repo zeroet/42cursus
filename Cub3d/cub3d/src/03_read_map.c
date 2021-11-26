@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/24 23:54:18 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:14:54 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	store_map(t_game *game, t_lst *curr)
 				ft_strexit("ERROR: Invalid Map Element Contained!");
 			game->map[i][j] = content[j];
 			if (ft_isset(content[j], "NSWE"))
-				create_player(game, i , j);
+				create_player(game, i, j);
 			j++;
 		}
 		curr = curr->next;

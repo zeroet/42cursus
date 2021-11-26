@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 23:12:44 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 23:50:13 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:21:24 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,11 @@ void	perform_dda(t_game *game, t_ray *ray)
 void	calculate_wall_distance(t_player *player, t_ray *ray)
 {
 	if (ray->side == WEST || ray->side == EAST)
-		ray->perp_wall_dist = (ray->map_x - player->x + (1 - ray->step_x) / 2) / ray->dir_x;
+		ray->perp_wall_dist = (ray->map_x - \
+				player->x + (1 - ray->step_x) / 2) / ray->dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - player->y + (1 - ray->step_y) / 2) / ray->dir_y;
+		ray->perp_wall_dist = (ray->map_y - \
+				player->y + (1 - ray->step_y) / 2) / ray->dir_y;
 }
 
 void	calculate_wall_height(t_all *game, t_ray *ray)

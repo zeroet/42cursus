@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:19:06 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 22:29:09 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:35:20 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sort_3_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 	ft_pa(stack_a, stack_b);
 	ft_pa(stack_a, stack_b);
 	ft_pa(stack_a, stack_b);
-	A_to_B(stack_a, stack_b, len);
+	a_to_b(stack_a, stack_b, len);
 }
 
 void	ft_rrb_rra(t_dlst **stack_a, t_dlst **stack_b, t_cntb *b)
@@ -71,7 +71,7 @@ int	except_case_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 	return (0);
 }
 
-void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
+void	b_to_a(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	t_cntb	b;
 	int		pivot;
@@ -94,8 +94,8 @@ void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len)
 				ft_ra(stack_a);
 		}
 	}
-	A_to_B(stack_a, stack_b, (b.pa_cnt - b.ra_cnt));
+	a_to_b(stack_a, stack_b, (b.pa_cnt - b.ra_cnt));
 	ft_rrb_rra(stack_a, stack_b, &b);
-	A_to_B(stack_a, stack_b, b.ra_cnt);
-	B_to_A(stack_a, stack_b, b.rb_cnt);
+	a_to_b(stack_a, stack_b, b.ra_cnt);
+	b_to_a(stack_a, stack_b, b.rb_cnt);
 }

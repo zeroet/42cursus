@@ -6,7 +6,7 @@
 /*   By: mihykim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 16:50:56 by mihykim           #+#    #+#             */
-/*   Updated: 2021/11/26 00:15:40 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 16:55:02 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <signal.h>
+//# include <signal.h>
 
 # define TITLE "cub3D"
 # define EMPTY '0'

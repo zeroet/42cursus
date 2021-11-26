@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 23:17:19 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 23:43:19 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:21:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	set_wall_color(t_game *game, t_ray *ray, int x)
 	int	y;
 
 	ray->step = 1.0 * TEX_HIEGHT / ray->line_height;
-	ray->tex_pos = (ray_draw_start - game->height / 2 
+	ray->tex_pos = (ray_draw_start - game->height / 2 \
 			+ ray->line_height / 2) * ray->step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)

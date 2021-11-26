@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/30 17:45:16 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:34:58 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 		if (i == 5 && !(check_ascend(stack_a, i)))
 			sort_5(&stack_a, &stack_b, i);
 		if (i > 3 && i != 5 &&!(check_ascend(stack_a, i)))
-			A_to_B(&stack_a, &stack_b, i);
+			a_to_b(&stack_a, &stack_b, i);
 	}
 	dlst_clear(stack_a);
 	return (0);

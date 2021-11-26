@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 13:57:08 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 22:39:38 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:34:05 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void	init_pivot_b(t_dlst **lst, int len, t_cntb *b);
 
 /********** Sort *********/
 
-void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len);
-void	B_to_A(t_dlst **stack_a, t_dlst **stack_b, int len);
+void	a_to_b(t_dlst **stack_a, t_dlst **stack_b, int len);
+void	b_to_a(t_dlst **stack_a, t_dlst **stack_b, int len);
 
 /****** sort_5 ******/
 

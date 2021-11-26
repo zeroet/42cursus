@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:17:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/20 22:38:50 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:33:23 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_rra_rrb(t_dlst **stack_a, t_dlst **stack_b, t_cnta *a)
 	}
 }
 
-void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
+void	a_to_b(t_dlst **stack_a, t_dlst **stack_b, int len)
 {
 	t_cnta	a;
 	int		pivot;
@@ -102,7 +102,7 @@ void	A_to_B(t_dlst **stack_a, t_dlst **stack_b, int len)
 		}
 	}
 	ft_rra_rrb(stack_a, stack_b, &a);
-	A_to_B(stack_a, stack_b, a.ra_cnt);
-	B_to_A(stack_a, stack_b, a.rb_cnt);
-	B_to_A(stack_a, stack_b, (a.pb_cnt - a.rb_cnt));
+	a_to_b(stack_a, stack_b, a.ra_cnt);
+	b_to_a(stack_a, stack_b, a.rb_cnt);
+	b_to_a(stack_a, stack_b, (a.pb_cnt - a.rb_cnt));
 }

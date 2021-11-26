@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 00:06:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 00:04:53 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:20:33 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	run_game(t_game *game)
 	mlx_loop(game->mlx);
 }
 
-int		detect_keypress(int	key, t_game *game)
+int	detect_keypress(int key, t_game *game)
 {
 	if (key == KEY_W || key == KEY_UP)
 		move_back_forth(game, &game->player, game->player.move_speed);
@@ -41,11 +41,13 @@ int		detect_keypress(int	key, t_game *game)
 
 void	move_back_forward(t_game *game, t_player *player, double move_speed)
 {
-	char x;
-	char y;
+	char	x;
+	char	y;
 
-	x = game->map[(int)player->y][(int)(player->x + player->dir_x * move_speed)];
-	y = game->map[(int)(player->y + player->dir_y *move_speed)][(int)player->x];
+	x = game->map[(int)player->y][(int)(player->x \
+			+ player->dir_x * move_speed)];
+	y = game->map[(int)(player->y + player->dir_y \
+			*move_speed)][(int)player->x];
 	if (x != WALL)
 		player->x += player->dir_x * move_speed;
 	if (y != WALL)
@@ -54,11 +56,13 @@ void	move_back_forward(t_game *game, t_player *player, double move_speed)
 
 void	move_left_right(t_game *game, t_player *player, double move_speed)
 {
-	char x;
-	char y;
+	char	x;
+	char	y;
 
-	x = game->map[(int)player->y][(int)(player->x + player->dir_x * move_speed)];
-	y = game->map[(int)(player->y + player->dir_y *move_speed)][(int)player->x];
+	x = game->map[(int)player->y][(int)(player->x + \
+			player->dir_x * move_speed)];
+	y = game->map[(int)(player->y + player->dir_y * \
+			move_speed)][(int)player->x];
 	if (x != WALL)
 		player->x += player->dir_y * move_speed;
 	if (y != WALL)
@@ -67,13 +71,17 @@ void	move_left_right(t_game *game, t_player *player, double move_speed)
 
 void	roatae_player(t_player *player, double rot_speed)
 {
-	double old_dir_x;
-	double old_plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = player->dir_x;
-	player->dir_x = player->dir_x * cos(rot_speed) - player->dir_y * sin(rot_speed);
-	player->dir_y = old_dir_x * sin(rot_speed) + player->dir_y * cos(rot_speed);
+	player->dir_x = player->dir_x * cos(rot_speed) - \
+					player->dir_y * sin(rot_speed);
+	player->dir_y = old_dir_x * sin(rot_speed) + \
+					player->dir_y * cos(rot_speed);
 	old_plane_x = player->plane_x;
-	player->plane_x = player_plane_x * cos(rot_speed) - player->plane_y * sin(rot_speed);
-	player->palne_y = old_plane_x * sin(rot_speed) + player->plane_y * cos(rot_speed);
+	player->plane_x = player_plane_x * cos(rot_speed) - \
+					player->plane_y * sin(rot_speed);
+	player->palne_y = old_plane_x * sin(rot_speed) + \
+					player->plane_y * cos(rot_speed);
 }

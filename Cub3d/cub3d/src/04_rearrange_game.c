@@ -1,4 +1,4 @@
-* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   04_rearrange_game.c                                :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 21:58:17 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 00:05:06 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:17:07 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	rearrange_game(t_game *game)
 	allocate_buffer(s);
 	load_texture(s);
 	game->img.ptr = mlx_new_image(game->mlx, game->width, game_height);
-	game->img.data = (int *)mlx_get_data_addr(game->img.ptr, &game->img.bpp, 
-			&game->img.size_l, &game->img.endian);
+	game->img.data = (int *)mlx_get_data_addr(game->img.ptr, \
+			&game->img.bpp, &game->img.size_l, &game->img.endian);
 }
 
 void	apply_player_orientation(t_game *game)
@@ -75,8 +75,10 @@ void	load_image(t_game *game, int *texture, char *path, t_img *img)
 	int	x;
 	int	y;
 
-	img->ptr = mlx_xpm_file_to_image(game->mlx, path, &img->width, &img->height);
-	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp, &img->size_l, &img->endian);
+	img->ptr = mlx_xpm_file_to_image(game->mlx, path, \
+			&img->width, &img->height);
+	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp, \
+			&img->size_l, &img->endian);
 	y = 0;
 	while (y < img->height)
 	{

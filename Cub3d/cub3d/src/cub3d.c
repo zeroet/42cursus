@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 00:07:57 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 17:27:40 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	init_game(t_game *game)
 
 void	open_cub(char *file_name, t_game *game)
 {
-	if (!ft_isformat(file_name, ".cub");
+	if (!ft_isformat(file_name, ".cub"))
 		ft_strexit("ERROR: CUB File Needed!");
 	game->fd = open(file_name, O_RDONLY);
 	if (game->fd == -1)
 		ft_strexit("ERROR: No Such CUB File Available!");
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	if (argc != 2)
 		ft_strexit("ERROR: Argument Error!");
