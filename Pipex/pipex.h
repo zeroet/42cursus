@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 21:21:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/30 16:04:23 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 20:15:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,14 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
 static size_t	get_row(char const *s, char c);
 int	ft_memcmp(const void *p1, const void *p2, size_t size);
+
+
+void	cmd2(int *fd, t_input *info);
+t_input	*init_info(int argc, char **argv, char **envp);
+void	pipex(t_input *info);
+void	cmd1(int *fd, t_input *info);
+void	std_in(t_input *info);
+char	*make_cmd1(t_input *info);
+char *get_path(t_input *info);
 
 #endif

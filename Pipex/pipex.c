@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:01:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:38:01 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/26 20:15:35 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,15 @@ char	*make_cmd1(t_input *info)
 	char *cmd1;
 	char *res;
 	int	mode;
+	int i;
 
 	path = get_path(info);
 	envp = ft_split(path + 5, ':');
 	cmd1 = ft_strjoin("/", info->argv[2]);
 	mode = X_OK | F_OK;
-	while (evnp[i])
+	while (envp[i])
 	{
-		res = ft_strjoin(evnp[i], cmd1);
+		res = ft_strjoin(envp[i], cmd1);
 		if (access(res, mode))
 		{
 			free(envp);
@@ -65,7 +66,7 @@ char	*make_cmd1(t_input *info)
 		i++;
 	}
 	free(cmd1);
-	free(evnp);
+	free(envp);
 	exit(1);
 }
 
@@ -109,7 +110,7 @@ void	pipex(t_input *info)
 		cmd1(fd, info);
 	else
 	{
-		waitpid(pid, &status, NULL);
+		waitpid(pid, 0, 0);
 		cmd2(fd, info);
 	}
 	exit(1);
