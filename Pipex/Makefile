@@ -1,27 +1,28 @@
-TARGET = pipex
+NAME = pipex
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 HEADER = pipex.h
-RM = rm -rf
+RM = rm -f
 
-SRC = pipex.c \
-	  utiles.c
-
+SRCS = pipex.c \
+	  utiles.c \
+	  utiles2.c \
+	  main.c
 OBJS = $(SRCS:.c=.o)
 
-all : $(TARGET)
+all : $(NAME)
 
-$(TARGET) : $(OBJS)
-	$@ $^
+$(NAME) : $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) -I $(HEADER)
 
-%.o: %.c $(HEADER)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	$(RM) $(OBJS)
 
 fclean : clean
-	$(RM) $(TARGET)
+	$(RM) $(NAME)
 
 re : fclean all

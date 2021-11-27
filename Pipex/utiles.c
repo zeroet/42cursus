@@ -6,21 +6,11 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 15:56:24 by seyun             #+#    #+#             */
-/*   Updated: 2021/10/30 16:18:41 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/27 14:23:53 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(s++))
-		i++;
-	return (i);
-}
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
@@ -63,20 +53,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len;
-	char	*res;
-
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	res = malloc(len);
-	if (!res)
-		return (0);
-	ft_strlcpy(res, s1, len);
-	ft_strlcat(res, s2, len);
-	return (res);
-}
-
 static size_t	get_row(char const *s, char c)
 {
 	size_t	cnt;
@@ -104,8 +80,6 @@ char	**ft_split(char const *s, char c)
 	size_t	size;
 
 	res = (char **)malloc(sizeof(char *) * get_row(s, c) + 1);
-	if (!res)
-		return (0);
 	idx = 0;
 	while (*s)
 	{
@@ -115,8 +89,7 @@ char	**ft_split(char const *s, char c)
 			while (*s && *s != c)
 				++s;
 			size = s - from + 1;
-			if (!(res[idx] = (char *)malloc(size)))
-				return (0);
+			res[idx] = (char *)malloc(size);
 			ft_strlcpy(res[idx++], from, size);
 		}
 		else
