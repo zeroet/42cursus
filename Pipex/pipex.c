@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:01:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/28 00:37:16 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/28 00:42:45 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cmd2(int *fd, t_input *info)
 	close(fd[P_READ]);
 	path = make_cmd(info, 3);
 	argv = ft_split(info->argv[3], ' ');
-	if (-1 == execve(path, argv, info->envp))
+	if (-1 == execve(path, argv, NULL))
 	{	
 		ft_strexit("ERROR");
 	}
@@ -62,7 +62,7 @@ void	cmd1(int *fd, t_input *info)
 	close(fd[P_WRITE]);
 	path = make_cmd(info, 2);
 	argv = ft_split(info->argv[2], ' ');
-	if (-1 == execve(path, argv, info->envp))
+	if (-1 == execve(path, argv, NULL))
 	{	
 		ft_strexit("ERROR");
 	}
