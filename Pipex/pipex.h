@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 21:21:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/27 14:20:42 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/28 00:07:10 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	cmd1(int *fd, t_input *info);
 void	std_in(t_input *info);
 char	*make_cmd(t_input *info, int index);
 char	**get_path(t_input *info);
+void	ft_strexit(char *str);
 
 #endif

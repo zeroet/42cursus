@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 14:22:32 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/27 14:28:07 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/28 00:08:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,15 @@ size_t	ft_strlen(const char *s)
 	while (*(s++))
 		i++;
 	return (i);
+}
+
+void	ft_strexit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		write(1, str, 1);
+	write(1, "\n", 1);
+	exit(1);
 }
