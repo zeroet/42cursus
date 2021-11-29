@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:07:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:27:40 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:10:50 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	init_game(t_game *game)
 	game->map_height = 0;
 	game->map = NULL;
 	game->player.dir = '\0';
-	game->num_sprite = 0;
 	game->buf = NULL;
 	game->width = 1680;
 	game->height = 1050;
@@ -45,8 +44,8 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	open_cub(argv[1], &game);
 	read_info(&game);
-	validate_info(&game, game.line);
-	read_map(&game);
+	validate_info(&game);
+	read_map(&game, game.line);
 	validate_map(&game);
 	rearrange_game(&game);
 	run_game(&game);

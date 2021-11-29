@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_longest_node_len.c                              :+:      :+:    :+:   */
+/*   ft_only_digit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 12:25:01 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/29 23:02:17 by seyun            ###   ########.fr       */
+/*   Created: 2021/11/29 22:16:42 by seyun             #+#    #+#             */
+/*   Updated: 2021/11/29 22:16:44 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_longest_node_len(t_list *lst)
+int		ft_only_digit(char *str)
 {
-	size_t	max;
+	int i;
 
-	max = -1;
-	while (lst)
+	i = 0;
+	while (str[i])
 	{
-		if (max < ft_strlen((char *)lst->content))
-			max = ft_strlen((char *)lst->content);
-		lst = lst->next;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
-	return (max);
+	return (1);
 }

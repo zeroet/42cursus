@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:59:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:17:22 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:15:31 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ int	decide_info_map(t_game *game, char **info)
 	else if (ft_strcmp(info[0], "EA") == 0)
 		game_texture(game, info[1], EAST);
 	else if (ft_strcmp(info[1], "F") == 0)
-		game_color(s, info[1], FLOOR);
+		game_color(game, info[1], FLOOR);
 	else if (ft_strcmp(info[1], "C") == 0)
-		game_color(s, info[1], CEILING);
+		game_color(game, info[1], CEILING);
 	else
 		return (MAP_START);
 	return (0);
 }
 
-void	game_texture(t_game *game, char *xpm_path, int flang)
+void	game_texture(t_game *game, char *xpm_path, int flag)
 {
 	int	fd;
 
-	if (!xmp_path || !ft_isformat(xpm_path, ".xpm"))
+	if (!xpm_path || !ft_isformat(xpm_path, ".xpm"))
 		ft_strexit("ERROR: Path To XPM Needed!");
-	fd = open(xmp_path, O_RDONLY);
+	fd = open(xpm_path, O_RDONLY);
 	if (fd == -1)
 		ft_strexit("ERROR: No Such XPM Available!");
 	close(fd);

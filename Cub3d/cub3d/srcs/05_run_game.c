@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 00:06:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:20:33 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:40:39 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ void	run_game(t_game *game)
 {
 	game->win = mlx_new_window(game->mlx, game->width, game->height, TITLE);
 	mlx_hook(game->win, X_EVENT_KEY_PRESS, 0, detect_keypress, game);
-	mlx_loop_hook(game->mlx, execute_ray_loop, game);
+	mlx_loop_hook(game->mlx, execute_ray, game);
 	mlx_loop(game->mlx);
 }
 
 int	detect_keypress(int key, t_game *game)
 {
 	if (key == KEY_W || key == KEY_UP)
-		move_back_forth(game, &game->player, game->player.move_speed);
+		move_back_forward(game, &game->player, game->player.move_speed);
 	if (key == KEY_S || key == KEY_DOWN)
-		move_back_forth(game, &game->player, game->player.move_speed);
+		move_back_forward(game, &game->player, game->player.move_speed);
 	if (key == KEY_A)
 		move_left_right(game, &game->player, game->player.move_speed);
 	if (key == KEY_D)
 		move_left_right(game, &game->player, game->player.move_speed);
 	if (key == KEY_LEFT)
-		rotate_player(&game->player, -s->player.rot_speed);
+		rotate_player(&game->player, -game->player.rot_speed);
 	if (key == KEY_RIGHT)
-		rotate_player(&game->player, s->player.rot_speed);
+		rotate_player(&game->player, game->player.rot_speed);
 	if (key == KEY_ESC)
 		ft_strexit("KEY_ESC_PRESSED: Exit Successfully!");
 	return (0);
@@ -80,8 +80,8 @@ void	roatae_player(t_player *player, double rot_speed)
 	player->dir_y = old_dir_x * sin(rot_speed) + \
 					player->dir_y * cos(rot_speed);
 	old_plane_x = player->plane_x;
-	player->plane_x = player_plane_x * cos(rot_speed) - \
+	player->plane_x = player->plane_x * cos(rot_speed) - \
 					player->plane_y * sin(rot_speed);
-	player->palne_y = old_plane_x * sin(rot_speed) + \
+	player->plane_y = old_plane_x * sin(rot_speed) + \
 					player->plane_y * cos(rot_speed);
 }

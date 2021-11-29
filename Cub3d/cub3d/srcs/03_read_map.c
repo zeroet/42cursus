@@ -6,11 +6,11 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:14:54 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:21:38 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3.h"
+#include "cub3d.h"
 
 void	read_map(t_game *game, char *line)
 {
@@ -35,7 +35,7 @@ void	allocate_map(t_game *game, t_list *curr)
 	int	j;
 
 	game->map_height = ft_lstsize(curr);
-	game->map_with = ft_longest_node_len(curr);
+	game->map_width = ft_longest_node_len(curr);
 	game->map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)
 		ft_strexit("ERROR: Malloc Fail!");
@@ -58,10 +58,10 @@ void	allocate_map(t_game *game, t_list *curr)
 	}
 }
 
-void	store_map(t_game *game, t_lst *curr)
+void	store_map(t_game *game, t_list *curr)
 {
 	int		i;
-	int		j;
+	size_t	j;
 	char	*content;
 
 	i = 0;
@@ -71,7 +71,7 @@ void	store_map(t_game *game, t_lst *curr)
 		content = (char *)curr->content;
 		while (j < ft_strlen(content))
 		{
-			if (!ft_isset(content[j], "NSWE01 \n",) && content[j] != '\0')
+			if (!ft_isset(content[j], "NSWE01 \n") && content[j] != '\0')
 				ft_strexit("ERROR: Invalid Map Element Contained!");
 			game->map[i][j] = content[j];
 			if (ft_isset(content[j], "NSWE"))

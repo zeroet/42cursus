@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 23:17:19 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:21:03 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:55:54 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_floor_ceiling_color(t_game *game)
 void	set_wall_texture(t_player *player, t_ray *ray)
 {
 	if (ray->side == WEST || ray->side == EAST)
-		ray->wall_x = player->y + ray_perp_wall_dist * ray->dir_y;
+		ray->wall_x = player->y + ray->perp_wall_dist * ray->dir_y;
 	else
 		ray->wall_x = player->x + ray->perp_wall_dist * ray->dir_x;
 	ray->wall_x -= floor(ray->wall_x);
@@ -50,8 +50,8 @@ void	set_wall_color(t_game *game, t_ray *ray, int x)
 	int	color;
 	int	y;
 
-	ray->step = 1.0 * TEX_HIEGHT / ray->line_height;
-	ray->tex_pos = (ray_draw_start - game->height / 2 \
+	ray->step = 1.0 * TEX_HEIGHT / ray->line_height;
+	ray->tex_pos = (ray->draw_start - game->height / 2 \
 			+ ray->line_height / 2) * ray->step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)

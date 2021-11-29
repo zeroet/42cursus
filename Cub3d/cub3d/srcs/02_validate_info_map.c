@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:02 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:14:35 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:20:15 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	validate_map(t_game *game)
 	validate_map_vertical(game->map, game->map_width, game->map_height);
 }
 
-void	validate_map_horizontal(t_game *game, int width, int height)
+void	validate_map_horizontal(char **map, int width, int height)
 {
 	int	x;
 	int	y;
@@ -58,7 +58,7 @@ void	validate_map_horizontal(t_game *game, int width, int height)
 	}
 }
 
-void	validate_map_verticla(t_game *game, int width, int height)
+void	validate_map_vertical(char **map, int width, int height)
 {
 	int	x;
 	int	y;
@@ -77,7 +77,7 @@ void	validate_map_verticla(t_game *game, int width, int height)
 				break ;
 			if (map[y - 1][x] == ' ' && map[y][x] != WALL)
 				ft_strexit("ERROR: Map Not Surronded By Walls! (Upper Side)");
-			while (y < heght && map[y][x] != ' ')
+			while (y < height && map[y][x] != ' ')
 				y++;
 			if (map[y - 1][x] != WALL)
 				ft_strexit("ERROR: Map Not Surronded By Walls!(Bottom Side)");

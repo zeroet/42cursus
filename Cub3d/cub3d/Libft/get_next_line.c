@@ -5,56 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 23:58:19 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 23:58:58 by seyun            ###   ########.fr       */
+/*   Created: 2020/12/28 19:33:56 by seyun             #+#    #+#             */
+/*   Updated: 2021/11/29 23:08:47 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	handle_line(char **line, char **note, char *nl_here)
+int				find(char *backup)
 {
-	char	*tmp;
+	int			i;
 
-	if (nl_here != NULL)
+	i = 0;
+	while (backup[i])
 	{
-		*line = ft_strndup(*note, nl_here - *note);
-		tmp = ft_strndup(nl_here + 1, ft_strlen(nl_here + 1));
-		free(*note);
-		*note = tmp;
-		return (NL);
+		if (backup[i] == '\n')
+			return (i);
+		i++;
 	}
-	if (*note != NULL)
-	{
-		*line = *note;
-		*note = NULL;
-	}
-	else
-		*line = ft_strndup("", 1);
-	return (_EOF);
+	return (-1);
 }
 
-int			get_next_line(int fd, char **line)
+int				split_line(char **backup, char **line, int end_index)
 {
-	static char	*note[OPEN_MAX];
-	static char	buff[BUFFER_SIZE + 1];
-	int			byte;
+	int			len;
 	char		*tmp;
-	char		*nl_here;
 
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
-		return (ERROR);
-	while ((nl_here = ft_strchr(note[fd], '\n')) == 0
-			&& (byte = read(fd, buff, BUFFER_SIZE)) > 0)
+	(*backup)[end_index] = '\0';
+	*line = ft_strdup(*backup);
+	len = ft_strlen(*backup + end_index + 1);
+	if (len == 0)
 	{
-		buff[byte] = 0;
-		tmp = note[fd] == NULL ? ft_strndup(buff, byte) :
-			ft_strjoin(note[fd], buff);
-		if (note[fd] != 0)
-			free(note[fd]);
-		note[fd] = tmp;
+		free(*backup);
+		*backup = 0;
+		return (1);
 	}
-	if (byte < 0)
-		return (ERROR);
-	return (handle_line(line, &note[fd], nl_here));
+	tmp = ft_strdup(*backup + end_index + 1);
+	free(*backup);
+	*backup = tmp;
+	return (1);
+}
+
+int				all_return(char **backup, char **line, int size)
+{
+	int			end_index;
+
+	if (size < 0)
+		return (-1);
+	if (*backup && (0 <= (end_index = find(*backup))))
+		return (split_line(backup, line, end_index));
+	else if (*backup)
+	{
+		*line = *backup;
+		*backup = 0;
+		return (0);
+	}
+	*line = ft_strdup("");
+	return (0);
+}
+
+int				get_next_line(int fd, char **line)
+{
+	char		buf[BUFFER_SIZE + 1];
+	static char	*backup[OPEN_MAX];
+	int			end_index;
+	int			size;
+
+	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
+		return (-1);
+	while (0 < (size = read(fd, buf, BUFFER_SIZE)))
+	{
+		buf[size] = '\0';
+		backup[fd] = ft_strjoin(backup[fd], buf);
+		if (0 <= (end_index = find(backup[fd])))
+			return (split_line(&backup[fd], line, end_index));
+	}
+	return (all_return(&backup[fd], line, size));
 }

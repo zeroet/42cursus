@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 23:35:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:24:18 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 23:00:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define PI 3.1415926535897
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_EXIT 17
-# define TEX_WIDTH
-# define TEX_HEIGHT
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 # define KEY_A 0
 # define KEY_D 2
@@ -48,25 +48,6 @@
 
 # define MAP_START -1
 # define EMPTY_LINE '\0'
-
-typedef struct s_game
-{
-	void		*mlx;
-	void		*win;
-	int			fd;
-	t_tex		tex;
-	t_list		*lst;
-	t_img		img;
-	t_player	player;
-	t_ray		ray;
-	int			map_width;
-	int			map_height;
-	char		*line;
-	char		**map;
-	int			**buf;
-	int			width;
-	int			height;
-}				t_game;
 
 typedef struct s_ray
 {
@@ -127,6 +108,25 @@ typedef struct s_img
 	int			height;
 }				t_img;
 
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	int			fd;
+	t_tex		tex;
+	t_list		*lst;
+	t_img		img;
+	t_player	player;
+	t_ray		ray;
+	int			map_width;
+	int			map_height;
+	char		*line;
+	char		**map;
+	int			**buf;
+	int			width;
+	int			height;
+}				t_game;
+
 /* cub3d */
 
 void	init_game(t_game *game);
@@ -143,15 +143,15 @@ void	game_color(t_game *game, char *rgb_with_comma, int flag);
 /* 02_validate_info_map */
 
 void	validate_info(t_game *game);
-void	validate_map_verticla(t_game *game, int width, int height);
-void	validate_map_horizontal(t_game *game, int width, int height);
+void	validate_map_vertical(char **map, int width, int height);
+void	validate_map_horizontal(char **map, int width, int height);
 void	validate_map(t_game *game);
 
 /* 03_read_map */
 
 void	read_map(t_game *game, char *line);
 void	create_player(t_game *game, int i, int j);
-void	store_map(t_game *game, t_lst *curr);
+void	store_map(t_game *game, t_list *curr);
 void	allocate_map(t_game *game, t_list *curr);
 
 /* 04_rearrange_game */
@@ -165,7 +165,7 @@ void	allocate_buffer(t_game *game);
 /* 05_run_game */
 
 void	run_game(t_game *game);
-void	roatae_player(t_player *player, double rot_speed);
+void	rotate_player(t_player *player, double rot_speed);
 void	move_left_right(t_game *game, t_player *player, double move_speed);
 void	move_back_forward(t_game *game, t_player *player, double move_speed);
 int		detect_keypress(int key, t_game *game);
@@ -187,6 +187,7 @@ void	set_wall_texture(t_player *player, t_ray *ray);
 void	calculate_wall_distance(t_player *player, t_ray *ray);
 void	perform_dda(t_game *game, t_ray *ray);
 void	calculate_step_direction(t_player *player, t_ray *ray);
+void	calculate_wall_height(t_game *game, t_ray *ray);
 void	init_ray(t_game *game, t_player *player, t_ray *ray, int x);
 
 #endif

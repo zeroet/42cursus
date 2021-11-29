@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 23:12:44 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:21:24 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 23:01:25 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	init_ray(t_game *game, t_player *player, t_ray *ray, int x)
 {
-	ray->camera_x = 2 * / (double)game->width - 1;
+	ray->camera_x = 2 * x / (double)game->width - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x * -1;
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x * -1;
 	ray->map_x = (int)player->x;
 	ray->map_y = (int)player->y;
 	ray->delta_dist_x = fabs(1 / ray->dir_x);
-	ray->delta_disy_y = fabs(1 / ray->dir_y);
+	ray->delta_dist_y = fabs(1 / ray->dir_y);
 	ray->hit = 0;
 }
 
@@ -71,7 +71,7 @@ void	perform_dda(t_game *game, t_ray *ray)
 				ray->side = NORTH;
 		}
 		if (game->map[ray->map_y][ray->map_x] == WALL)
-			ray->hit == 1;
+			ray->hit = 1;
 	}
 }
 
@@ -85,7 +85,7 @@ void	calculate_wall_distance(t_player *player, t_ray *ray)
 				player->y + (1 - ray->step_y) / 2) / ray->dir_y;
 }
 
-void	calculate_wall_height(t_all *game, t_ray *ray)
+void	calculate_wall_height(t_game *game, t_ray *ray)
 {
 	ray->line_height = (int)(game->height / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + game->height / 2;

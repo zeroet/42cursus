@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 21:58:17 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:17:07 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 22:23:40 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	rearrange_game(t_game *game)
 {
 	apply_player_orientation(game);
 	game->mlx = mlx_init();
-	allocate_buffer(s);
-	load_texture(s);
-	game->img.ptr = mlx_new_image(game->mlx, game->width, game_height);
+	allocate_buffer(game);
+	load_texture(game);
+	game->img.ptr = mlx_new_image(game->mlx, game->width, game->height);
 	game->img.data = (int *)mlx_get_data_addr(game->img.ptr, \
 			&game->img.bpp, &game->img.size_l, &game->img.endian);
 }

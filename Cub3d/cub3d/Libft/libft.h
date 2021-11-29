@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/25 23:59:51 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 23:10:28 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+
+# define OPEN_MAX 32
+# define BUFFER_SIZE 1
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 char		*ft_strchr(const char *s, int c);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
@@ -59,14 +68,7 @@ void		ft_free_double(char **str);
 int			ft_longest_node_len(t_list *lst);
 int			ft_isset(char c, char *str);
 int			get_next_line(int fd, char **line);
-
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
+int			ft_strcmp(const char *s1, const char *s2);
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *new);
 int			ft_lstsize(t_list *lst);
@@ -76,5 +78,6 @@ void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int			ft_only_digit(char *str);
 
 #endif
