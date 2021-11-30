@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 16:16:00 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/29 16:29:28 by seyun            ###   ########.fr       */
+/*   Created: 2021/11/30 19:52:56 by seyun             #+#    #+#             */
+/*   Updated: 2021/11/30 19:54:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdio.h>
+char	*ft_strndup(char *s1, size_t size)
+{
+	char	*dup;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
-
-#endif
+	dup = (char *)malloc(sizeof(char) * (size + 1));
+	if (dup == 0)
+		return (0);
+	ft_strcpy(dup, s1, size);
+	dup[size] = 0;
+	return (dup);
+}

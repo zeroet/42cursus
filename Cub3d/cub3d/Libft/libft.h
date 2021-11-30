@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 21:43:23 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/30 18:51:16 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/30 19:57:46 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 # define OPEN_MAX 32
 # define BUFFER_SIZE 1
+# define NL 1
+# define _EOF 0
+# define ERROR -1
 
 typedef struct s_list
 {
@@ -79,5 +82,7 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_only_digit(char *str);
+char		*ft_strndup(char *s1, size_t size);
+char		*ft_strcpy(char *dst, char *src, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:59:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/29 22:15:31 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/30 19:48:59 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	read_info(t_game *game)
 	char	**info;
 	int		flag;
 
+	line = NULL;
 	while (get_next_line(game->fd, &line) > 0)
 	{
 		if (line[0] == EMPTY_LINE)

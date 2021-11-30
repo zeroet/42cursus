@@ -1,13 +1,14 @@
 NAME = cub3d
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 INCS = -I./srcs -I./libft -I./mlx
 INCLIB = -Lmlx -lmlx -framework OpenGL -framework Appkit -Llibft -lft
 
 LIBFT_D = ./libft
 LIBFT_A = ./libft/libft.a
+LIBFT_M = ./mlx
 
 FILES = cub3d.c \
 		01_read_info.c \
@@ -30,6 +31,7 @@ $(NAME): $(OBJS)
 
 clean:
 	make -C $(LIBFT_D) clean
+	make -C $(LIBFT_M) clean
 	rm -f $(OBJS)
 
 fclean: clean

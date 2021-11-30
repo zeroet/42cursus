@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:31:24 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/08 13:35:34 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/30 19:18:18 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ void	ft_strexit(char *str)
 	len = ft_strlen(str);
 	write(1, str, len);
 	write(1, "\n", 1);
+	exit(0);
 }
