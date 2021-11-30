@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:01:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/28 00:42:45 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 14:34:49 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	std_out(t_input *info)
 	if (fd < 0)
 		exit(1);
 	dup2(fd, 1);
-	//close(fd);
+	close(fd);
 }
 
 void	cmd2(int *fd, t_input *info)
@@ -48,7 +48,7 @@ void	std_in(t_input *info)
 	if (fd < 0)
 		exit(1);
 	dup2(fd, 0);
-	//close(fd);
+	close(fd);
 }
 
 void	cmd1(int *fd, t_input *info)

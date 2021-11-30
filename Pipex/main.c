@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 14:25:57 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/28 00:09:38 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/29 13:07:29 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ char	*make_cmd(t_input *info, int index)
 		{
 			free(envp);
 			free(cmd);
-			printf("%s ---- ok \n ", res);
 			return (res);
 		}
-		printf("%s ---- not ok\n", res);
 		free(res);
 		i++;
 	}
