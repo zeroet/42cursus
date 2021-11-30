@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 00:06:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/29 22:40:39 by seyun            ###   ########.fr       */
+/*   Updated: 2021/11/30 19:11:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	move_left_right(t_game *game, t_player *player, double move_speed)
 		player->y += -player->dir_x * move_speed;
 }
 
-void	roatae_player(t_player *player, double rot_speed)
+void	rotate_player(t_player *player, double rot_speed)
 {
 	double	old_dir_x;
 	double	old_plane_x;
