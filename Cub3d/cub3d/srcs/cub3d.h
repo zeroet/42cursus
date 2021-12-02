@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 23:35:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/30 19:26:23 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/02 15:13:41 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 # define TITLE "cub3D"
 # define EMPTY '0'

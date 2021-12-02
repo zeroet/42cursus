@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:02 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/29 22:20:15 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/02 17:10:11 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	validate_info(t_game *game)
 {
 	if (!game->tex.path[NORTH] || !game->tex.path[SOUTH] || \
 			!game->tex.path[WEST] || !game->tex.path[EAST] \
-			|| game->tex.floor || game->tex.ceiling == -1)
+			||game->tex.floor == -1 || game->tex.ceiling == -1)
 		ft_strexit("ERROR: Texture Info Missing!");
 }
 

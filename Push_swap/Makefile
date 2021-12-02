@@ -1,7 +1,7 @@
 TARGET = push_swap
 
 CC = gcc
-CFLAG = -Wall -Werror -Wextra
+CFLAG = -Wall -Werror -Wextra -g3 -fsanitize=address
 RM = -rm -rf
 
 INCS_DIR = ./includes/

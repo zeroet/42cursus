@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:59:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/30 19:48:59 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/02 15:17:52 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	decide_info_map(t_game *game, char **info)
 		game_texture(game, info[1], WEST);
 	else if (ft_strcmp(info[0], "EA") == 0)
 		game_texture(game, info[1], EAST);
-	else if (ft_strcmp(info[1], "F") == 0)
+	else if (ft_strcmp(info[0], "F") == 0)
 		game_color(game, info[1], FLOOR);
-	else if (ft_strcmp(info[1], "C") == 0)
+	else if (ft_strcmp(info[0], "C") == 0)
 		game_color(game, info[1], CEILING);
 	else
 		return (MAP_START);
@@ -93,5 +93,5 @@ void	game_color(t_game *game, char *rgb_with_comma, int flag)
 		game->tex.floor = hex;
 	else if (flag == CEILING)
 		game->tex.ceiling = hex;
-	ft_free_double(rgb);
+		ft_free_double(rgb);
 }
