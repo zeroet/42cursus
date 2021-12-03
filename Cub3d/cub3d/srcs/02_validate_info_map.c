@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:02 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/02 17:10:11 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/03 16:19:47 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	validate_map(t_game *game)
 	if (game->player.dir == '\0')
 		ft_strexit("ERROR: No Player Position Givien!");
 	validate_map_horizontal(game->map, game->map_width, game->map_height);
-	validate_map_vertical(game->map, game->map_width, game->map_height);
+	validate_map_vertical(game->map, game->map_width, game->map_height); //LEAKS
 }
 
 void	validate_map_horizontal(char **map, int width, int height)
@@ -66,7 +66,7 @@ void	validate_map_vertical(char **map, int width, int height)
 	x = 0;
 	while (x < width)
 	{
-		if (map[x][0] != ' ' && map [x][0] != WALL)
+		if (map[0][x] != ' ' && map [0][x] != WALL)
 			ft_strexit("ERROR Map Not Surronded by Walls! (Upper Side)");
 		y = 1;
 		while (y < height)

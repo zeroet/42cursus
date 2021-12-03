@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:24:15 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/12 14:26:30 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/03 15:20:45 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int	ft_isset(char c, char *str)
 {
-	while(*str)
+	int i;
+
+	i = 0;
+	while(str[i])
 	{
-		if (c == *str)
+		if (c == str[i])
 			return (1);
-		str++;
+		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:09:48 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/02 17:10:07 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/03 16:06:59 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	read_map(t_game *game, char *line)
 	free(line);
 	allocate_map(game, game->lst);
 	store_map(game, game->lst);
-	ft_lstclear(&(game->lst), free);
+	ft_lstclear(&(game->lst), free); // NULL ok
 }
 
 void	allocate_map(t_game *game, t_list *curr)
