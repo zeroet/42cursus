@@ -27,6 +27,7 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_D)
+	make -C $(LIBFT_M)
 	$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(INCLIB)
 
 clean:
