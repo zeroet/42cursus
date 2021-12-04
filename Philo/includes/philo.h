@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:11:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/04 22:47:07 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/05 00:27:15 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <stdio.h>
 # include "../Libft/libft.h"
 
-int	validate_argument(char **av);
+int	validate_argument(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: seyun <seyun@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 21:57:40 by seyun             #+#    #+#              #
-#    Updated: 2021/12/04 23:48:20 by seyun            ###   ########.fr        #
+#    Updated: 2021/12/05 00:18:04 by seyun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -f
 
-HEADER		=	./src/
+HEADER		=	./includes/
 LIBFT_A		= 	./Libft/libft.a
 LIBFT_D		=	./Libft/
 
@@ -44,8 +44,9 @@ LIBFT_D		=	./Libft/
 # =============================================================================
 
 FILES 	=	philo.c
-SRC		=   $(addprefix srcs/, $(FILES))
+SRC		=   $(addprefix src/, $(FILES))
 OBJ		=	$(SRC:.c=.o)
+INCLIB	=	-Llibft -lft
 
 # =============================================================================
 # Target Generating
@@ -61,7 +62,7 @@ all			:	$(NAME)
 $(NAME)		:	$(OBJ)
 				@echo $(GREEN) "Source files are compiled!\n" $(EOC)
 				@echo $(WHITE) "Building $(NAME) for" $(YELLOW) "Mandatory" $(WHITE) "..." $(EOC)
-				$(CC) $(CFALGS) -I $(HEADER) -I $(LIBFT_D) -o $(NAME) $(OBJ)
+				@$(CC) $(CFLAGS) -I $(HEADER) -I $(LIBFT_D) -o $(NAME) $(OBJ) $(INCLIB)
 				@echo $(GREEN) "$(NAME) is created!\n" $(EOC)
 
 # =============================================================================
