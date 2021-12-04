@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 17:00:58 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/04 17:33:38 by seyun            ###   ########.fr       */
+/*   Created: 2020/11/26 15:08:25 by seyun             #+#    #+#             */
+/*   Updated: 2021/10/20 23:46:58 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <time.h>
+#include "libft.h"
 
-int main(void)
+int	ft_memcmp(const void *p1, const void *p2, size_t size)
 {
-	
+	while (size--)
+	{
+		if (*(char *)p1 != *(char *)p2)
+			return (*(unsigned char *)p1 - *(unsigned char *)p2);
+		p1++;
+		p2++;
+	}
 	return (0);
 }

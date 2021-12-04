@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phlio.c                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/04 18:23:46 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/04 22:44:25 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "philo.h"
+
 int	validate_argument(char **av)
 {
-	char	**str;
 	int		i;
 
-	i = 0;
-	if (av != 5)
-		ft_strexit("Error : give 5 arguments!");
-	str = ft_split(av, ' ');
-	while (str[i])
+	i = 1;
+	while (av[i])
 	{
-		if (!ft_only_digit(str[i]))
+		if (!ft_only_digit(av[i]))
 			ft_strexit("ERROR: give only digit arguments!");
-
-	}:
+		i++;
+	}
+	if (i != 5)
+		ft_strexit("ERROR: Give 5 arguments");
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	if (validate_argument(av))
-		strexit("ERROR:");
-	
-	
+	if (ac != 5)
+		exit(0);
+	validate_argument(av);
+	return (0);
 }
