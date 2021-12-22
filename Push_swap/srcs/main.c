@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 13:50:54 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/26 17:34:58 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/22 16:21:58 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	main(int argc, char **argv)
 			a_to_b(&stack_a, &stack_b, i);
 	}
 	dlst_clear(stack_a);
+	system("leaks push_swap");
 	return (0);
 }

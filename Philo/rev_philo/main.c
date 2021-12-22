@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 22:11:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/22 15:34:43 by seyun            ###   ########.fr       */
+/*   Created: 2021/11/14 14:22:15 by ytak              #+#    #+#             */
+/*   Updated: 2021/12/22 15:42:25 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <stdio.h>
-# include <pthread.h>
-# include "../Libft/libft.h"
-
-typedef struct s_info
+int	main(int argc, char *argv[])
 {
-	pthread_t *philo;
-}	t_info;
+	t_info	all;
 
-
-int	validate_argument(int ac, char **av);
-
-#endif
+	if (!ft_init_all(argc, argv, &all))
+		return (0);
+	ft_thread_all(&all);
+	if (all.fork)
+		free(all.fork);
+	if (all.philo)
+		free(all.philo);
+	return (0);
+}	

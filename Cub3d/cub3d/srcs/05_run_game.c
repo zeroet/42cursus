@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 00:06:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/11/30 19:11:00 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/22 14:54:46 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	detect_keypress(int key, t_game *game)
 	if (key == KEY_W || key == KEY_UP)
 		move_back_forward(game, &game->player, game->player.move_speed);
 	if (key == KEY_S || key == KEY_DOWN)
-		move_back_forward(game, &game->player, game->player.move_speed);
+		move_back_forward(game, &game->player, -game->player.move_speed);
 	if (key == KEY_A)
 		move_left_right(game, &game->player, game->player.move_speed);
 	if (key == KEY_D)
-		move_left_right(game, &game->player, game->player.move_speed);
+		move_left_right(game, &game->player, -game->player.move_speed);
 	if (key == KEY_LEFT)
 		rotate_player(&game->player, -game->player.rot_speed);
 	if (key == KEY_RIGHT)
