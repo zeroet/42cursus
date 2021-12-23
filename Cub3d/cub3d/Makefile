@@ -18,9 +18,9 @@ LINE_CLEAR	=	"\x1b[1A\x1b[M"
 # Command Variables
 # =============================================================================
 
-NAME = cub3d
+NAME = cub3D
 
-CC = gcc -g3 -fsanitize=address
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 INCS = -I./srcs -I./libft -I./mlx
