@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 23:35:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/03 16:11:15 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/29 19:19:00 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ int		detect_keypress(int key, t_game *game);
 
 /* 06_execute_ray */
 
+int		ft_exit_key(t_game *game);
 int		execute_ray(t_game *game);
 void	ray_background(t_game *game);
 void	render(t_game *game);

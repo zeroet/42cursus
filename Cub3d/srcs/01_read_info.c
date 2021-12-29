@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 22:59:33 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/22 14:50:58 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/28 21:34:56 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void	read_info(t_game *game)
 	while (get_next_line(game->fd, &line) > 0)
 	{
 		if (line[0] == EMPTY_LINE)
+		{	
+			free(line);
 			continue ;
+		}
 		info = ft_split(line, ' ');
 		if (!info)
 			ft_strexit("ERROR: Split Fail!");

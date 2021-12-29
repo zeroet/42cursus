@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 00:06:03 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/23 21:39:34 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/29 19:21:53 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	run_game(t_game *game)
 {
 	game->win = mlx_new_window(game->mlx, game->width, game->height, TITLE);
 	mlx_hook(game->win, X_EVENT_KEY_PRESS, 0, detect_keypress, game);
-	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, detect_keypress, game);
+	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, ft_exit_key, game);
 	mlx_loop_hook(game->mlx, execute_ray, game);
 	mlx_loop(game->mlx);
 }
@@ -35,7 +35,7 @@ int	detect_keypress(int key, t_game *game)
 		rotate_player(&game->player, -game->player.rot_speed);
 	if (key == KEY_RIGHT)
 		rotate_player(&game->player, game->player.rot_speed);
-	if (key == KEY_ESC)
+	if (key == KEY_ESC || key == X_EVENT_KEY_EXIT)
 		ft_strexit("KEY_ESC_PRESSED: Exit Successfully!");
 	return (0);
 }

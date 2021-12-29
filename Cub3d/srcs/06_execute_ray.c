@@ -6,11 +6,18 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 22:52:15 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/02 23:06:47 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/29 19:20:20 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_exit_key(t_game *game)
+{
+	(void)game;
+	ft_strexit("KEY_EXIT_PRESSED: Exit Successfully!");
+	return (0);
+}
 
 int	execute_ray(t_game *game)
 {
