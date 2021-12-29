@@ -20,7 +20,7 @@ LINE_CLEAR	=	"\x1b[1A\x1b[M"
 
 NAME = cub3d
 
-CC = gcc -g3 -fsanitize=address
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 INCS = -I./srcs -I./libft -I./mlx
