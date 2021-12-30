@@ -6,32 +6,33 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 17:33:00 by seyun             #+#    #+#             */
-/*   Updated: 2021/06/28 15:51:33 by seyun            ###   ########.fr       */
+/*   Updated: 2021/12/30 18:39:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_next_line(char **line)
+char *get_next_line(int fd)
 {
 	int	i;
 	int	l;
 	int	r;
 	char	c;
 	char	*tmp;
-
+	char	*line;
+	
 	r = 0;
 	l = 1;
 	*line = malloc(l);
 	if (!(*line))
-		return (-1);
+		return (NULL);
 	(*line)[0] = 0;
-	while ((r = read(0, &c, 1)) && l++ && c != '\n')
+	while ((r = read(fd, &c, 1)) && l++ && c != '\n')
 	{
 		if (!(tmp = malloc(l)))
 		{
 			free(*line);
-			return(-1);
+			return(NULL);
 		}
 		i = -1;
 		while (++i < l - 2)
@@ -41,5 +42,5 @@ int	get_next_line(char **line)
 		free(*line);
 		*line = tmp;
 	}
-	return (r);
+	return (*line);
 }
