@@ -6,13 +6,13 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 17:33:00 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/30 18:39:03 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/04 18:33:56 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	int	i;
 	int	l;

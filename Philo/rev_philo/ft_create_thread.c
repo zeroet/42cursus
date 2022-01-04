@@ -6,7 +6,7 @@
 /*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:17:07 by ytak              #+#    #+#             */
-/*   Updated: 2021/12/30 17:44:31 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/04 18:06:45 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_create_thread(t_info *all)
 			return (0);
 		}
 	}
-	return (1);return
+	return (1);
 }
 
 void	ft_free_thread(t_info *all)

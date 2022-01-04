@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 17:38:32 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/30 17:53:38 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/04 18:32:51 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *get_next_line(char **line);
+char *get_next_line(int fd);
 
 #endif
