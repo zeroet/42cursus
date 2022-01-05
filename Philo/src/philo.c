@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/04 18:15:29 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/05 18:25:50 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ int	main(int ac, char **av)
 	validate_argument(ac, av);
 	init_base_info(ac, av, &info);
 	init_pthread(&info);
-	create_pthread(&info);
 	return (0);
 }
