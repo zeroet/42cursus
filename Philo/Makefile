@@ -6,7 +6,7 @@
 #    By: seyun <seyun@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 21:57:40 by seyun             #+#    #+#              #
-#    Updated: 2022/01/05 18:00:55 by seyun            ###   ########.fr        #
+#    Updated: 2022/01/06 20:29:58 by seyun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LINE_CLEAR	=	"\x1b[1A\x1b[M"
 NAME		=	philo
 
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address
 RM			=	rm -f
 
 HEADER		=	./includes/
@@ -45,7 +45,7 @@ LIBFT_D		=	./Libft/
 
 FILES 	=	philo.c \
 			01_init_pthread.c \
-			02_philo_routine.c
+			02_philo_acts.c
 SRC		=   $(addprefix src/, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 INCLIB	=	-Llibft -lft

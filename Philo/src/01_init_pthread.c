@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:37:56 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/05 18:30:32 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/06 20:53:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	create_mutex(t_base *info)
 	while (i < info->num_philo)
 	{
 		if(pthread_mutex_init(&(info->fork[i]), NULL) != 0)
-			ft_strexit("ERROR: Mutex init error!");
+			ft_strexit("ERROR: Mutex init error(fork)");
 		i++;
 	}
 }
@@ -60,11 +60,16 @@ void	init_pthread(t_base *info)
 	while (i < info->num_philo)
 	{
 		info->philo[i].id = i;
+		info->philo[i].flag = -1;
 		info->philo[i].left_fork = i;
 		info->philo[i].right_fork = (i + 1) % (info->num_philo);
 		info->philo[i].start_time = 0;
-		info->philo[i].end_time = 0;
 		info->philo[i].eat_count = 0;
+		info->philo[i].end_time = 0;
+		if (pthread_mutex_init(&(info->philo[i].time), NULL) != 0)
+			ft_strexit("ERROR: Mutex init error(time)");
+		if (pthread_mutex_init(&(info->philo[i].sleep), NULL) != 0)
+			ft_strexit("ERROR: Mutex init error(sleep)");
 		i++;
 	}
 	create_pthread(info);

@@ -6,7 +6,7 @@
 /*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:00:56 by ytak              #+#    #+#             */
-/*   Updated: 2021/12/22 15:38:58 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/06 19:37:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	ft_atoi(char *str)
 void	ft_philo_printf(int id, char *str, t_info *all)
 {
 	pthread_mutex_lock(&(all->message));
-	pthread_mutex_lock(&all->protect_die);
+	//pthread_mutex_lock(&all->protect_die);
 	if (!(all->flag_die))
 		printf("%lld %d %s\n", ft_get_time() - all->time_start, id + 1, str);
-	pthread_mutex_unlock(&all->protect_die);
+	//pthread_mutex_unlock(&all->protect_die);
 	pthread_mutex_unlock(&(all->message));
 }

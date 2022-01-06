@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/05 18:25:50 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/06 20:53:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ int	validate_argument(int ac, char **av)
 			ft_strexit("ERROR: Wrong argc value!");
 	}
 	return (0);
+}
+
+void	*philo_routine(void *philo_ptr)
+{
+	t_base *info;
+	t_philo *philo;
+
+	philo = (t_philo *)philo_ptr;
+	info = philo->info;
+	printf("%d -- id \n", philo->id);
+	//is_sleep(info, philo);
+	return (NULL);
 }
 
 int	main(int ac, char **av)
