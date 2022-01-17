@@ -6,7 +6,7 @@
 /*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 13:02:10 by ytak              #+#    #+#             */
-/*   Updated: 2022/01/06 19:37:35 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/17 14:33:49 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 	pthread_mutex_t	last_meal;
 	pthread_mutex_t	curr_time;
 }				t_philo;
+
 
 typedef struct s_info
 {

@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/06 20:53:01 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/17 21:26:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	init_base_info(int ac, char **av, t_base *info)
 	info->die_ms = ft_atoi(av[2]);
 	info->eat_ms = ft_atoi(av[3]);
 	info->sleep_ms = ft_atoi(av[4]);
+	info->philo = NULL;
+	info->fork = NULL;
+	info->start_time = 0;
 	if (ac == 6)
 	{
 		info->num_eat = ft_atoi(av[5]);
@@ -47,18 +50,6 @@ int	validate_argument(int ac, char **av)
 	return (0);
 }
 
-void	*philo_routine(void *philo_ptr)
-{
-	t_base *info;
-	t_philo *philo;
-
-	philo = (t_philo *)philo_ptr;
-	info = philo->info;
-	printf("%d -- id \n", philo->id);
-	//is_sleep(info, philo);
-	return (NULL);
-}
-
 int	main(int ac, char **av)
 {
 	t_base info;
@@ -66,5 +57,6 @@ int	main(int ac, char **av)
 	validate_argument(ac, av);
 	init_base_info(ac, av, &info);
 	init_pthread(&info);
+	create_pthread(&info);
 	return (0);
 }

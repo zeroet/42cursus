@@ -6,7 +6,7 @@
 #    By: seyun <seyun@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 21:57:40 by seyun             #+#    #+#              #
-#    Updated: 2022/01/06 20:29:58 by seyun            ###   ########.fr        #
+#    Updated: 2022/01/17 20:30:00 by seyun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LINE_CLEAR	=	"\x1b[1A\x1b[M"
 NAME		=	philo
 
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -g3 -fsanitize=address
 RM			=	rm -f
 
 HEADER		=	./includes/
