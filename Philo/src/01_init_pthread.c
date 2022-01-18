@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:37:56 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/17 21:35:43 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/18 20:20:56 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	create_philo_mutex(t_philo *philo)
 {
 	if (pthread_mutex_init(&(philo->time), NULL) != 0)
 		ft_strexit("ERROR: Mutex init error(time)");
+	if (pthread_mutex_init(&(philo->eat_time), NULL) != 0)
+		ft_strexit("ERROR: Mutex init error(eat_time)");
+	if (pthread_mutex_init(&(philo->eat_cnt), NULL) != 0)
+		ft_strexit("ERROR: Mutex init error(eat_cnt)");
 }
 
 void	create_pthread(t_base *info)

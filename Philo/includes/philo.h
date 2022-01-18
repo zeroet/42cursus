@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:11:33 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/17 21:39:09 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/18 22:17:58 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_philo
 	long long		diff_time;
 	pthread_t		thread_id;
 	pthread_mutex_t	time;
+	pthread_mutex_t eat_time;
+	pthread_mutex_t eat_cnt;
 }					t_philo;
 
 typedef struct s_base
@@ -57,7 +59,6 @@ typedef struct s_base
 
 int			validate_argument(int ac, char **av);
 void		init_base_info(int ac, char **av, t_base *info);
-void		*philo_routine(void *philo_ptr);
 
 /********** 01_init_pthread **********/
 
@@ -69,6 +70,15 @@ void		init_pthread(t_base *info);
 
 /********** 02_philo_acts **********/
 
+void		print_message(int id, int status, t_base *info);
+void		*philo_routine(void *philo_ptr);
 void		is_sleep(long long time, t_philo *philo);
+void		is_eat(t_philo *philo, t_base *info);
+void		is_think(t_philo *philo, t_base *info);
+
+/********** 03_eat_checker **********/
+
+int	eat_checker(t_philo *philo, t_base *info);
+int	is_done(t_philo *philo, t_base *info);
 
 #endif
