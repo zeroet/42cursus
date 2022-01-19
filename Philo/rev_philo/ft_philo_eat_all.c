@@ -6,7 +6,7 @@
 /*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:14:44 by ytak              #+#    #+#             */
-/*   Updated: 2022/01/18 22:00:07 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/19 20:01:48 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	is_allowed_to_eat(t_philo *philo, int loop_id)
 {
 	int	i;
 
-	if (philo->all->num_philo % 2 == 0)
-		return (1);
+	//if (philo->all->num_philo % 2 == 0)
+	//	return (1);
 	i = 0;
 	loop_id %= philo->all->num_philo;
 	while (i < philo->all->num_philo / 2)
@@ -44,8 +44,8 @@ void	ft_allow_eat_sleep_time(t_philo *philo, t_info *all)
 
 void	*ft_philo_eat_all0(t_philo *philo, t_info *all)
 {
-	int	i;
-
+	int i;
+	
 	i = 0;
 	while (!(all->flag_die))
 	{

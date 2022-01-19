@@ -6,7 +6,7 @@
 /*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:17:07 by ytak              #+#    #+#             */
-/*   Updated: 2022/01/17 21:17:35 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/19 21:04:03 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_create_thread(t_info *all)
 	all->time_start = ft_get_time();
 	while (++i < all->num_philo)
 	{
+		//all->time_start = ft_get_time();
 		if (pthread_create(&(all->philo[i].thread_id),
 				NULL, &ft_philo_eat_all, (void *)&(all->philo[i])))
 		{
@@ -53,6 +54,7 @@ void	ft_thread_all(t_info *all)
 {
 	if (!(ft_create_thread(all)))
 		return ;
+	printf("im main\n");
 	ft_checker_loop2(all);
 	ft_free_thread(all);
 	if (!(all->flag_die))

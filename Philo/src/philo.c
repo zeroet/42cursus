@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/18 20:44:41 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/19 21:01:11 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	init_base_info(int ac, char **av, t_base *info)
 	info->philo = NULL;
 	info->fork = NULL;
 	info->start_time = 0;
+	info->flag_die = 0;
+	info->flag_eat = 0;
 	if (ac == 6)
 	{
 		info->num_eat = ft_atoi(av[5]);
@@ -57,6 +59,10 @@ int	main(int ac, char **av)
 	validate_argument(ac, av);
 	init_base_info(ac, av, &info);
 	init_pthread(&info);
-	create_pthread(&info);
+	philo_core(&info);
+	if (info.fork)
+		free(info.fork);
+	if (info.philo)
+		free(info.philo);
 	return (0);
 }

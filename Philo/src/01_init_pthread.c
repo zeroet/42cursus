@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:37:56 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/18 20:20:56 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/19 21:16:43 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	create_info_mutex(t_base *info)
 	}
 	if (pthread_mutex_init(&(info->message), NULL) != 0)
 		ft_strexit("ERROR: Mutex init error(message)");
+	if (pthread_mutex_init(&(info->eat_cnt), NULL) != 0)
+		ft_strexit("ERROR: Mutex init error(eat_cnt)");
+	if (pthread_mutex_init(&(info->protect_die), NULL) != 0)
+		ft_strexit("ERROR: Mutex init error(protect_die)");
+	if (pthread_mutex_init(&(info->protect_eat), NULL) != 0)
+		ft_strexit("ERROR: Mutex init error(protect_eat)");
 }
 
 void	create_philo_mutex(t_philo *philo)
@@ -44,22 +50,6 @@ void	create_philo_mutex(t_philo *philo)
 		ft_strexit("ERROR: Mutex init error(time)");
 	if (pthread_mutex_init(&(philo->eat_time), NULL) != 0)
 		ft_strexit("ERROR: Mutex init error(eat_time)");
-	if (pthread_mutex_init(&(philo->eat_cnt), NULL) != 0)
-		ft_strexit("ERROR: Mutex init error(eat_cnt)");
-}
-
-void	create_pthread(t_base *info)
-{
-	int i;
-
-	i = 0;
-	info->start_time = get_time_ms();
-	while (i < info->num_philo)
-	{
-		if(pthread_create(&(info->philo[i].thread_id), NULL, &philo_routine, (void *)&(info->philo[i])))
-			ft_strexit("ERROR: Fail to create pthread!");
-		i++;
-	}
 }
 
 void	init_pthread(t_base *info)
@@ -73,15 +63,31 @@ void	init_pthread(t_base *info)
 	while (i < info->num_philo)
 	{
 		info->philo[i].id = i;
-		info->philo[i].flag = -1;
 		info->philo[i].left_fork = i;
 		info->philo[i].right_fork = (i + 1) % (info->num_philo);
 		info->philo[i].curr_time = 0;
 		info->philo[i].eat_count = 0;
-		info->philo[i].end_time = 0;
 		info->philo[i].info = info;
 		create_philo_mutex(&info->philo[i]);
 		i++;
 	}
 	create_info_mutex(info);
+}
+
+int	create_pthread(t_base *info)
+{
+	int i;
+
+	i = 0;
+	info->start_time = get_time_ms();
+	while (i < info->num_philo)
+	{
+		if(pthread_create(&(info->philo[i].thread_id), NULL, &philo_routine, (void *)&(info->philo[i])))
+		{	
+			ft_strexit("ERROR: Fail to create pthread!");
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
