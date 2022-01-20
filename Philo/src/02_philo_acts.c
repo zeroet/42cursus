@@ -6,13 +6,13 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:59:45 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/19 21:16:47 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/20 17:16:27 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int eat_checker(t_philo *philo, int loop)
+int eat_checker(t_philo *philo, int loop)
 {
 	int i;
 
@@ -103,7 +103,7 @@ void	*philo_routine(void *philo_ptr)
 	philo = (t_philo *)philo_ptr;
 	info = philo->info;
 	if (info->num_philo % 2 == 0)
-	{
+	{	
 		if (philo->id % 2 == 1)
 		{	
 			print_message(philo->id, IS_THINKING, info);

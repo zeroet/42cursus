@@ -6,11 +6,32 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/19 21:01:11 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/20 17:21:58 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	print_message(int id, int status, t_base *info)
+{
+	pthread_mutex_lock(&info->message);
+	pthread_mutex_lock(&info->protect_die);
+	if(!(info->flag_die))
+	{	
+		if (status == IS_DIE)
+			printf("%lld %d is died\n", (get_time_ms() - info->start_time), id + 1);
+		else if (status == IS_FORK)
+			printf("%lld %d has taken a fork\n", (get_time_ms() - info->start_time), id + 1);
+		else if (status == IS_EATING)
+			printf("%lld %d is eating\n", (get_time_ms() - info->start_time), id + 1);
+		else if (status == IS_SLEEPING)
+			printf("%lld %d is sleeping\n", (get_time_ms() - info->start_time), id + 1);
+		else if (status == IS_THINKING)
+			printf("%lld %d is thinking\n", (get_time_ms() - info->start_time), id + 1);
+	}
+	pthread_mutex_unlock(&info->protect_die);
+	pthread_mutex_unlock(&info->message);
+}
 
 void	init_base_info(int ac, char **av, t_base *info)
 {

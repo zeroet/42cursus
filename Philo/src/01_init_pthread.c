@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:37:56 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/19 21:16:43 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/20 17:21:51 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	init_pthread(t_base *info)
 		info->philo[i].right_fork = (i + 1) % (info->num_philo);
 		info->philo[i].curr_time = 0;
 		info->philo[i].eat_count = 0;
+		info->philo[i].end_time = 0;
 		info->philo[i].info = info;
 		create_philo_mutex(&info->philo[i]);
 		i++;

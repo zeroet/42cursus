@@ -6,7 +6,7 @@
 /*   By: ytak <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:17:07 by ytak              #+#    #+#             */
-/*   Updated: 2022/01/19 21:04:03 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/20 16:55:22 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_thread_all(t_info *all)
 {
 	if (!(ft_create_thread(all)))
 		return ;
-	printf("im main\n");
 	ft_checker_loop2(all);
 	ft_free_thread(all);
 	if (!(all->flag_die))

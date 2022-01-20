@@ -6,7 +6,7 @@
 #    By: ytak <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 12:51:34 by ytak              #+#    #+#              #
-#    Updated: 2022/01/19 18:29:19 by seyun            ###   ########.fr        #
+#    Updated: 2022/01/20 16:52:49 by seyun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS 		= ${SRCS:.c=.o}
 #OBJS_B		= ${SRCS_BONUS:.c=.o}
 
 #CC			= gcc
-CC			= gcc -g3 -fsanitize=address
+CC			= gcc #-g3 -fsanitize=address
 #CC			= gcc -g3 -fsanitize=thread
 CFLAGS		= -Wall -Wextra -Werror -pthread
 RM			= rm -f

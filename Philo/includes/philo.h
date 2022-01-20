@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:11:33 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/19 20:24:27 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/20 16:58:24 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_base
 
 /********** phlio main **********/
 
+void		print_message(int id, int status, t_base *info);
 int			validate_argument(int ac, char **av);
 void		init_base_info(int ac, char **av, t_base *info);
 
@@ -78,10 +79,7 @@ void		*philo_routine_1(t_philo *philo, t_base *info);
 void		is_sleep(long long time, t_philo *philo);
 void		is_eat(t_philo *philo, t_base *info);
 
-/********** 03_philo_checker **********/
-
-
-/********** 04_main_thread_checker **********/
+/********** 03_main_thread_checker **********/
 
 void	philo_core(t_base *info);
 void	main_thread(t_base *info);

@@ -6,7 +6,7 @@
 #    By: seyun <seyun@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 21:57:40 by seyun             #+#    #+#              #
-#    Updated: 2022/01/19 20:29:26 by seyun            ###   ########.fr        #
+#    Updated: 2022/01/20 16:59:53 by seyun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,7 @@ LIBFT_D		=	./Libft/
 FILES 	=	philo.c \
 			01_init_pthread.c \
 			02_philo_acts.c \
-			03_philo_checker.c \
-			04_main_thread_checker.c
+			03_main_thread_checker.c
 SRC		=   $(addprefix src/, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 INCLIB	=	-Llibft -lft
