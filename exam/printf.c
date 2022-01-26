@@ -3,326 +3,125 @@
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 17:32:09 by seyun             #+#    #+#             */
-/*   Updated: 2021/12/30 18:39:22 by seyun            ###   ########.fr       */
+/*   Created: 2022/01/26 21:44:51 by seyun             #+#    #+#             */
+/*   Updated: 2022/01/26 21:57:34 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdlib.h>
 #include <stdio.h>
 
-typedef	struct s_tab {
-	va_list list;
-	int i;
-	int output;
-	int width;
-	int	check_precision;
-	int	precision;
-	char mark;
-	int len;
-	int neg;
-	int zero_count;
-}				t_tab;
-
-void	ft_init(t_tab *tab)
+int ft_putchar(char c)
 {
-	tab->i = 0;
-	tab->output = 0;
-	tab->width = 0;
-	tab->check_precision = 0;
-	tab->precision = 0;
-	tab->mark = '\0';
-	tab->len = 0;
-	tab->neg = 0;
-	tab->zero_count = 0;
+	return (write(1, &c, 1));
 }
 
-void	ft_putchar(char c)
+int	ft_putstr(char *s)
 {
-	write(1, &c, 1);
-}
+	int res = 0;
 
-void	ft_clear(t_tab *tab)
-{
-	tab->width = 0;
-	tab->check_precision = 0;
-	tab->precision = 0;
-	tab->mark = '\0';
-	tab->len = 0;
-	tab->neg = 0;
-	tab->zero_count = 0;
-}
-
-int		ft_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	ft_nbr_len(long int nbr, long int base)
-{
-	int i;
-
-	i = 1;
-	while (nbr >= base)
+	if (s == NULL)
 	{
-		nbr = nbr / base;
-		i++;
+		res += write(1, "(null)", 6);
+		return (res);
 	}
-	return (i);
+	while (*s)
+		res += write(1, s++, 1);
+	return (res);
 }
 
-int ft_nbr_len_unsigned(unsigned long int nbr, unsigned long int base)
+int	ft_putnbr(int nbr)
 {
-	int i;
+	int res;
 
-	i = 1;
-	while (nbr >= base)
-	{
-		nbr = nbr / base;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_putnbr_base(long int nbr, long int base_len, char *base)
-{
-	if (nbr >= base_len)
-	{
-		ft_putnbr_base(nbr / base_len, base_len, base);
-		ft_putnbr_base(nbr % base_len, base_len, base);
-	}
-	else
-		ft_putchar(base[nbr]);
-}
-
-void	ft_putnbr_base_un(unsigned long int nbr, unsigned long int base_len, char *base)
-{
-	if (nbr >= base_len)
-	{
-		ft_putnbr_base(nbr / base_len, base_len, base);
-		ft_putnbr_base(nbr % base_len, base_len, base);
-	}
-	else
-		ft_putchar(base[nbr]);
-}
-
-void	ft_find_option(const char *str, t_tab *tab)
-{
-	tab->i++;
-	while (str[tab->i] && !(str[tab->i] == 's' || str[tab->i] == 'd' || str[tab->i] == 'x'))
-	{
-		if (ft_digit(str[tab->i]))
-		{
-			while (ft_digit(str[tab->i]))
-			{
-				tab->width = (tab->width * 10) + str[tab->i] - 48;
-				tab->i++;
-			}
-		}
-		if (str[tab->i] == '.')
-		{
-			tab->check_precision = 1;
-			tab->i++;
-			while (ft_digit(str[tab->i]))
-			{
-				tab->precision = (tab->precision * 10) + str[tab->i] - 48;
-				tab->i++;
-			}
-		}
-	}
-	tab->mark = str[tab->i];
-}
-
-void	ft_print_char(int len, char c, t_tab *tab)
-{
-	int i;
-
-	i = 0;
-	while (i < len)
-	{
-		ft_putchar(c);
-		i++;
-		tab->output++;
-	}
-}
-
-void	ft_printf_s(t_tab *tab)
-{
-	char *str;
-	int	index;
-
-	index = 0;
-	str = va_arg(tab->list, char *);
-	if (!str)
-		str = "(null)";
-	tab->len = ft_strlen(str);
-	if (tab->check_precision == 1 && tab->precision < tab->len)
-		tab->len = tab->precision;
-	ft_print_char(tab->width - tab->len, ' ', tab);
-	while (str[index] && index < tab->len)
-	{
-		ft_putchar(str[index]);
-		index++;
-	}
-	tab->output += tab->len;
-}
-
-void	ft_printf_d(t_tab *tab)
-{
-	long nbr;
-
-	nbr = va_arg(tab->list, int);
+	res = 0;
 	if (nbr < 0)
 	{
-		tab->neg = 1;
-		nbr *= -1;
-		tab->len++;
-	}
-	tab->len += ft_nbr_len(nbr, 10);
-	if (tab->check_precision == 1 && nbr == 0)
-		tab->len = 0;
-	if (tab->check_precision == 1 && tab->len < tab->precision)
-	{
-		if (tab->neg == 1)
-			tab->zero_count = (tab->precision - tab->len) + 1;
-		else
-			tab->zero_count = tab->precision - tab->len;
-	}
-	ft_print_char(tab->width - (tab->zero_count + tab->len), ' ', tab);
-	if (tab->neg == 1)
 		ft_putchar('-');
-	ft_print_char(tab->zero_count, '0', tab);
-	if (tab->check_precision == 1 && nbr == 0)
-		return ;
-	ft_putnbr_base(nbr, 10, "0123456789");
-	tab->output += tab->len;
+		nbr *= -1;
+	}
+	if (nbr > 9)
+		res += ft_putnbr(nbr / 10);
+	res += ft_putchar(nbr % 10 + '0');
+	return (res);
 }
 
-void	ft_printf_x(t_tab *tab)
+int	ft_puthex(int nbr)
 {
-	unsigned int nbr;
+	int res;
+	char *base;
 
-	nbr = va_arg(tab->list, unsigned int);
-	tab->len += ft_nbr_len_unsigned(nbr, 16);
-	if (tab->check_precision == 1 && nbr == 0)
-		tab->len = 0;
-	if (tab->check_precision == 1 && tab->len < tab->precision)
-		tab->zero_count = tab->precision - tab->len;
-	ft_print_char(tab->width - (tab->zero_count + tab->len), ' ', tab);
-	ft_print_char(tab->zero_count, '0', tab);
-	if (tab->check_precision == 1 && nbr == 0)
-		return ;
-	ft_putnbr_base_un(nbr, 16, "0123456789abcdef");
-	tab->output += tab->len;
+	res = 0;
+	base = "0123456789abcdef";
+
+	if (nbr > 15)
+		res += ft_puthex(nbr / 16);
+	res += ft_puthex(base[nbr % 16]);
+	return (res);
 }
 
-int		ft_printf(const char *str, ...)
+int ft_format(char c, va_list ap)
 {
-	t_tab tab;
+	int res = 0;
 
-	va_start(tab.list, str);
-	ft_init(&tab);
-	while (str[tab.i] != '\0')
+	if (c == 'd')
+		return (ft_putnbr(va_arg(ap, int)));
+	else if (c == 'x')
+		return (ft_putnbr(va_arg(ap, unsigned long)));
+	else if (c == 's')
+		return (ft_putstr(va_arg(ap, char *)));
+	else if (c == '%')
+		return (write(1, "%", 1));
+	return (res);
+}
+
+int ft_printf(char *s, ...)
+{
+	int res = 0;
+	int i = 0;
+	va_list ap;
+
+	va_start(ap, s);
+	while (s[i])
 	{
-		if (str[tab.i + 1] && str[tab.i] == '%' && str[tab.i + 1] == '%')
-		{
-			ft_putchar('%');
-			tab.output++;
-			tab.i++;
-		}
-		else if (str[tab.i] == '%')
-		{
-			ft_find_option(str, &tab);
-			if (tab.mark == 's')
-				ft_printf_s(&tab);
-			else if (tab.mark == 'd')
-				ft_printf_d(&tab);
-			else if (tab.mark == 'x')
-				ft_printf_x(&tab);
+		if (s[i] == '%')
+		{	
+			res += ft_format(s[i + 1], ap);
+			i++;
 		}
 		else
-		{
-			ft_putchar(str[tab.i]);
-			tab.output++;
-		}
-		ft_clear(&tab);
-		tab.i++;
+			res += ft_putchar(s[i]);
+		i++;
 	}
-	va_end(tab.list);
-	return (tab.output);
+	va_end(ap);
+	return (res);
 }
 
-int		main(void)
+int	main(void)
 {
-	int out;
-	//int out2;
-
-/*	out1 = printf("this is just string\n");
-	out2 = ft_printf("this is just string\n");
-
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
+	int	a;
+	int b;
 	char *str = NULL;
-	out1 = printf("|%55.7s|\n", str);
-	out2 = ft_printf("|%55.7s|\n", str);
+	int res = 0;
+	int res2 =0;
 
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
-	int i = -255;
-	out1 = printf("|%10.8d|\n", i);
-	out2 = ft_printf("|%10.8d|\n", i);
-
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
-	unsigned int x = 12;
-	out1 = printf("|%.8x|\n", x);
-	out2 = ft_printf("|%.8x|\n", x);
-
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
-	out1 = printf("%10.2s\n", "toto");
-	out2 = ft_printf("%10.2s\n", "toto");
-
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
-	out1 = printf("Magic %s is %5d\n", "number", 42);
-	out2 = ft_printf("Magic %s is %5d\n", "number", 42);
-
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
-	out1 = printf("Hexadecimal for %d is %x\n", 42, -42);
-	out2 = ft_printf("Hexadecimal for %d is %x\n", 42, -42);
-
-	printf("%d\n", out1);
-	printf("%d\n", out2);
-
-	//char *str = NULL;*/
-	out = printf("asdfafd%");
-	//out2 = ft_printf("%%%%\n");
-
-	printf("%d\n", out);
-	//printf("%d\n", out2);
-
-
+	a = -399;
+	b = 900;
+	ft_printf("Hello world\n");
+	printf("Hello world\n");
+	ft_printf("%s, %d, %x, %%%, %%, %%%%\n", "TEST", a, b);
+	ft_printf("-399 = %d\n", a);
+	ft_printf("900 in hex = %x\n", b);
+	printf("900 in hex = %x\n", b);
+	ft_printf("%s\n", str);
+	printf("%s\n", str);
+	printf("%%\n");
+	ft_printf("%%\n");
+	res = printf("%%%%\n");
+	res2 = ft_printf("%%%%\n");
+	printf("%d %d\n", res, res2);
 	return (0);
 }
