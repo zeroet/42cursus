@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   cpp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/10 16:42:03 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/28 21:55:30 by seyun            ###   ########.fr       */
+/*   Created: 2022/01/28 22:28:54 by seyun             #+#    #+#             */
+/*   Updated: 2022/01/28 23:36:50 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <iostream>
 
-void	ft_putchar_fd(char c, int fd)
+int main()
 {
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
+	int a = 10;
+	int b(a);
+	
+	std::cout << b << std::endl << std::cout <<"hello";
+	std::cout << "hello";
+	return 0;
 }

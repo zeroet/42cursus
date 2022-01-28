@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 13:42:36 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/28 15:36:15 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/28 22:25:26 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <signal.h>
@@ -17,39 +17,33 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <unistd.h>
+#include <termios.h>
 
-void	handler(int signum)
+void	SIG_handler(int sig)
 {
-	if (signum != SIGINT)
-		return ;
-	write(STDOUT_FILENO, "\n", 1);
-	if (rl_on_new_line() == -1)
-		exit(1);
-	rl_redisplay();
+	printf("bye\n");
+	exit(0);
 }
 
-int		main(void)
+int main(void)
 {
-	int				ret;
-	char			*line;
+	char *line;
+	int errono = 0;
+	char *error_message; 
 
-	signal(SIGINT, handler);
-	while (true)
+	line = NULL;
+	if (signal(SIGINT, SIG_handler) == SIG_ERR)
+		printf("errexit\n");
+	while (1)
 	{
-		line = readline("input> ");
+		line = readline("prompt: ");
 		if (line)
-		{
-			ret = strcmp(line, "bye");
-			if (ret)
-				printf("output> %s\n", line);
-			add_history(line);
-			free(line);
-			line = NULL;
-			if (!ret)
-				break ;
-		}
-		else
-			return (1);
+			printf("%s\n", line);
+		if (strncmp(line, "exit", 4) == 0)
+			exit(0);
+		add_history(line);
+		free(line);
 	}
 	return (0);
 }
+
