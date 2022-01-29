@@ -6,44 +6,45 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 13:42:36 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/28 22:25:26 by seyun            ###   ########.fr       */
+/*   Updated: 2022/01/29 17:25:37 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <signal.h>
-#include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <unistd.h>
-#include <termios.h>
+#include <stdlib.h>
 
-void	SIG_handler(int sig)
+void handler(int signum)
 {
-	printf("bye\n");
-	exit(0);
+    if (signum != SIGINT)
+        return;
+    printf("ctrl + c\n");
+    rl_on_new_line();
+    rl_replace_line("", 1);
+    rl_redisplay();
 }
 
 int main(void)
 {
-	char *line;
-	int errono = 0;
-	char *error_message; 
+    int ret;
+    char *line;
 
-	line = NULL;
-	if (signal(SIGINT, SIG_handler) == SIG_ERR)
-		printf("errexit\n");
-	while (1)
-	{
-		line = readline("prompt: ");
-		if (line)
-			printf("%s\n", line);
-		if (strncmp(line, "exit", 4) == 0)
-			exit(0);
-		add_history(line);
-		free(line);
-	}
-	return (0);
+    signal(SIGINT, handler);
+    while (1)
+    {
+        line = readline("input> ");
+        if (line)
+        {
+            if (strncmp(line, "exit", 4) == 0)
+				exit(1);
+			if (ret)
+                printf("output> %s\n", line);
+            add_history(line);
+            free(line);
+            line = NULL;
+        }
+    }
+    return (0);
 }
-
