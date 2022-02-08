@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 21:44:51 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/26 21:57:34 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/08 16:54:41 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	ft_putstr(char *s)
 	return (res);
 }
 
-int	ft_putnbr(int nbr)
+int	ft_putnbr(long int nbr)
 {
 	int res;
 
 	res = 0;
 	if (nbr < 0)
 	{
-		ft_putchar('-');
+		res = ft_putchar('-');
 		nbr *= -1;
 	}
 	if (nbr > 9)
@@ -49,7 +49,7 @@ int	ft_putnbr(int nbr)
 	return (res);
 }
 
-int	ft_puthex(int nbr)
+int	ft_puthex(unsigned long nbr)
 {
 	int res;
 	char *base;
@@ -59,7 +59,7 @@ int	ft_puthex(int nbr)
 
 	if (nbr > 15)
 		res += ft_puthex(nbr / 16);
-	res += ft_puthex(base[nbr % 16]);
+	res += ft_putchar(base[nbr % 16]);
 	return (res);
 }
 
@@ -70,7 +70,7 @@ int ft_format(char c, va_list ap)
 	if (c == 'd')
 		return (ft_putnbr(va_arg(ap, int)));
 	else if (c == 'x')
-		return (ft_putnbr(va_arg(ap, unsigned long)));
+		return (ft_puthex(va_arg(ap, unsigned long)));
 	else if (c == 's')
 		return (ft_putstr(va_arg(ap, char *)));
 	else if (c == '%')
@@ -102,26 +102,36 @@ int ft_printf(char *s, ...)
 
 int	main(void)
 {
-	int	a;
-	int b;
-	char *str = NULL;
-	int res = 0;
-	int res2 =0;
+	char *hello = "hello";
+	int	forty_two = 42;
+	int	max_int = 2147483647;
+	int	min_int = -2147483648;
 
-	a = -399;
-	b = 900;
-	ft_printf("Hello world\n");
-	printf("Hello world\n");
-	ft_printf("%s, %d, %x, %%%, %%, %%%%\n", "TEST", a, b);
-	ft_printf("-399 = %d\n", a);
-	ft_printf("900 in hex = %x\n", b);
-	printf("900 in hex = %x\n", b);
-	ft_printf("%s\n", str);
-	printf("%s\n", str);
-	printf("%%\n");
-	ft_printf("%%\n");
-	res = printf("%%%%\n");
-	res2 = ft_printf("%%%%\n");
-	printf("%d %d\n", res, res2);
+	printf("\n\ns flag\n");
+	printf("\t\t-real(%d)\n", printf("s:%s", hello));
+	printf("\t\t-mine(%d)\n", ft_printf("s:%s", hello));
+	printf("\t\t-real(%d)\n", printf("s:%s", NULL));
+	printf("\t\t-mine(%d)\n", ft_printf("s:%s", NULL));
+
+	printf("\n\nd flag\n");
+	printf("\t\t-real(%d)\n", printf("d:%d", forty_two));
+	printf("\t\t-mine(%d)\n", ft_printf("d:%d", forty_two));
+	printf("\t\t-real(%d)\n", printf("d:%d", -forty_two));
+	printf("\t\t-mine(%d)\n", ft_printf("d:%d", -forty_two));
+	printf("\t\t-real(%d)\n", printf("d:%d", max_int));
+	printf("\t\t-mine(%d)\n", ft_printf("d:%d", max_int));
+	printf("\t\t-real(%d)\n", printf("d:%d", min_int));
+	printf("\t\t-mine(%d)\n", ft_printf("d:%d", min_int));
+
+	printf("\n\nx flag\n");
+	printf("\t\t-real(%d)\n", printf("x:%x", forty_two));
+	printf("\t\t-mine(%d)\n", ft_printf("x:%x", forty_two));
+	printf("\t\t-real(%d)\n", printf("x:%x", -forty_two));
+	printf("\t\t-mine(%d)\n", ft_printf("x:%x", -forty_two));
+
+	//multi
+	printf("\n\nmulti flag\n");
+	printf("\t\t-real(%d)\n", printf("s:%s d:%d x:%x", hello, forty_two, -forty_two));
+	printf("\t\t-mine(%d)\n", ft_printf("s:%s d:%d x:%x", hello, forty_two, -forty_two));
 	return (0);
 }
