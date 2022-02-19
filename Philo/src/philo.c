@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:10:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/20 17:21:58 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/19 16:43:05 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,23 @@ void	print_message(int id, int status, t_base *info)
 {
 	pthread_mutex_lock(&info->message);
 	pthread_mutex_lock(&info->protect_die);
-	if(!(info->flag_die))
+	if (!(info->flag_die))
 	{	
 		if (status == IS_DIE)
-			printf("%lld %d is died\n", (get_time_ms() - info->start_time), id + 1);
+			printf("%lld %d is died\n", \
+					(get_time_ms() - info->start_time), id + 1);
 		else if (status == IS_FORK)
-			printf("%lld %d has taken a fork\n", (get_time_ms() - info->start_time), id + 1);
+			printf("%lld %d has taken a fork\n", \
+					(get_time_ms() - info->start_time), id + 1);
 		else if (status == IS_EATING)
-			printf("%lld %d is eating\n", (get_time_ms() - info->start_time), id + 1);
+			printf("%lld %d is eating\n", \
+					(get_time_ms() - info->start_time), id + 1);
 		else if (status == IS_SLEEPING)
-			printf("%lld %d is sleeping\n", (get_time_ms() - info->start_time), id + 1);
+			printf("%lld %d is sleeping\n", \
+					(get_time_ms() - info->start_time), id + 1);
 		else if (status == IS_THINKING)
-			printf("%lld %d is thinking\n", (get_time_ms() - info->start_time), id + 1);
+			printf("%lld %d is thinking\n", \
+					(get_time_ms() - info->start_time), id + 1);
 	}
 	pthread_mutex_unlock(&info->protect_die);
 	pthread_mutex_unlock(&info->message);
@@ -61,7 +66,7 @@ int	validate_argument(int ac, char **av)
 {
 	if (ac != 5 && ac != 6)
 		ft_strexit("ERROR: Wrong number of Arguments!");
-	if (ft_atoi(av[1]) > 200)
+	if (ft_atoi(av[1]) > 199)
 		ft_strexit("ERROR: Max num of philo is 200");
 	while (*(++av) != 0)
 	{	
@@ -73,14 +78,25 @@ int	validate_argument(int ac, char **av)
 	return (0);
 }
 
+void	one_philo(t_base *info)
+{
+	printf("0 1 has taken fork\n");
+	usleep(info->die_ms * 1000);
+	printf("%d 1 died\n", info->die_ms + 1);
+	return ;
+}
+
 int	main(int ac, char **av)
 {
-	t_base info;
+	t_base	info;
 
 	validate_argument(ac, av);
 	init_base_info(ac, av, &info);
 	init_pthread(&info);
-	philo_core(&info);
+	if (info.num_philo == 1)
+		one_philo(&info);
+	if (info.num_philo != 1)
+		philo_core(&info);
 	if (info.fork)
 		free(info.fork);
 	if (info.philo)

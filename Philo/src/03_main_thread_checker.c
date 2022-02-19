@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:58:50 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/20 17:04:08 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/19 16:42:09 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	eat_count_checker(t_base *info, int *num_eat)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (info->num_eat != -1 && ++i < info->num_philo)
@@ -32,7 +32,7 @@ void	eat_count_checker(t_base *info, int *num_eat)
 
 void	die_time_checker(t_base *info, int *die)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	pthread_mutex_lock(&info->protect_die);
@@ -56,11 +56,10 @@ void	die_time_checker(t_base *info, int *die)
 	}
 	pthread_mutex_unlock(&info->protect_die);
 }
-	
 
 void	main_thread(t_base *info)
 {
-	int i;
+	int	i;
 	int	num_eat;
 	int	die;
 
@@ -73,7 +72,7 @@ void	main_thread(t_base *info)
 		pthread_mutex_unlock(&(info->philo[i].eat_time));
 		i++;
 	}
-	while(!(info->flag_eat))
+	while (!(info->flag_eat))
 	{
 		num_eat = 0;
 		die_time_checker(info, &die);
@@ -85,7 +84,7 @@ void	main_thread(t_base *info)
 
 void	free_thread(t_base *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < info->num_philo)

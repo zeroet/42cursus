@@ -6,18 +6,18 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:59:45 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/20 17:16:27 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/19 16:46:43 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int eat_checker(t_philo *philo, int loop)
+int	eat_checker(t_philo *philo, int loop)
 {
-	int i;
+	int	i;
 
 	if (philo->info->num_philo % 2 == 0)
-	return (1);
+		return (1);
 	i = 0;
 	loop %= philo->info->num_philo;
 	while (i < philo->info->num_philo / 2)
@@ -43,7 +43,7 @@ void	is_sleep(long long time, t_philo *philo)
 	}
 }
 
-void	is_eat(t_philo *philo, t_base *info)
+void	is_eat(t_philo *philo, t_base *info, int *loop)
 {
 	pthread_mutex_lock(&(info->fork[philo->right_fork]));
 	print_message(philo->id, IS_FORK, info);
@@ -62,14 +62,15 @@ void	is_eat(t_philo *philo, t_base *info)
 	print_message(philo->id, IS_SLEEPING, info);
 	is_sleep(info->sleep_ms, philo);
 	print_message(philo->id, IS_THINKING, info);
+	(*loop)++;
 }
 
 void	*philo_routine_1(t_philo *philo, t_base *info)
 {
-	int loop;
+	int	loop;
 
 	loop = 0;
-	while (!info->flag_die) 
+	while (!info->flag_die)
 	{
 		pthread_mutex_unlock(&info->protect_die);
 		if (!eat_checker(philo, loop))
@@ -78,10 +79,7 @@ void	*philo_routine_1(t_philo *philo, t_base *info)
 			is_sleep(info->eat_ms, philo);
 		}
 		else
-		{	
-			is_eat(philo, info);
-			loop++;
-		}
+			is_eat(philo, info, &loop);
 		pthread_mutex_lock(&info->protect_eat);
 		if (info->flag_eat == 1)
 		{
@@ -97,8 +95,8 @@ void	*philo_routine_1(t_philo *philo, t_base *info)
 
 void	*philo_routine(void *philo_ptr)
 {
-	t_philo *philo;
-	t_base *info;
+	t_philo	*philo;
+	t_base	*info;
 
 	philo = (t_philo *)philo_ptr;
 	info = philo->info;

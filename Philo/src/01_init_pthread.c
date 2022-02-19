@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:37:56 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/20 17:21:51 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/19 16:35:01 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long long	get_time_ms(void)
 {
-	struct timeval my_time;
+	struct timeval	my_time;
 
 	gettimeofday(&my_time, NULL);
 	return ((my_time.tv_sec * 1000) + (my_time.tv_usec / 1000));
@@ -22,15 +22,16 @@ long long	get_time_ms(void)
 
 void	create_info_mutex(t_base *info)
 {
-	int i;
+	int	i;
 
-	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
+			* info->num_philo);
 	if (!info->fork)
 		ft_strexit("ERROR: Mutex init error!");
 	i = 0;
 	while (i < info->num_philo)
 	{
-		if(pthread_mutex_init(&(info->fork[i]), NULL) != 0)
+		if (pthread_mutex_init(&(info->fork[i]), NULL) != 0)
 			ft_strexit("ERROR: Mutex init error(fork)");
 		i++;
 	}
@@ -54,7 +55,7 @@ void	create_philo_mutex(t_philo *philo)
 
 void	init_pthread(t_base *info)
 {
-	int i;
+	int	i;
 
 	info->philo = (t_philo *)malloc(sizeof(t_philo) * (info->num_philo));
 	if (!info->philo)
@@ -77,13 +78,14 @@ void	init_pthread(t_base *info)
 
 int	create_pthread(t_base *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	info->start_time = get_time_ms();
 	while (i < info->num_philo)
 	{
-		if(pthread_create(&(info->philo[i].thread_id), NULL, &philo_routine, (void *)&(info->philo[i])))
+		if (pthread_create(&(info->philo[i].thread_id), \
+					NULL, &philo_routine, (void *)&(info->philo[i])))
 		{	
 			ft_strexit("ERROR: Fail to create pthread!");
 			return (0);

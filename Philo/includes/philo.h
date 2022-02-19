@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:11:33 by seyun             #+#    #+#             */
-/*   Updated: 2022/01/20 16:58:24 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/19 16:47:07 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		print_message(int id, int status, t_base *info);
 void		*philo_routine(void *philo_ptr);
 void		*philo_routine_1(t_philo *philo, t_base *info);
 void		is_sleep(long long time, t_philo *philo);
-void		is_eat(t_philo *philo, t_base *info);
+void		is_eat(t_philo *philo, t_base *info, int *loop);
 
 /********** 03_main_thread_checker **********/
 
