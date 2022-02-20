@@ -6,7 +6,7 @@
 /*   By: seyun <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:59:45 by seyun             #+#    #+#             */
-/*   Updated: 2022/02/19 16:46:43 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/20 16:36:47 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	*philo_routine_1(t_philo *philo, t_base *info)
 	while (!info->flag_die)
 	{
 		pthread_mutex_unlock(&info->protect_die);
-		if (!eat_checker(philo, loop))
+		if (!eat_checker(philo, loop) && loop == 0)
 		{
 			print_message(philo->id, IS_THINKING, info);
 			is_sleep(info->eat_ms, philo);
@@ -105,7 +105,7 @@ void	*philo_routine(void *philo_ptr)
 		if (philo->id % 2 == 1)
 		{	
 			print_message(philo->id, IS_THINKING, info);
-			is_sleep(info->eat_ms / 1.3333, philo);
+			is_sleep(info->eat_ms, philo);
 		}
 	}
 	pthread_mutex_lock(&info->protect_die);
