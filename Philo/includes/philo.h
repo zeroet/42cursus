@@ -6,7 +6,7 @@
 /*   By: seyun <seyun@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 22:11:33 by seyun             #+#    #+#             */
-/*   Updated: 2022/02/19 16:47:07 by seyun            ###   ########.fr       */
+/*   Updated: 2022/02/20 19:57:26 by seyun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ typedef struct s_philo
 	long long		end_time;
 	pthread_t		thread_id;
 	pthread_mutex_t	time;
-	pthread_mutex_t eat_time;
+	pthread_mutex_t	eat_time;
 }					t_philo;
 
 typedef struct s_base
-{ 
+{
 	int				num_philo;
 	int				die_ms;
 	int				eat_ms;
@@ -50,11 +50,11 @@ typedef struct s_base
 	int				flag_die;
 	int				flag_eat;
 	t_philo			*philo;
-	pthread_mutex_t *fork;
-	pthread_mutex_t message;
-	pthread_mutex_t eat_cnt;
-	pthread_mutex_t protect_eat;
-	pthread_mutex_t protect_die;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	message;
+	pthread_mutex_t	eat_cnt;
+	pthread_mutex_t	protect_eat;
+	pthread_mutex_t	protect_die;
 }					t_base;
 
 /********** phlio main **********/
@@ -81,9 +81,9 @@ void		is_eat(t_philo *philo, t_base *info, int *loop);
 
 /********** 03_main_thread_checker **********/
 
-void	philo_core(t_base *info);
-void	main_thread(t_base *info);
-void	die_time_checker(t_base *info, int *die);
-void	eat_count_checker(t_base *info, int *num_eat);
+void		philo_core(t_base *info);
+void		main_thread(t_base *info);
+void		die_time_checker(t_base *info, int *die);
+void		eat_count_checker(t_base *info, int *num_eat);
 
 #endif
